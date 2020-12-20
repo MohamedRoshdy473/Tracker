@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eYIdDfbUqBSe/cqxxBRU+ZWBNV7X4DebtRL+75suIzclPRdcNk9ymHOa6/zur8N3mw+0skqKFvrXfyGyt2L9rA==",
+  "dgSpecHash": "V0PrUdrCIdWD4z7MgCSs9LczhQNAYp/szotIeWCmZlfRs8dmgXKK3qO+sDeUTnS46nvnh8txm5AT6LbllfYMXg==",
   "success": true,
-  "projectFilePath": "G:\\TrackingSystem\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+  "projectFilePath": "G:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win10\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
     "C:\\Users\\win10\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

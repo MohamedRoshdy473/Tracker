@@ -10,7 +10,7 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
    public interface IEmployeeRepository : IDisposable
     {
         IEnumerable<EmployeeDTO> GetAll();
-        Employee GetById(int id);
+        EmployeeDTO GetById(int id);
         Employee Find(int id);
         void Add(Employee employee);
         void Update(Employee employee);

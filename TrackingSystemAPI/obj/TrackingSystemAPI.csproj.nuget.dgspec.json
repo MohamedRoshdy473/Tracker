@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\TrackingSystem\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {}
+    "G:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {}
   },
   "projects": {
-    "G:\\TrackingSystem\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {
+    "G:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\TrackingSystem\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+        "projectUniqueName": "G:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
         "projectName": "TrackingSystemAPI",
-        "projectPath": "G:\\TrackingSystem\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+        "projectPath": "G:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
         "packagesPath": "C:\\Users\\win10\\.nuget\\packages\\",
-        "outputPath": "G:\\TrackingSystem\\TrackingSystemAPI\\obj\\",
+        "outputPath": "G:\\Tracker\\TrackingSystemAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
