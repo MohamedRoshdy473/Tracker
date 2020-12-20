@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,6 +40,34 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
             }).ToList();
             return emps;
         }
+        public EmployeeDTO GetById(int id)
+        {
+            var e = _context.Employees.Include(e => e.Department).FirstOrDefault(e => e.Id == id);
+            var emp = new EmployeeDTO
+            {
+                ID = e.Id,
+                Name = e.Name,
+                DepartmentName = e.Department.Name,
+                DepartmentId = e.DepartmentId,
+                GraduatioYear = e.GraduatioYear,
+                Address = e.Address,
+                Code = e.Code,
+                DateOfBirth = e.DateOfBirth,
+                Email = e.Email,
+                gender = e.gender,
+                HiringDateHiringDate = e.HiringDateHiringDate,
+                MaritalStatus = e.MaritalStatus,
+                Phone = e.Phone,
+                RelevantPhone = e.RelevantPhone,
+                Photo = e.Photo
+            };
+            if (emp == null)
+            {
+                return null;
+            }
+
+            return emp;
+        }
         public void Add(Employee employee)
         {
             throw new NotImplementedException();
@@ -52,11 +81,6 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
         {
             throw new NotImplementedException();
         }
-        public Employee GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(Employee employee)
         {
             throw new NotImplementedException();

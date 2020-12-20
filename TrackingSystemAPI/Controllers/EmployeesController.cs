@@ -30,5 +30,10 @@ namespace TrackingSystemAPI.Controllers
         {
             return _employeeRepository.GetAll();
         }
+        [HttpGet("{id}")]
+        public EmployeeDTO GetEmployee(int id)
+        {
+            return _employeeRepository.GetById(id);
+        }
     }
 }
