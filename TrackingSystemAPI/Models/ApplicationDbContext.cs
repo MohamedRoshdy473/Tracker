@@ -25,5 +25,31 @@ namespace TrackingSystemAPI.Models
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Client> clients { get; set; }
+        public DbSet<Department> departments { get; set; }
+        public DbSet<MileStone> mileStones  { get; set; }
+        public DbSet<Organization> organizations  { get; set; }
+        public DbSet<Project> projects { get; set; }
+        public DbSet<ProjectDocument>projectDocuments  { get; set; }
+        public DbSet<ProjectPosition>projectPositions  { get; set; }
+        public DbSet<ProjectTeam>projectTeams  { get; set; }
+        public DbSet<Request>requests  { get; set; }
+        public DbSet<RequestCategory>requestCategories  { get; set; }
+        public DbSet<RequestPeriority>requestPeriorities  { get; set; }
+        public DbSet<RequestStatus>requestStatuses  { get; set; }
+        public DbSet<RequestSubCategory> requestSubCategories  { get; set; }
+        public DbSet<RequestType> requestTypes { get; set; }
+        public DbSet<Stackeholders>stackeholders  { get; set; }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
