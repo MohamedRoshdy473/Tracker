@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {}
+    "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {}
   },
   "projects": {
-    "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {
+    "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+        "projectUniqueName": "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
         "projectName": "TrackingSystemAPI",
-        "projectPath": "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Tracker\\TrackingSystemAPI\\obj\\",
+        "projectPath": "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNet.Identity.Core": {
               "target": "Package",
@@ -87,6 +89,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.10, 3.1.10]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -95,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
