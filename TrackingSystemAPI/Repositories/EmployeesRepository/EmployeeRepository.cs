@@ -11,10 +11,6 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
     public class EmployeeRepository:IEmployeeRepository
     {
         private readonly ApplicationDbContext _context;
-        //public EmployeeRepository()
-        //{
-        //    _context = new ApplicationDbContext();
-        //}
         public EmployeeRepository(ApplicationDbContext context)
         {
             _context = context;

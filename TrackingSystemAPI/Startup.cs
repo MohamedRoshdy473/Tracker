@@ -13,6 +13,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using TrackingSystemAPI.Repositories.EmployeesRepository;
+using TrackingSystemAPI.Repositories.ClientRepositories;
+using TrackingSystemAPI.Repositories.DepartmentRepositories;
+using TrackingSystemAPI.Repositories.MileStoneRepositories;
+using TrackingSystemAPI.Repositories.OrganizationRepositories;
+using TrackingSystemAPI.Repositories.ProjectRepository;
+using TrackingSystemAPI.Repositories.ProjectDocumentRepositories;
+using TrackingSystemAPI.Repositories.ProjectPositionRepositories;
+using TrackingSystemAPI.Repositories.ProjectTeamRepositories;
+using TrackingSystemAPI.Repositories.RequestCategoryRepositories;
+using TrackingSystemAPI.Repositories.RequestPeriorityRepositories;
+using TrackingSystemAPI.Repositories.RequestRepositories;
+using TrackingSystemAPI.Repositories.RequestStatusRepositories;
+using TrackingSystemAPI.Repositories.RequestSubCategoryRepositories;
+using TrackingSystemAPI.Repositories.RequestTypeRepositories;
+using TrackingSystemAPI.Repositories.StackeholdersRepositories;
 
 namespace TrackingSystemAPI
 {
@@ -44,6 +59,22 @@ namespace TrackingSystemAPI
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IMileStoneRepository,MileStoneRepository>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IProjectDocumentRepository, ProjectDocumentRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IProjectPositionRepository, ProjectPositionRepository>();
+            services.AddScoped<IProjectTeamRepository, ProjectTeamRepository>();
+            services.AddScoped<IRequestCategoryRepository, RequestCategoryRepository>();
+            services.AddScoped<IRequestPeriorityRepository, RequestPeriorityRepository>();
+            services.AddScoped<IRequestRepository, RequestRepository>();
+            services.AddScoped<IRequestStatusRepository, RequestStatusRepository>();
+            services.AddScoped<IRequestSubCategoryRepository, RequestSubCategoryRepository>();
+            services.AddScoped<IRequestTypeRepository, RequestTypeRepository>();
+            services.AddScoped<IStackeholdersRepository, StackeholdersRepository>();
+
             // Adding Authentication  
             services.AddAuthentication(options =>
             {
