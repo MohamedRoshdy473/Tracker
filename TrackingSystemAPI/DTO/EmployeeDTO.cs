@@ -18,7 +18,7 @@ namespace TrackingSystemAPI.DTO
         public string MaritalStatus { get; set; }
         public string GraduatioYear { get; set; }
         public string Phone { get; set; }
-        public string RelevantPhone { get; set; }
+        public string Mobile { get; set; }
         public string Email { get; set; }
         public string Photo { get; set; }
         public DateTime HiringDateHiringDate { get; set; }

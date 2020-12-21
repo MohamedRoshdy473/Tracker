@@ -24,18 +24,17 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
             var emps = _context.Employees.Select(e => new EmployeeDTO
             {
                 ID = e.Id,
-                Name = e.Name,
+                Name = e.EmployeeName,
                 DepartmentName = e.Department.Name,
-                GraduatioYear = e.GraduatioYear,
                 Address = e.Address,
-                Code = e.Code,
-                DateOfBirth = e.DateOfBirth,
+                Code = e.EmployeeCode,
+               // DateOfBirth = e.DateOfBirth,
                 Email = e.Email,
                 gender = e.gender,
-                HiringDateHiringDate = e.HiringDateHiringDate,
+                //HiringDateHiringDate = e.HiringDateHiringDate,
                 MaritalStatus = e.MaritalStatus,
                 Phone = e.Phone,
-                RelevantPhone = e.RelevantPhone,
+                Mobile = e.Mobile,
                 Photo = e.Photo
             }).ToList();
             return emps;
@@ -46,19 +45,18 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
             var emp = new EmployeeDTO
             {
                 ID = e.Id,
-                Name = e.Name,
+                Name = e.EmployeeName,
                 DepartmentName = e.Department.Name,
                 DepartmentId = e.DepartmentId,
-                GraduatioYear = e.GraduatioYear,
                 Address = e.Address,
-                Code = e.Code,
-                DateOfBirth = e.DateOfBirth,
+                Code = e.EmployeeCode,
+               // DateOfBirth = e.DateOfBirth,
                 Email = e.Email,
                 gender = e.gender,
-                HiringDateHiringDate = e.HiringDateHiringDate,
+               //HiringDateHiringDate = e.HiringDateHiringDate,
                 MaritalStatus = e.MaritalStatus,
                 Phone = e.Phone,
-                RelevantPhone = e.RelevantPhone,
+                Mobile = e.Mobile,
                 Photo = e.Photo
             };
             if (emp == null)

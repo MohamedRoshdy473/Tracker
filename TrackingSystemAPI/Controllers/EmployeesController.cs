@@ -7,14 +7,14 @@ using TrackingSystemAPI.Repositories.EmployeesRepository;
 
 namespace TrackingSystemAPI.Controllers
 {
-    [Authorize(AuthenticationSchemes =
-    JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes =
+    //JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
         private IEmployeeRepository _employeeRepository;
-        // private readonly ApplicationDbContext _context;
+        //private readonly ApplicationDbContext _context;
         //private readonly IWebHostEnvironment hostingEnvironment;
         //private readonly UserManager<ApplicationUser> userManager;
         //public EmployeesController()
