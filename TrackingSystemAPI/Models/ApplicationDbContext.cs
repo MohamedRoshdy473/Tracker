@@ -42,6 +42,7 @@ namespace TrackingSystemAPI.Models
         public DbSet<RequestType> requestTypes { get; set; }
         public DbSet<Stackeholders>stackeholders  { get; set; }
         public DbSet<TrackingSystemAPI.DTO.ProjectDTO> ProjectDTO { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.MileStoneDTO> MileStoneDTO { get; set; }
 
 
 

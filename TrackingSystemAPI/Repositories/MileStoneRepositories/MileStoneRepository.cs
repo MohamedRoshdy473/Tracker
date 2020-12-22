@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,39 +15,85 @@ namespace TrackingSystemAPI.Repositories.MileStoneRepositories
         {
             _context = context;
         }
-        public void Add(MileStone mileStone)
+        public void Add(MileStoneDTO mileStoneDTO)
         {
-            throw new NotImplementedException();
+            var milestone = new MileStone();
+            milestone.Id = mileStoneDTO.Id;
+            milestone.Title = mileStoneDTO.Title;
+            milestone.StartDate = mileStoneDTO.StartDate;
+            milestone.EndDate = mileStoneDTO.EndDate;
+            milestone.Description = mileStoneDTO.Description;
+            milestone.ProjectId = mileStoneDTO.ProjectId;
+            //milestone.Project.ProjectName = mileStoneDTO.ProjectName;
+
+
+
+            
+            _context.mileStones.Add(milestone);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            MileStone mileStone = Find(id);
+            _context.mileStones.Remove(mileStone);
         }
 
         public MileStone Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.mileStones.Find(id);
         }
 
         public IEnumerable<MileStoneDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var milestone = _context.mileStones.Select(e => new MileStoneDTO
+            {
+                Id = e.Id,
+                Title=e.Title,
+                Description=e.Description,
+                ProjectId=e.ProjectId,
+                ProjectName=e.Project.ProjectName,
+                EndDate=e.EndDate,
+                StartDate=e.StartDate
+            }).ToList();
+            return milestone;
         }
 
         public MileStoneDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var milestone = _context.mileStones.Include(m=>m.Project).FirstOrDefault(e => e.Id == id);
+            var mileStoneDTO = new MileStoneDTO
+            {
+                Id = milestone.Id,
+                Title = milestone.Title,
+                Description = milestone.Description,
+                EndDate = milestone.EndDate,
+                StartDate = milestone.StartDate,
+                ProjectName = milestone.Project.ProjectName,
+                ProjectId=milestone.ProjectId,
+            };
+            if (milestone == null)
+            {
+                return null;
+            }
+
+            return mileStoneDTO;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(MileStone mileStone)
+        public void Update(MileStoneDTO mileStoneDTO)
         {
-            throw new NotImplementedException();
+            var milestone = new MileStone();
+            milestone.Id = mileStoneDTO.Id;
+            milestone.Title = mileStoneDTO.Title;
+            milestone.Description = mileStoneDTO.Description;
+            milestone.EndDate = mileStoneDTO.EndDate;
+            milestone.StartDate = mileStoneDTO.StartDate;
+            milestone.ProjectId = mileStoneDTO.ProjectId;
+            _context.Entry(milestone).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

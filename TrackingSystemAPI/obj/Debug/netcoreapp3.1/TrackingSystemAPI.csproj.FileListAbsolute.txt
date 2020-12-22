@@ -790,7 +790,6 @@ E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_s
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfoInputs.cache
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfo.cs
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.CoreCompileInputs.cache
@@ -964,3 +963,18 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.Co
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.Manifest.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.xml
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
+E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.Views.dll
+E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.Views.pdb
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorAssemblyInfo.cache
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorAssemblyInfo.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.TagHelpers.input.cache
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.TagHelpers.output.cache
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorCoreGenerate.cache
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\MileStone\Create.cshtml.g.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\MileStone\Delete.cshtml.g.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\MileStone\Details.cshtml.g.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\MileStone\Edit.cshtml.g.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\MileStone\Index.cshtml.g.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorTargetAssemblyInfo.cs
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.Views.pdb
