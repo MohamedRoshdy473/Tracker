@@ -55,7 +55,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             return proj;
         }
 
-        public Project GetById(int id)
+        public ProjectDTO GetById(int id)
         {
             var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).FirstOrDefault(e => e.Id == id);
             var projectDTO = new ProjectDTO
@@ -83,7 +83,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 return null;
             }
 
-            return project;
+            return projectDTO;
         }
 
         public void Save()

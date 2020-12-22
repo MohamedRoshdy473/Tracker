@@ -10,7 +10,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
    public interface IProjectRepository : IDisposable
     {
         IEnumerable<ProjectDTO> GetAll();
-        Project GetById(int id);
+        ProjectDTO GetById(int id);
         Project Find(int id);
         void Add(Project project);
         void Update(Project project);
