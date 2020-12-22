@@ -15,8 +15,6 @@ namespace TrackingSystemAPI.Controllers
     [ApiController]
     public class MileStonesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-
         private readonly IMileStoneRepository _mileStoneRepository;
 
         public MileStonesController(IMileStoneRepository mileStoneRepository)
@@ -75,7 +73,7 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<MileStoneDTO>> PostMileStoneDTO(MileStoneDTO mileStoneDTO)
+        public ActionResult<MileStoneDTO> PostMileStoneDTO(MileStoneDTO mileStoneDTO)
         {
             _mileStoneRepository.Add(mileStoneDTO);
             _mileStoneRepository.Save();
@@ -85,7 +83,7 @@ namespace TrackingSystemAPI.Controllers
 
         // DELETE: api/MileStones/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<MileStoneDTO>> DeleteMileStoneDTO(int id)
+        public ActionResult<MileStoneDTO> DeleteMileStoneDTO(int id)
         {
             var mileStoneDTO =_mileStoneRepository.Find(id);
             if (mileStoneDTO == null)

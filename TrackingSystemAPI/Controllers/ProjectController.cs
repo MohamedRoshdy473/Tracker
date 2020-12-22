@@ -16,7 +16,7 @@ namespace TrackingSystemAPI.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly IProjectRepository _projectRepository;
-
+        
         public ProjectController(IProjectRepository projectRepository)
         {
             _projectRepository = projectRepository;
