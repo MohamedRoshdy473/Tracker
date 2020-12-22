@@ -16,11 +16,12 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
         }
         public void Add(ProjectDTO projectDTO)
         {
+
             var project = new Project();
             project.Id = projectDTO.Id;
             project.ProjectName = projectDTO.ProjectName;
             project.ProjectCode = projectDTO.ProjectCode;
-            project.Type = projectDTO.Type;
+            project.ProjectTypeId = projectDTO.ProjectTypeId;
             project.Cost = projectDTO.Cost;
             project.ProjectPeriod = projectDTO.ProjectPeriod;
             project.PlanndedStartDate = projectDTO.PlanndedStartDate;
@@ -53,7 +54,8 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 ProjectName = e.ProjectName,
                 ProjectCode = e.ProjectCode,
                 Cost = e.Cost,
-                Type = e.Type,
+                ProjectTypeId = e.ProjectTypeId,
+                ProjectTypeName=e.ProjectType.TypeName,
                 ProjectPeriod = e.ProjectPeriod,
                 PlanndedStartDate = e.PlanndedStartDate,
                 PlanndedEndDate = e.PlanndedEndDate,
@@ -66,6 +68,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 EmployeeName = e.Employee.EmployeeName,
                 ClientId = e.ClientId,
                 ClientName = e.Client.ClientName,
+                ClientMobile=e.Client.Phone
             }).ToList();
             return proj;
         }
@@ -78,7 +81,8 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 Id = project.Id,
                 ProjectName = project.ProjectName,
                 ProjectCode = project.ProjectCode,
-                Type = project.Type,
+                ProjectTypeId = project.ProjectTypeId,
+                ProjectTypeName = project.ProjectType.TypeName,
                 Cost = project.Cost,
                 ProjectPeriod = project.ProjectPeriod,
                 PlanndedStartDate = project.PlanndedStartDate,
@@ -112,7 +116,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             project.Id = projectDTO.Id;
             project.ProjectName = projectDTO.ProjectName;
             project.ProjectCode = projectDTO.ProjectCode;
-            project.Type = projectDTO.Type;
+            project.ProjectTypeId = project.ProjectTypeId;
             project.Cost = projectDTO.Cost;
             project.ProjectPeriod = projectDTO.ProjectPeriod;
             project.PlanndedStartDate = projectDTO.PlanndedStartDate;

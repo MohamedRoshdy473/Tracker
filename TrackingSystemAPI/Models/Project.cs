@@ -12,7 +12,6 @@ namespace TrackingSystemAPI.Models
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string ProjectCode { get; set; }
-        public string Type { get; set; }
         public decimal Cost { get; set; }
         public int ProjectPeriod { get; set; }
         public DateTime PlanndedStartDate { get; set; }
@@ -20,6 +19,9 @@ namespace TrackingSystemAPI.Models
         public DateTime PlanndedEndDate { get; set; }
         public DateTime ActualEndDate { get; set; }
         public string Description { get; set; }
+        public int ProjectTypeId { get; set; }
+        [ForeignKey("ProjectTypeId")]
+        public virtual ProjectType ProjectType { get; set; }
         public int OrganizationId { get; set; }
         [ForeignKey("OrganizationId")]
         public virtual Organization Organization { get; set; }

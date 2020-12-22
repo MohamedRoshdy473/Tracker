@@ -15,7 +15,6 @@ namespace TrackingSystemAPI.Models
         public string Mobile { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public int MyProperty { get; set; }
         public string ResponsiblePerson { get; set; }
         public string Location { get; set; }
     }
