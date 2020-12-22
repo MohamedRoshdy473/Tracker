@@ -12,8 +12,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         IEnumerable<ProjectTeamDTO> GetAll();
         ProjectTeamDTO GetById(int id);
         ProjectTeam Find(int id);
-        void Add(ProjectTeam projectTeam);
-        void Update(ProjectTeam projectTeam);
+        void Add(ProjectTeamDTO projectTeamDTO);
+        void Update(ProjectTeamDTO projectTeamDTO);
         void Delete(int id);
         void Save();
     }

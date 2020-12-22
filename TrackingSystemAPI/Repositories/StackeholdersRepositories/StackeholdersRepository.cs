@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,38 +15,71 @@ namespace TrackingSystemAPI.Repositories.StackeholdersRepositories
         {
             _context = context;
         }
-        public void Add(Stackeholders stackeholders)
+        public void Add(StackeholdersDTO stackeholdersDTO)
         {
-            throw new NotImplementedException();
+            Stackeholders stackeholders = new Stackeholders();
+            //stackeholders.Id = stackeholdersDTO.Id;
+            stackeholders.StackeholderName = stackeholdersDTO.StackeholderName;
+            stackeholders.Mobile = stackeholdersDTO.Mobile;
+            stackeholders.Rank = stackeholdersDTO.Rank;
+            stackeholders.Description = stackeholdersDTO.Description;
+            stackeholders.ProjectId = stackeholdersDTO.ProjectId;
+            _context.stackeholders.Add(stackeholders);
         }
-
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Stackeholders stackeholders = Find(id);
+            _context.stackeholders.Remove(stackeholders);
         }
         public Stackeholders Find(int id)
         {
-            throw new NotImplementedException();
+           return _context.stackeholders.Find(id);
         }
-
         public IEnumerable<StackeholdersDTO> GetAll()
         {
-            throw new NotImplementedException();
-        }
 
+            var stackeholders = _context.stackeholders.Select(stack => new StackeholdersDTO
+            {
+                Id = stack.Id,
+                StackeholderName = stack.StackeholderName,
+                ProjectId = stack.ProjectId,
+                ProjectName = stack.Project.ProjectName,
+                Mobile = stack.Mobile,
+                Rank = stack.Rank,
+                Description = stack.Description
+            }).ToList() ;
+            return stackeholders;
+        }
         public StackeholdersDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var stack = _context.stackeholders.Include(p => p.Project).FirstOrDefault(e => e.Id == id);
+            StackeholdersDTO stackeholdersDTO = new StackeholdersDTO
+            {
+                Id = stack.Id,
+                StackeholderName = stack.StackeholderName,
+                ProjectId = stack.ProjectId,
+                ProjectName = stack.Project.ProjectName,
+                Mobile = stack.Mobile,
+                Rank = stack.Rank,
+                Description = stack.Description
+            };
+            return stackeholdersDTO;
         }
-
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(Stackeholders stackeholders)
+        public void Update(StackeholdersDTO stackeholdersDTO)
         {
-            throw new NotImplementedException();
+            Stackeholders stackeholders = new Stackeholders();
+            stackeholders.Id = stackeholdersDTO.Id;
+            stackeholders.StackeholderName = stackeholdersDTO.StackeholderName;
+            stackeholders.Mobile = stackeholdersDTO.Mobile;
+            stackeholders.Rank = stackeholdersDTO.Rank;
+            stackeholders.Description = stackeholdersDTO.Description;
+            stackeholders.ProjectId = stackeholdersDTO.ProjectId;
+            _context.Entry(stackeholders).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

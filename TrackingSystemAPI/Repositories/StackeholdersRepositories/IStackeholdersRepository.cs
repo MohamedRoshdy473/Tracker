@@ -7,13 +7,13 @@ using TrackingSystemAPI.Models;
 
 namespace TrackingSystemAPI.Repositories.StackeholdersRepositories
 {
-    interface IStackeholdersRepository : IDisposable
+   public interface IStackeholdersRepository : IDisposable
     {
         IEnumerable<StackeholdersDTO> GetAll();
         StackeholdersDTO GetById(int id);
         Stackeholders Find(int id);
-        void Add(Stackeholders stackeholders);
-        void Update(Stackeholders stackeholders);
+        void Add(StackeholdersDTO stackeholdersDTO);
+        void Update(StackeholdersDTO stackeholdersDTO);
         void Delete(int id);
         void Save();
     }
