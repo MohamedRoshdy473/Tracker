@@ -16,13 +16,8 @@ namespace TrackingSystemAPI.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-<<<<<<< HEAD
-        private IProjectRepository _projectRepository;
-       
-=======
         private readonly IProjectRepository _projectRepository;
 
->>>>>>> 25ebf16390ff361daced0dfd1c4a04fea7f3d313
         public ProjectController(IProjectRepository projectRepository)
         {
             _projectRepository = projectRepository;
@@ -30,9 +25,9 @@ namespace TrackingSystemAPI.Controllers
 
         // GET: api/Project
         [HttpGet]
-        public IEnumerable<ProjectDTO> GetProjectDTO()
+        public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetProjectDTO()
         {
-            return _projectRepository.GetAll();
+            return await _context.ProjectDTO.ToListAsync();
         }
 
         // GET: api/Project/5
@@ -53,29 +48,24 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProjectDTO(int id, ProjectDTO projectDTO)
+        public IActionResult PutProjectDTO(int id, ProjectDTO projectDTO)
         {
+            //var project = _projectRepository.GetById(id);
             if (id != projectDTO.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(projectDTO).State = EntityState.Modified;
-
+                _projectRepository.Update(projectDTO);
+            //_context.Entry(projectDTO).State = EntityState.Modified;
             try
             {
-                await _context.SaveChangesAsync();
+
+                _projectRepository.Save();
+                // await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
-                if (!ProjectDTOExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                string message = ex.Message;
             }
 
             return NoContent();
@@ -85,10 +75,10 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<ProjectDTO>> PostProjectDTO(ProjectDTO projectDTO)
+        public ActionResult<ProjectDTO> PostProjectDTO(ProjectDTO projectDTO)
         {
-            _context.ProjectDTO.Add(projectDTO);
-            await _context.SaveChangesAsync();
+            _projectRepository.Add(projectDTO);
+             _projectRepository.Save();
 
             return CreatedAtAction("GetProjectDTO", new { id = projectDTO.Id }, projectDTO);
         }
@@ -109,9 +99,9 @@ namespace TrackingSystemAPI.Controllers
             return projectDTO;
         }
 
-        private bool ProjectDTOExists(int id)
-        {
-            return _context.ProjectDTO.Any(e => e.Id == id);
-        }
+        //private bool ProjectDTOExists(int id)
+        //{
+        //    return _context.ProjectDTO.Any(e => e.Id == id);
+        //}
     }
 }

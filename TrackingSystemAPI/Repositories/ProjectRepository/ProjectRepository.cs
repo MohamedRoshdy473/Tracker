@@ -14,9 +14,24 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
         {
             _context = context;
         }
-        public void Add(Project project)
+        public void Add(ProjectDTO projectDTO)
         {
-            throw new NotImplementedException();
+            var project = new Project();
+            project.Id = projectDTO.Id;
+            project.ProjectName = projectDTO.ProjectName;
+            project.ProjectCode = projectDTO.ProjectCode;
+            project.Type = projectDTO.Type;
+            project.Cost = projectDTO.Cost;
+            project.ProjectPeriod = projectDTO.ProjectPeriod;
+            project.PlanndedStartDate = projectDTO.PlanndedStartDate;
+            project.ActualStartDate = projectDTO.ActualStartDate;
+            project.PlanndedEndDate = projectDTO.PlanndedEndDate;
+            project.ActualEndDate = projectDTO.ActualEndDate;
+            project.Description = projectDTO.Description;
+            project.OrganizationId = projectDTO.OrganizationId;
+            project.EmployeeId = projectDTO.EmployeeId;
+            project.ClientId = projectDTO.ClientId;
+            _context.projects.Add(project);
         }
 
         public void Delete(int id)
@@ -26,32 +41,12 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public Project Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.projects.Find(id);
         }
 
         public IEnumerable<ProjectDTO> GetAll()
         {
-            var proj = _context.projects.Select(e => new ProjectDTO
-            {
-                Id = e.Id,
-                ProjectName = e.ProjectName,
-                ProjectCode = e.ProjectCode,
-                Cost = e.Cost,
-                Type = e.Type,
-                ProjectPeriod = e.ProjectPeriod,
-                PlanndedStartDate = e.PlanndedStartDate,
-                PlanndedEndDate = e.PlanndedEndDate,
-                ActualStartDate = e.ActualStartDate,
-                ActualEndDate = e.ActualEndDate,
-                Description = e.Description,
-                OrganizationId = e.OrganizationId,
-                OrganizationName = e.Organization.OrganizationName,
-                EmployeeId = e.EmployeeId,
-                EmployeeName=e.Employee.EmployeeName,
-                ClientId=e.ClientId,
-                ClientName=e.Client.ClientName,
-            }).ToList();
-            return proj;
+            throw new NotImplementedException();
         }
 
         public ProjectDTO GetById(int id)
@@ -67,15 +62,15 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 ProjectPeriod = project.ProjectPeriod,
                 PlanndedStartDate = project.PlanndedStartDate,
                 ActualStartDate = project.ActualStartDate,
-                PlanndedEndDate=project.PlanndedEndDate,
-                ActualEndDate=project.ActualEndDate,
-                Description=project.Description,
-                OrganizationId=project.OrganizationId,
-                OrganizationName=project.Organization.OrganizationName,
-                EmployeeId=project.EmployeeId,
-                EmployeeName=project.Employee.EmployeeName,
-                ClientId=project.ClientId,
-                ClientName=project.Client.ClientName
+                PlanndedEndDate = project.PlanndedEndDate,
+                ActualEndDate = project.ActualEndDate,
+                Description = project.Description,
+                OrganizationId = project.OrganizationId,
+                OrganizationName = project.Organization.OrganizationName,
+                EmployeeId = project.EmployeeId,
+                EmployeeName = project.Employee.EmployeeName,
+                ClientId = project.ClientId,
+                ClientName = project.Client.ClientName
             };
             if (project == null)
             {
@@ -87,12 +82,27 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(Project project)
+        public void Update(ProjectDTO projectDTO)
         {
-            throw new NotImplementedException();
+            var project = new Project();
+            project.Id = projectDTO.Id;
+            project.ProjectName = projectDTO.ProjectName;
+            project.ProjectCode = projectDTO.ProjectCode;
+            project.Type = projectDTO.Type;
+            project.Cost = projectDTO.Cost;
+            project.ProjectPeriod = projectDTO.ProjectPeriod;
+            project.PlanndedStartDate = projectDTO.PlanndedStartDate;
+            project.ActualStartDate = projectDTO.ActualStartDate;
+            project.PlanndedEndDate = projectDTO.PlanndedEndDate;
+            project.ActualEndDate = projectDTO.ActualEndDate;
+            project.Description = projectDTO.Description;
+            project.OrganizationId = projectDTO.OrganizationId;
+            project.EmployeeId = projectDTO.EmployeeId;
+            project.ClientId = projectDTO.ClientId;
+            _context.Entry(project).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
