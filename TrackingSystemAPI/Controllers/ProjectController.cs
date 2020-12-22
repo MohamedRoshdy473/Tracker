@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TrackingSystemAPI.DTO;
 using TrackingSystemAPI.Models;
 using TrackingSystemAPI.Repositories.ProjectRepository;
@@ -13,15 +16,13 @@ namespace TrackingSystemAPI.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private IProjectRepository _projectRepository;
-        public ProjectController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        private readonly IProjectRepository _projectRepository;
+
         public ProjectController(IProjectRepository projectRepository)
         {
-         _projectRepository  =  projectRepository ;
+            _projectRepository = projectRepository;
         }
+
         // GET: api/Project
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetProjectDTO()
@@ -34,7 +35,7 @@ namespace TrackingSystemAPI.Controllers
         public ActionResult<ProjectDTO> GetProjectDTO(int id)
         {
             var projectDTO = _projectRepository.GetById(id); //await _context.ProjectDTO.FindAsync(id);
-            
+
             if (projectDTO == null)
             {
                 return NotFound();
