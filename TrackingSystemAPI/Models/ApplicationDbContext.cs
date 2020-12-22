@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TrackingSystemAPI.DTO;
 
 namespace TrackingSystemAPI.Models
 {
@@ -40,6 +41,7 @@ namespace TrackingSystemAPI.Models
         public DbSet<RequestSubCategory> requestSubCategories  { get; set; }
         public DbSet<RequestType> requestTypes { get; set; }
         public DbSet<Stackeholders>stackeholders  { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.ProjectDTO> ProjectDTO { get; set; }
 
 
 
