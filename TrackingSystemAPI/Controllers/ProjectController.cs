@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrackingSystemAPI.DTO;
 using TrackingSystemAPI.Models;
+using TrackingSystemAPI.Repositories.ProjectRepository;
 
 namespace TrackingSystemAPI.Controllers
 {
@@ -15,12 +16,15 @@ namespace TrackingSystemAPI.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
+        private IProjectRepository _projectRepository;
         public ProjectController(ApplicationDbContext context)
         {
             _context = context;
         }
-
+        public ProjectController(IProjectRepository projectRepository)
+        {
+         _projectRepository  =  projectRepository ;
+        }
         // GET: api/Project
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetProjectDTO()
@@ -30,10 +34,10 @@ namespace TrackingSystemAPI.Controllers
 
         // GET: api/Project/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectDTO>> GetProjectDTO(int id)
+        public ActionResult<ProjectDTO> GetProjectDTO(int id)
         {
-            var projectDTO = await _context.ProjectDTO.FindAsync(id);
-
+            var projectDTO = _projectRepository.GetById(id); //await _context.ProjectDTO.FindAsync(id);
+            
             if (projectDTO == null)
             {
                 return NotFound();
