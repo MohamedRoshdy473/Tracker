@@ -15,7 +15,6 @@ namespace TrackingSystemAPI.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly IProjectRepository _projectRepository;
 
         public ProjectController(IProjectRepository projectRepository)
@@ -25,9 +24,9 @@ namespace TrackingSystemAPI.Controllers
 
         // GET: api/Project
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetProjectDTO()
+        public IEnumerable<ProjectDTO> GetProjectDTO()
         {
-            return await _context.ProjectDTO.ToListAsync();
+            return  _projectRepository.GetAll();
         }
 
         // GET: api/Project/5
@@ -45,8 +44,6 @@ namespace TrackingSystemAPI.Controllers
         }
 
         // PUT: api/Project/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public IActionResult PutProjectDTO(int id, ProjectDTO projectDTO)
         {
@@ -56,10 +53,8 @@ namespace TrackingSystemAPI.Controllers
                 return BadRequest();
             }
                 _projectRepository.Update(projectDTO);
-            //_context.Entry(projectDTO).State = EntityState.Modified;
             try
             {
-
                 _projectRepository.Save();
                 // await _context.SaveChangesAsync();
             }
@@ -72,8 +67,6 @@ namespace TrackingSystemAPI.Controllers
         }
 
         // POST: api/Project
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public ActionResult<ProjectDTO> PostProjectDTO(ProjectDTO projectDTO)
         {
@@ -82,26 +75,19 @@ namespace TrackingSystemAPI.Controllers
 
             return CreatedAtAction("GetProjectDTO", new { id = projectDTO.Id }, projectDTO);
         }
-
         // DELETE: api/Project/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ProjectDTO>> DeleteProjectDTO(int id)
+        public ActionResult<Project> DeleteProjectDTO(int id)
         {
-            var projectDTO = await _context.ProjectDTO.FindAsync(id);
+            var projectDTO = _projectRepository.Find(id);
             if (projectDTO == null)
             {
                 return NotFound();
             }
+            _projectRepository.Delete(id);
+            _projectRepository.Save();
 
-            _context.ProjectDTO.Remove(projectDTO);
-            await _context.SaveChangesAsync();
-
-            return projectDTO;
+            return Ok();
         }
-
-        //private bool ProjectDTOExists(int id)
-        //{
-        //    return _context.ProjectDTO.Any(e => e.Id == id);
-        //}
     }
 }
