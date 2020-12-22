@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,7 +37,33 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public Project GetById(int id)
         {
-            throw new NotImplementedException();
+            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).FirstOrDefault(e => e.Id == id);
+            var projectDTO = new ProjectDTO
+            {
+                Id = project.Id,
+                ProjectName = project.ProjectName,
+                ProjectCode = project.ProjectCode,
+                Type = project.Type,
+                Cost = project.Cost,
+                ProjectPeriod = project.ProjectPeriod,
+                PlanndedStartDate = project.PlanndedStartDate,
+                ActualStartDate = project.ActualStartDate,
+                PlanndedEndDate=project.PlanndedEndDate,
+                ActualEndDate=project.ActualEndDate,
+                Description=project.Description,
+                OrganizationId=project.OrganizationId,
+                OrganizationName=project.Organization.OrganizationName,
+                EmployeeId=project.EmployeeId,
+                EmployeeName=project.Employee.EmployeeName,
+                ClientId=project.ClientId,
+                ClientName=project.Client.ClientName
+            };
+            if (project == null)
+            {
+                return null;
+            }
+
+            return project;
         }
 
         public void Save()
