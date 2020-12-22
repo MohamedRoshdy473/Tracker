@@ -16,12 +16,18 @@ namespace TrackingSystemAPI.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+<<<<<<< HEAD
         private IProjectRepository _projectRepository;
        
+=======
+        private readonly IProjectRepository _projectRepository;
+
+>>>>>>> 25ebf16390ff361daced0dfd1c4a04fea7f3d313
         public ProjectController(IProjectRepository projectRepository)
         {
-         _projectRepository  =  projectRepository ;
+            _projectRepository = projectRepository;
         }
+
         // GET: api/Project
         [HttpGet]
         public IEnumerable<ProjectDTO> GetProjectDTO()
@@ -34,7 +40,7 @@ namespace TrackingSystemAPI.Controllers
         public ActionResult<ProjectDTO> GetProjectDTO(int id)
         {
             var projectDTO = _projectRepository.GetById(id); //await _context.ProjectDTO.FindAsync(id);
-            
+
             if (projectDTO == null)
             {
                 return NotFound();
