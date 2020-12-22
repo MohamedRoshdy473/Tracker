@@ -32,7 +32,27 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public IEnumerable<ProjectDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var proj = _context.projects.Select(e => new ProjectDTO
+            {
+                Id = e.Id,
+                ProjectName = e.ProjectName,
+                ProjectCode = e.ProjectCode,
+                Cost = e.Cost,
+                Type = e.Type,
+                ProjectPeriod = e.ProjectPeriod,
+                PlanndedStartDate = e.PlanndedStartDate,
+                PlanndedEndDate = e.PlanndedEndDate,
+                ActualStartDate = e.ActualStartDate,
+                ActualEndDate = e.ActualEndDate,
+                Description = e.Description,
+                OrganizationId = e.OrganizationId,
+                OrganizationName = e.Organization.OrganizationName,
+                EmployeeId = e.EmployeeId,
+                EmployeeName=e.Employee.EmployeeName,
+                ClientId=e.ClientId,
+                ClientName=e.Client.ClientName,
+            }).ToList();
+            return proj;
         }
 
         public Project GetById(int id)
