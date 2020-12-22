@@ -15,7 +15,6 @@ namespace TrackingSystemAPI.Controllers
     [ApiController]
     public class ProjectTeamController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly IProjectTeamRepository _projectTeamRepository;
 
         public ProjectTeamController(IProjectTeamRepository projectTeamRepository)
