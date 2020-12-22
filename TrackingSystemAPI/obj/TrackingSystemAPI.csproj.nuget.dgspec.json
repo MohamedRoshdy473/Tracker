@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {}
+    "E:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {}
   },
   "projects": {
-    "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {
+    "E:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+        "projectUniqueName": "E:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
         "projectName": "TrackingSystemAPI",
-        "projectPath": "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+        "projectPath": "E:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "E:\\TrackerSystem_API\\Tracker\\TrackingSystemAPI\\obj\\",
+        "outputPath": "E:\\Tracker\\TrackingSystemAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
