@@ -43,6 +43,7 @@ namespace TrackingSystemAPI.Models
         public DbSet<Stackeholders>stackeholders  { get; set; }
         public DbSet<TrackingSystemAPI.DTO.ProjectDTO> ProjectDTO { get; set; }
         public DbSet<TrackingSystemAPI.DTO.StackeholdersDTO> StackeholdersDTO { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.ProjectTeamDTO> ProjectTeamDTO { get; set; }
 
 
 
