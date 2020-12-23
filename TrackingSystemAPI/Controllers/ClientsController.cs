@@ -15,8 +15,6 @@ namespace TrackingSystemAPI.Controllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-
         private readonly IClientRepository _clientRepository;
 
         public ClientsController(IClientRepository clientRepository)
@@ -28,7 +26,7 @@ namespace TrackingSystemAPI.Controllers
         [HttpGet]
         public IEnumerable<ClientDTO> GetClientDTO()
         {
-            return  _clientRepository.GetAll();
+            return _clientRepository.GetAll();
 
         }
 
@@ -36,7 +34,7 @@ namespace TrackingSystemAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<ClientDTO> GetClientDTO(int id)
         {
-            var clientDTO =  _context.ClientDTO.Find(id);
+            var clientDTO = _clientRepository.GetById(id);
 
             if (clientDTO == null)
             {
@@ -57,7 +55,7 @@ namespace TrackingSystemAPI.Controllers
                 return BadRequest();
             }
 
-                _clientRepository.Update(clientDTO);
+            _clientRepository.Update(clientDTO);
 
 
             try
@@ -79,7 +77,7 @@ namespace TrackingSystemAPI.Controllers
         public ActionResult<ClientDTO> PostClientDTO(ClientDTO clientDTO)
         {
             _clientRepository.Add(clientDTO);
-            _clientRepository.Save();            
+            _clientRepository.Save();
 
             return CreatedAtAction("GetClientDTO", new { id = clientDTO.Id }, clientDTO);
         }
@@ -99,9 +97,9 @@ namespace TrackingSystemAPI.Controllers
             return Ok();
         }
 
-        private bool ClientDTOExists(int id)
-        {
-            return _context.ClientDTO.Any(e => e.Id == id);
-        }
+        //private bool ClientDTOExists(int id)
+        //{
+        //    return _context.ClientDTO.Any(e => e.Id == id);
+        //}
     }
 }
