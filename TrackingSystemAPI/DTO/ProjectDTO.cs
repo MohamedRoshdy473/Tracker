@@ -26,5 +26,6 @@ namespace TrackingSystemAPI.DTO
         public int ClientId { get; set; }
         public string  ClientName { get; set; }
         public string ClientMobile { get; set; }
+        public List<StackeholdersDTO> stackeholdersDTOs { get; set; }
     }
 }

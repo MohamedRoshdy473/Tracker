@@ -76,12 +76,12 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public ActionResult<StackeholdersDTO> PostStackeholdersDTO(StackeholdersDTO stackeholdersDTO)
+        public ActionResult<StackeholdersDTO> PostStackeholdersDTO(List<StackeholdersDTO> stackeholdersDTO)
         {
             _stackeholdersRepository.Add(stackeholdersDTO);
             _stackeholdersRepository.Save();
 
-            return CreatedAtAction("GetStackeholdersDTO", new { id = stackeholdersDTO.Id }, stackeholdersDTO);
+            return CreatedAtAction("GetStackeholdersDTO", new { id = stackeholdersDTO.Count() }, stackeholdersDTO);
         }
 
         // DELETE: api/Stackeholders/5

@@ -12,8 +12,8 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
         IEnumerable<ClientDTO> GetAll();
         ClientDTO GetById(int id);
         Client Find(int id);
-        void Add(Client client);
-        void Update(Client client);
+        void Add(ClientDTO client);
+        void Update(ClientDTO client);
         void Delete(int id);
         void Save();
     }
