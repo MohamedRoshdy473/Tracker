@@ -993,3 +993,8 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Validat
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorTargetAssemblyInfo.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.Views.pdb
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Create.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Delete.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Details.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Edit.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Index.cshtml.g.cs

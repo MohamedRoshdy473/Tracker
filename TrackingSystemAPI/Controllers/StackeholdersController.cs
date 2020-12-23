@@ -33,7 +33,7 @@ namespace TrackingSystemAPI.Controllers
         {
             return _stackeholdersRepository.GetStackeholdersByProjectId(ProjectId);
         }
-        // GET: api/Stackeholders/5
+        // GET: api/Stackeholders/50
         [HttpGet("{id}")]
         public ActionResult<StackeholdersDTO> GetStackeholdersDTO(int id)
         {
