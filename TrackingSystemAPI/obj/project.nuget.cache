@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "QNAcMjfO4Y3zT2t0ShwU/sONELh2PhGqR39b4rJIT45ugy9XRUya+9L9xBuAZ+4mh0kiFmzPm9mDN2ePflRzeg==",
+=======
+  "dgSpecHash": "R2FvhjnxUpuBuvzBRwh/AdQKngaiuTqab4NiDxzsWBZqdJJ7OhnPW1FlLpYgN5b7WpEis/l+cDJbTKK19E7y+Q==",
+>>>>>>> 6f672cae734500f924e5b95f682139c1ad87140d
   "success": true,
   "projectFilePath": "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
   "expectedPackageFiles": [
