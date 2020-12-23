@@ -811,7 +811,6 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.exe
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.deps.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.runtimeconfig.json
@@ -993,3 +992,4 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\MileStone\Index
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorTargetAssemblyInfo.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.Views.pdb
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
