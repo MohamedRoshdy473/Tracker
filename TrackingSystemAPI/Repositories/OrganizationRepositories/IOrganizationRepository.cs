@@ -6,7 +6,7 @@ using TrackingSystemAPI.Models;
 
 namespace TrackingSystemAPI.Repositories.OrganizationRepositories
 {
-    interface IOrganizationRepository : IDisposable
+   public interface IOrganizationRepository : IDisposable
     {
         IEnumerable<Organization> GetAll();
         Organization GetById(int id);

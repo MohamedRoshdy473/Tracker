@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,39 +15,91 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
         {
             _context = context;
         }
-        public void Add(Client client)
+        public void Add(ClientDTO clientDTO)
         {
-            throw new NotImplementedException();
+            var client = new Client();
+            client.Id = clientDTO.Id;
+            client.Address = clientDTO.Address;
+            client.ClientCode = clientDTO.ClientCode;
+            client.ClientName = clientDTO.ClientName;
+            client.Email = clientDTO.Email;
+            client.gender = clientDTO.gender;
+            client.OrganizationId = clientDTO.OrganizationId;
+            client.Phone = clientDTO.Phone;
+            _context.clients.Add(client);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Client client = Find(id);
+            _context.clients.Remove(client);
         }
 
         public Client Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.clients.Find(id);
+
         }
 
         public IEnumerable<ClientDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var client = _context.clients.Select(e => new ClientDTO
+            {
+                Id = e.Id,
+                ClientName=e.ClientName,
+                Phone=e.Phone,
+                OrganizationId=e.OrganizationId,
+                Address=e.Address,
+                ClientCode=e.ClientCode,
+                Email=e.Email,
+                gender=e.gender,
+                OrganizationName=e.Organization.OrganizationName
+              
+            }).ToList();
+            return client;
         }
 
         public ClientDTO GetById(int id)
         {
-            throw new NotImplementedException();
+        var client = _context.clients.Include(c => c.Organization).FirstOrDefault(e => e.Id == id);
+            var clientDTO = new ClientDTO
+            {
+                Id = client.Id,
+                ClientName = client.ClientName,
+                Phone = client.Phone,
+                OrganizationId = client.OrganizationId,
+                Address = client.Address,
+                ClientCode = client.ClientCode,
+                Email = client.Email,
+                gender = client.gender,
+                OrganizationName = client.Organization.OrganizationName
+            };
+            if (client == null)
+            {
+                return null;
+            }
+
+            return clientDTO;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(Client client)
+        public void Update(ClientDTO clientDTO)
         {
-            throw new NotImplementedException();
+            var client = new Client();
+            client.Id = clientDTO.Id;
+            client.Address = clientDTO.Address;
+            client.ClientCode = clientDTO.ClientCode;
+            client.ClientName = clientDTO.ClientName;
+            client.Email = clientDTO.Email;
+            client.gender = clientDTO.gender;
+            client.OrganizationId = clientDTO.OrganizationId;
+            client.Phone = clientDTO.Phone;
+            _context.Entry(client).State = EntityState.Modified;
+
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

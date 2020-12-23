@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,37 +16,39 @@ namespace TrackingSystemAPI.Repositories.OrganizationRepositories
         }
         public void Add(Organization organization)
         {
-            throw new NotImplementedException();
+            _context.organizations.Add(organization);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Organization organization = Find(id);
+            _context.organizations.Remove(organization);
         }
 
         public Organization Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.organizations.Find(id);
         }
 
         public IEnumerable<Organization> GetAll()
         {
-            throw new NotImplementedException();
+           return _context.organizations.ToList();
         }
 
         public Organization GetById(int id)
         {
-            throw new NotImplementedException();
+            Organization organization = _context.organizations.Where(o => o.Id == id).FirstOrDefault();
+            return organization;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(Organization organization)
         {
-            throw new NotImplementedException();
+            _context.Entry(organization).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
