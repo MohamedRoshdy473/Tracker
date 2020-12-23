@@ -15,16 +15,31 @@ namespace TrackingSystemAPI.Repositories.StackeholdersRepositories
         {
             _context = context;
         }
-        public void Add(StackeholdersDTO stackeholdersDTO)
+        public void Add(List<StackeholdersDTO> stackeholdersDTO)
         {
-            Stackeholders stackeholders = new Stackeholders();
-            //stackeholders.Id = stackeholdersDTO.Id;
-            stackeholders.StackeholderName = stackeholdersDTO.StackeholderName;
-            stackeholders.Mobile = stackeholdersDTO.Mobile;
-            stackeholders.Rank = stackeholdersDTO.Rank;
-            stackeholders.Description = stackeholdersDTO.Description;
-            stackeholders.ProjectId = stackeholdersDTO.ProjectId;
-            _context.stackeholders.Add(stackeholders);
+            //List<Stackeholders> Stackeholders = new List<Stackeholders>();
+
+            foreach (var item in stackeholdersDTO)
+            {
+
+                Stackeholders stackeholderObj = new Stackeholders();
+                stackeholderObj.StackeholderName = item.StackeholderName;
+                stackeholderObj.Mobile = item.Mobile;
+                stackeholderObj.ProjectId = item.ProjectId;
+                stackeholderObj.Rank = item.Rank;
+                stackeholderObj.Description = item.Description;
+                _context.stackeholders.Add(stackeholderObj);
+             
+
+            }
+            //Stackeholders stackeholders = new Stackeholders();
+            ////stackeholders.Id = stackeholdersDTO.Id;
+            //stackeholders.StackeholderName = stackeholdersDTO.StackeholderName;
+            //stackeholders.Mobile = stackeholdersDTO.Mobile;
+            //stackeholders.Rank = stackeholdersDTO.Rank;
+            //stackeholders.Description = stackeholdersDTO.Description;
+            //stackeholders.ProjectId = stackeholdersDTO.ProjectId;
+            //_context.stackeholders.Add(stackeholders);
         }
         public void Delete(int id)
         {
