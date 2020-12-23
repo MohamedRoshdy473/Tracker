@@ -27,7 +27,12 @@ namespace TrackingSystemAPI.Controllers
         {
             return _stackeholdersRepository.GetAll();
         }
-
+        [HttpGet]
+        [Route("GetStackeholdersByProjectId/{ProjectId}")]
+        public IEnumerable<StackeholdersDTO> GetStackeholdersByProjectId(int ProjectId)
+        {
+            return _stackeholdersRepository.GetStackeholdersByProjectId(ProjectId);
+        }
         // GET: api/Stackeholders/5
         [HttpGet("{id}")]
         public ActionResult<StackeholdersDTO> GetStackeholdersDTO(int id)

@@ -98,5 +98,20 @@ namespace TrackingSystemAPI.Repositories.StackeholdersRepositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<StackeholdersDTO> GetStackeholdersByProjectId(int ProjectId)
+        {
+            var stackHolder = _context.stackeholders.Where(s => s.ProjectId == ProjectId).Select(stack => new StackeholdersDTO
+            {
+                Id = stack.Id,
+                StackeholderName = stack.StackeholderName,
+                ProjectId = stack.ProjectId,
+                ProjectName = stack.Project.ProjectName,
+                Mobile = stack.Mobile,
+                Rank = stack.Rank,
+                Description = stack.Description
+            }).ToList();
+            return stackHolder;
+        }
     }
 }
