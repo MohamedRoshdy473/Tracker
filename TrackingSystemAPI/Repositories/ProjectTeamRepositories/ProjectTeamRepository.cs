@@ -15,7 +15,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         {
             _context = context;
         }
-        void Add(List<ProjectTeamDTO> projectTeamDTO);
+     
 
         public void Add(List<ProjectTeamDTO> projectTeamDTO)
         {
