@@ -14,11 +14,10 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
         {
             _context = context;
         }
-        public void Add(ProjectDTO projectDTO)
+        public int Add(ProjectDTO projectDTO)
         {
 
             var project = new Project();
-            project.Id = projectDTO.Id;
             project.ProjectName = projectDTO.ProjectName;
             project.ProjectCode = projectDTO.ProjectCode;
             project.ProjectTypeId = projectDTO.ProjectTypeId;
@@ -33,6 +32,8 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             project.EmployeeId = projectDTO.EmployeeId;
             project.ClientId = projectDTO.ClientId;
             _context.projects.Add(project);
+            _context.SaveChanges();
+            return project.Id;
         }
 
         public void Delete(int id)

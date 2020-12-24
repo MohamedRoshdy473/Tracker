@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,38 +15,61 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
         {
             _context = context;
         }
-        public void Add(ProjectDocument projectDocument)
+        public void Add(ProjectDocumentDTO projectDocumentDTO)
         {
-            throw new NotImplementedException();
+            ProjectDocument projectDocument = new ProjectDocument();
+            projectDocument.Id = projectDocumentDTO.Id;
+            projectDocument.ProjectId = projectDocumentDTO.ProjectId;
+            projectDocument.Description = projectDocumentDTO.Description;
+            _context.Add(projectDocument);    
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            ProjectDocument projectDocument = Find(id);
         }
         public ProjectDocument Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.projectDocuments.Find(id);
         }
 
         public IEnumerable<ProjectDocumentDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var ProjectDocuments = _context.projectDocuments.Select(e => new ProjectDocumentDTO
+            {
+                Id = e.Id,
+                ProjectId = e.ProjectId,
+                Description = e.Description
+                
+            }).ToList();
+            return ProjectDocuments;
         }
 
         public ProjectDocumentDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var projectDocument = _context.projectDocuments.Include(d => d.Project).FirstOrDefault(d => d.Id == id);
+            var projectDocumentDTO = new ProjectDocumentDTO()
+            {
+                Id = projectDocument.Id,
+                Description= projectDocument.Description,
+                ProjectId=projectDocument.ProjectId,
+                ProjectName = projectDocument.Project.ProjectName
+            };
+            return projectDocumentDTO;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(ProjectDocument projectDocument)
+        public void Update(ProjectDocumentDTO projectDocumentDTO)
         {
-            throw new NotImplementedException();
+            ProjectDocument projectDocument = new ProjectDocument();
+            projectDocument.Id = projectDocumentDTO.Id;
+            projectDocument.ProjectId = projectDocumentDTO.ProjectId;
+            projectDocument.Description = projectDocumentDTO.Description;
+            _context.Entry(projectDocument).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)

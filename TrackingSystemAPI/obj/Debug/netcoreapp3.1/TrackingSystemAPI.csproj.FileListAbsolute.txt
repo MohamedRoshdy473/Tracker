@@ -992,4 +992,9 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSys
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
-E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Create.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Delete.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Details.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Edit.cshtml.g.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Index.cshtml.g.cs

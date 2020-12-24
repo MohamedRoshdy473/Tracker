@@ -68,12 +68,11 @@ namespace TrackingSystemAPI.Controllers
 
         // POST: api/Project
         [HttpPost]
-        public ActionResult<ProjectDTO> PostProjectDTO(ProjectDTO projectDTO)
+        public int PostProjectDTO(ProjectDTO projectDTO)
         {
-            _projectRepository.Add(projectDTO);
-             _projectRepository.Save();
-
-            return CreatedAtAction("GetProjectDTO", new { id = projectDTO.Id }, projectDTO);
+           return  _projectRepository.Add(projectDTO);
+          
+           // return CreatedAtAction("GetProjectDTO", new { id = projectDTO.Id }, projectDTO);
         }
         // DELETE: api/Project/5
         [HttpDelete("{id}")]
