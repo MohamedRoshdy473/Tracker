@@ -15,16 +15,20 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         {
             _context = context;
         }
-        public void Add(ProjectTeamDTO projectTeamDTO)
-        {
-            ProjectTeam projectTeam = new ProjectTeam();
-            projectTeam.EmployeeId = projectTeamDTO.EmployeeId;
-            projectTeam.ProjectId = projectTeamDTO.ProjectId;
-            projectTeam.DepartmentId = projectTeamDTO.DepartmentId;
-            projectTeam.ProjectPositionId = projectTeamDTO.ProjectPositionId;
-            _context.projectTeams.Add(projectTeam);
-        }
+        void Add(List<ProjectTeamDTO> projectTeamDTO);
 
+        public void Add(List<ProjectTeamDTO> projectTeamDTO)
+        {
+            foreach (var item in projectTeamDTO)
+            {
+                ProjectTeam projectTeam = new ProjectTeam();
+                projectTeam.EmployeeId = item.EmployeeId;
+                projectTeam.ProjectId = item.ProjectId;
+                projectTeam.DepartmentId = item.DepartmentId;
+                projectTeam.ProjectPositionId = item.ProjectPositionId;
+                _context.projectTeams.Add(projectTeam);
+            }
+        }
         public void Delete(int id)
         {
             ProjectTeam projectTeam = Find(id);

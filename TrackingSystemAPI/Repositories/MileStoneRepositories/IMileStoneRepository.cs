@@ -12,7 +12,7 @@ namespace TrackingSystemAPI.Repositories.MileStoneRepositories
         IEnumerable<MileStoneDTO> GetAll();
         MileStoneDTO GetById(int id);
         MileStone Find(int id);
-        void Add(MileStoneDTO mileStone);
+        void Add(List<MileStoneDTO> mileStone);
         void Update(MileStoneDTO mileStone);
         void Delete(int id);
         void Save();

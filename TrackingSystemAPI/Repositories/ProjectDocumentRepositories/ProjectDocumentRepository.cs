@@ -15,13 +15,19 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
         {
             _context = context;
         }
-        public void Add(ProjectDocumentDTO projectDocumentDTO)
+        public void Add(List<ProjectDocumentDTO> projectDocumentDTO)
         {
-            ProjectDocument projectDocument = new ProjectDocument();
-            projectDocument.Id = projectDocumentDTO.Id;
-            projectDocument.ProjectId = projectDocumentDTO.ProjectId;
-            projectDocument.Description = projectDocumentDTO.Description;
-            _context.Add(projectDocument);    
+            foreach (var item in projectDocumentDTO)
+            {
+                ProjectDocument projectDocument = new ProjectDocument();
+                projectDocument.Id = item.Id;
+                projectDocument.ProjectId = item.ProjectId;
+                projectDocument.DocumentName = item.DocumentName;
+                projectDocument.DocumentFile = item.DocumentFile;
+                projectDocument.Description = item.Description;
+                _context.Add(projectDocument);
+            }
+            
         }
 
         public void Delete(int id)
@@ -39,6 +45,9 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
             {
                 Id = e.Id,
                 ProjectId = e.ProjectId,
+                DocumentFile=e.DocumentFile,
+                DocumentName=e.DocumentName,
+                ProjectName=e.Project.ProjectName,
                 Description = e.Description
                 
             }).ToList();
@@ -52,6 +61,8 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
             {
                 Id = projectDocument.Id,
                 Description= projectDocument.Description,
+                DocumentName=projectDocument.DocumentName,
+                DocumentFile=projectDocument.DocumentFile,
                 ProjectId=projectDocument.ProjectId,
                 ProjectName = projectDocument.Project.ProjectName
             };

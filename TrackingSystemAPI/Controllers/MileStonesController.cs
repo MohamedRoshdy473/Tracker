@@ -73,14 +73,14 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public ActionResult<MileStoneDTO> PostMileStoneDTO(MileStoneDTO mileStoneDTO)
+       
+        public ActionResult<MileStoneDTO> PostMileStoneDTO(List<MileStoneDTO> mileStoneDTO)
         {
             _mileStoneRepository.Add(mileStoneDTO);
             _mileStoneRepository.Save();
 
-            return CreatedAtAction("GetMileStoneDTO", new { id = mileStoneDTO.Id }, mileStoneDTO);
+            return CreatedAtAction("GetMileStoneDTO", new { id = mileStoneDTO.Count() }, mileStoneDTO);
         }
-
         // DELETE: api/MileStones/5
         [HttpDelete("{id}")]
         public ActionResult<MileStoneDTO> DeleteMileStoneDTO(int id)
