@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "QNAcMjfO4Y3zT2t0ShwU/sONELh2PhGqR39b4rJIT45ugy9XRUya+9L9xBuAZ+4mh0kiFmzPm9mDN2ePflRzeg==",
-=======
-  "dgSpecHash": "R2FvhjnxUpuBuvzBRwh/AdQKngaiuTqab4NiDxzsWBZqdJJ7OhnPW1FlLpYgN5b7WpEis/l+cDJbTKK19E7y+Q==",
->>>>>>> 6f672cae734500f924e5b95f682139c1ad87140d
   "success": true,
   "projectFilePath": "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
   "expectedPackageFiles": [
@@ -208,6 +204,12 @@
     "C:\\Users\\ADMIN\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Tracker\\TrackingSystemAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

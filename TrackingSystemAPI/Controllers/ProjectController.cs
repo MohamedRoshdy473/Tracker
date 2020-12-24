@@ -71,7 +71,6 @@ namespace TrackingSystemAPI.Controllers
         public ActionResult<ProjectDTO> PostProjectDTO(ProjectDTO projectDTO)
         {
             _projectRepository.Add(projectDTO);
-             _projectRepository.Save();
 
             return CreatedAtAction("GetProjectDTO", new { id = projectDTO.Id }, projectDTO);
         }
