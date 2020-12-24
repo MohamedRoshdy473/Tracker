@@ -15,23 +15,21 @@ namespace TrackingSystemAPI.Repositories.MileStoneRepositories
         {
             _context = context;
         }
-        public void Add(MileStoneDTO mileStoneDTO)
+        public void Add(List<MileStoneDTO> mileStoneDTO)
         {
-            var milestone = new MileStone();
-            milestone.Id = mileStoneDTO.Id;
-            milestone.Title = mileStoneDTO.Title;
-            milestone.StartDate = mileStoneDTO.StartDate;
-            milestone.EndDate = mileStoneDTO.EndDate;
-            milestone.Description = mileStoneDTO.Description;
-            milestone.ProjectId = mileStoneDTO.ProjectId;
-            //milestone.Project.ProjectName = mileStoneDTO.ProjectName;
+            foreach (var item in mileStoneDTO)
+            {
+                var milestone = new MileStone();
+                milestone.Id = item.Id;
+                milestone.Title = item.Title;
+                milestone.StartDate = item.StartDate;
+                milestone.EndDate = item.EndDate;
+                milestone.Description = item.Description;
+                milestone.ProjectId = item.ProjectId;
+                _context.mileStones.Add(milestone);
 
-
-
-            
-            _context.mileStones.Add(milestone);
+            }
         }
-
         public void Delete(int id)
         {
             MileStone mileStone = Find(id);
