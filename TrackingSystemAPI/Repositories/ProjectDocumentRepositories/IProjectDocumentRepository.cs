@@ -12,7 +12,7 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
         IEnumerable<ProjectDocumentDTO> GetAll();
         ProjectDocumentDTO GetById(int id);
         ProjectDocument Find(int id);
-        void Add(ProjectDocumentDTO projectDocumentDTO);
+        void Add(List<ProjectDocumentDTO> projectDocumentDTO);
         void Update(ProjectDocumentDTO projectDocumentDTO);
         void Delete(int id);
         void Save();
