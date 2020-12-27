@@ -45,7 +45,11 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+<<<<<<< HEAD
         public async Task<IActionResult> PutDepartment(int id, Department department)
+=======
+        public IActionResult PutDepartment(int id, Department department)
+>>>>>>> 1121d45f7d9b002209ad8ce36ac880b8dcf417cb
         {
             if (id != department.Id)
             {
@@ -93,7 +97,15 @@ namespace TrackingSystemAPI.Controllers
 
             return department;
         }
+<<<<<<< HEAD
 
+=======
+        [HttpGet("GetDepartmentByEmployeeId/{EmployeeId}")]
+        public Department GetDepartmentByEmployeeId(int EmployeeId)
+        {
+           return _departmentRepository.GetDepartmentByEmployeeId(EmployeeId);
+        }
+>>>>>>> 1121d45f7d9b002209ad8ce36ac880b8dcf417cb
         //private bool DepartmentExists(int id)
         //{
         //    return _context.departments.Any(e => e.Id == id);

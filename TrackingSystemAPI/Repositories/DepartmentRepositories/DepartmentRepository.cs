@@ -65,5 +65,14 @@ namespace TrackingSystemAPI.Repositories.DepartmentRepositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public Department GetDepartmentByEmployeeId(int EmployeeId)
+        {
+            var dep = _context.Employees.Where(e => e.Id == EmployeeId).Select(d => new Department
+            {
+                Name = d.Department.Name
+            });
+            return dep.FirstOrDefault();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace TrackingSystemAPI.Controllers
 
         // GET: api/ProjectDocument/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectDocumentDTO>> GetProjectDocumentDTO(int id)
+        public ActionResult<ProjectDocumentDTO> GetProjectDocumentDTO(int id)
         {
             var projectDocumentDTO = _projectDocumentRepository.GetById(id);
             if (projectDocumentDTO == null)
@@ -47,7 +47,7 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProjectDocumentDTO(int id, ProjectDocumentDTO projectDocumentDTO)
+        public IActionResult PutProjectDocumentDTO(int id, ProjectDocumentDTO projectDocumentDTO)
         {
             if (id != projectDocumentDTO.Id)
             {
@@ -105,12 +105,13 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public ActionResult<ProjectDocumentDTO>PostProjectDocumentDTO(List<ProjectDocumentDTO> projectDocumentDTO)
+        [Route("SaveDocument")]
+        public void PostProjectDocumentDTO(List<ProjectDocumentDTO> projectDocumentDTO)
         {
             _projectDocumentRepository.Add(projectDocumentDTO);
             _projectDocumentRepository.Save();
 
-            return CreatedAtAction("GetProjectDocumentDTO", new { id = projectDocumentDTO.Count() }, projectDocumentDTO);
+            //return CreatedAtAction("GetProjectDocumentDTO", new { id = projectDocumentDTO.Count() }, projectDocumentDTO);
         }
 
         // DELETE: api/ProjectDocument/5
