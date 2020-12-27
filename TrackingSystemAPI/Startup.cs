@@ -28,6 +28,7 @@ using TrackingSystemAPI.Repositories.RequestStatusRepositories;
 using TrackingSystemAPI.Repositories.RequestSubCategoryRepositories;
 using TrackingSystemAPI.Repositories.RequestTypeRepositories;
 using TrackingSystemAPI.Repositories.StackeholdersRepositories;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace TrackingSystemAPI
 {
@@ -96,6 +97,11 @@ namespace TrackingSystemAPI
                     ValidIssuer = Configuration["JWT:ValidIssuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
+            });
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
             });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

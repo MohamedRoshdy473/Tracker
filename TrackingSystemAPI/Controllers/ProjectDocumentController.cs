@@ -97,7 +97,7 @@ namespace TrackingSystemAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex}");
+                return StatusCode( 500,$"the error is {ex.Message}");
             }
         }
 

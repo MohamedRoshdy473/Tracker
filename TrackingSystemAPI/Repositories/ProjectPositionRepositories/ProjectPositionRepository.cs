@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,36 +16,37 @@ namespace TrackingSystemAPI.Repositories.ProjectPositionRepositories
         }
         public void Add(ProjectPosition projectPosition)
         {
-            throw new NotImplementedException();
+            _context.projectPositions.Add(projectPosition);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            ProjectPosition projectPosition = Find(id);
+            _context.projectPositions.Remove(projectPosition);
         }
         public ProjectPosition Find(int id)
         {
-            throw new NotImplementedException();
+           return _context.projectPositions.Find(id);
         }
 
         public IEnumerable<ProjectPosition> GetAll()
         {
-            throw new NotImplementedException();
+           return _context.projectPositions.ToList();
         }
 
         public ProjectPosition GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.projectPositions.Where(p => p.Id == id).FirstOrDefault();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(ProjectPosition projectPosition)
         {
-            throw new NotImplementedException();
+            _context.Entry(projectPosition).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
