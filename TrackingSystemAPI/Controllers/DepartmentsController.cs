@@ -45,6 +45,7 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+
         public IActionResult PutDepartment(int id, Department department)
         {
             if (id != department.Id)
@@ -93,6 +94,7 @@ namespace TrackingSystemAPI.Controllers
 
             return department;
         }
+
         [HttpGet("GetDepartmentByEmployeeId/{EmployeeId}")]
         public Department GetDepartmentByEmployeeId(int EmployeeId)
         {

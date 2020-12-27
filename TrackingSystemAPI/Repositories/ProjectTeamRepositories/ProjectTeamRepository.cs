@@ -84,7 +84,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         public void Update(ProjectTeamDTO projectTeamDTO)
         {
             ProjectTeam projectTeam = new ProjectTeam();
-            projectTeam.Id = projectTeamDTO.Id;
+            projectTeam.Id = projectTeamDTO.ID;
             projectTeam.EmployeeId = projectTeamDTO.EmployeeId;
             projectTeam.ProjectId = projectTeamDTO.ProjectId;
             projectTeam.DepartmentId = projectTeamDTO.DepartmentId;
