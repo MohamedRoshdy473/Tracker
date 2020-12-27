@@ -70,6 +70,7 @@ namespace TrackingSystemAPI.Repositories.DepartmentRepositories
         {
             var dep = _context.Employees.Where(e => e.Id == EmployeeId).Select(d => new Department
             {
+                Id = d.Department.Id,
                 Name = d.Department.Name
             });
             return dep.FirstOrDefault();

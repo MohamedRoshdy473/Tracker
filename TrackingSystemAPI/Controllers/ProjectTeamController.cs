@@ -71,12 +71,12 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public ActionResult<ProjectTeamDTO> PostProjectTeamDTO(List<ProjectTeamDTO> projectTeamDTO)
+        public void PostProjectTeamDTO(List<ProjectTeamDTO> projectTeamDTO)
         {
             _projectTeamRepository.Add(projectTeamDTO);
             _projectTeamRepository.Save();
 
-            return CreatedAtAction("GetProjectTeamDTO", new { id = projectTeamDTO.Count() }, projectTeamDTO);
+           // return CreatedAtAction("GetProjectTeamDTO", new { id = projectTeamDTO.Count() }, projectTeamDTO);
         }
 
         // DELETE: api/ProjectTeam/5

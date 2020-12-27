@@ -45,7 +45,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             var projectTeam = _context.projectTeams.Select(Pteam => new ProjectTeamDTO
             {
                 EmployeeId = Pteam.EmployeeId,
-                Name = Pteam.Employee.EmployeeName,
+                EmployeeName = Pteam.Employee.EmployeeName,
                 ProjectId = Pteam.ProjectId,
                 ProjectName = Pteam.Project.ProjectName,
                 DepartmentId = Pteam.DepartmentId,
@@ -65,7 +65,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             ProjectTeamDTO projectTeamDTO= new ProjectTeamDTO
             {
                 EmployeeId = projectTeam.EmployeeId,
-                Name = projectTeam.Employee.EmployeeName,
+                EmployeeName = projectTeam.Employee.EmployeeName,
                 ProjectId = projectTeam.ProjectId,
                 ProjectName = projectTeam.Project.ProjectName,
                 DepartmentId = projectTeam.DepartmentId,
