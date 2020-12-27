@@ -48,7 +48,7 @@ namespace TrackingSystemAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult PutProjectTeamDTO(int id, ProjectTeamDTO projectTeamDTO)
         {
-            if (id != projectTeamDTO.Id)
+            if (id != projectTeamDTO.ID)
             {
                 return BadRequest();
             }

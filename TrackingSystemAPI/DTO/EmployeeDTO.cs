@@ -7,8 +7,8 @@ namespace TrackingSystemAPI.DTO
 {
     public class EmployeeDTO
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public string EmployeeName { get; set; }
         public string Code { get; set; }
         public string DepartmentName { get; set; }
         public int DepartmentId { get; set; }

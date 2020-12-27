@@ -19,8 +19,8 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
         {
             var emps = _context.Employees.Select(e => new EmployeeDTO
             {
-                ID = e.Id,
-                Name = e.EmployeeName,
+                Id = e.Id,
+                EmployeeName = e.EmployeeName,
                 DepartmentName = e.Department.Name,
                 Address = e.Address,
                 Code = e.EmployeeCode,
@@ -40,8 +40,8 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
             var e = _context.Employees.Include(e => e.Department).FirstOrDefault(e => e.Id == id);
             var emp = new EmployeeDTO
             {
-                ID = e.Id,
-                Name = e.EmployeeName,
+                Id = e.Id,
+                EmployeeName = e.EmployeeName,
                 DepartmentName = e.Department.Name,
                 DepartmentId = e.DepartmentId,
                 Address = e.Address,
