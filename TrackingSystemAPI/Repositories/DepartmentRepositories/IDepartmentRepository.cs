@@ -10,6 +10,7 @@ namespace TrackingSystemAPI.Repositories.DepartmentRepositories
     {
         IEnumerable<Department> GetAll();
         Department GetById(int id);
+        Department GetDepartmentByEmployeeId(int EmployeeId);
         Department Find(int id);
         void Add(Department department);
         void Update(Department department);

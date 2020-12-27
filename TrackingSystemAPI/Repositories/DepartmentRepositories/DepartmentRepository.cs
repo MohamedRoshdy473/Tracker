@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,36 +16,37 @@ namespace TrackingSystemAPI.Repositories.DepartmentRepositories
         }
         public void Add(Department department)
         {
-            throw new NotImplementedException();
+            _context.departments.Add(department);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Department department = Find(id);
+            _context.departments.Remove(department);
         }
         public Department Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.departments.Find(id);
         }
 
         public IEnumerable<Department> GetAll()
         {
-            throw new NotImplementedException();
+          return  _context.departments.ToList();
         }
 
         public Department GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.departments.Where(d => d.Id == id).FirstOrDefault();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(Department department)
         {
-            throw new NotImplementedException();
+            _context.Entry(department).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
@@ -62,6 +64,15 @@ namespace TrackingSystemAPI.Repositories.DepartmentRepositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public Department GetDepartmentByEmployeeId(int EmployeeId)
+        {
+            var dep = _context.Employees.Where(e => e.Id == EmployeeId).Select(d => new Department
+            {
+                Name = d.Department.Name
+            });
+            return dep.FirstOrDefault();
         }
     }
 }
