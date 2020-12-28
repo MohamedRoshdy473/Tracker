@@ -11,6 +11,7 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
     {
         IEnumerable<ProjectDocumentDTO> GetAll();
         ProjectDocumentDTO GetById(int id);
+        IEnumerable<ProjectDocumentDTO> GetProjectDocumentsByProjectId(int ProjectId);
         ProjectDocument Find(int id);
         void Add(List<ProjectDocumentDTO> projectDocumentDTO);
         void Update(ProjectDocumentDTO projectDocumentDTO);
