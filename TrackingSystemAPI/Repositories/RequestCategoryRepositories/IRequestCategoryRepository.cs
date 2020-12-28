@@ -12,8 +12,8 @@ namespace TrackingSystemAPI.Repositories.RequestCategoryRepositories
         IEnumerable<RequestCategoryDTO> GetAll();
         RequestCategoryDTO GetById(int id);
         RequestCategory Find(int id);
-        void Add(RequestCategory requestCategory);
-        void Update(RequestCategory requestCategory);
+        void Add(RequestCategoryDTO requestCategoryDTO);
+        void Update(RequestCategoryDTO requestCategoryDTO);
         void Delete(int id);
         void Save();
     }
