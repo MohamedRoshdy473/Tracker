@@ -12,8 +12,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         IEnumerable<RequestDTO> GetAll();
         RequestDTO GetById(int id);
         Request Find(int id);
-        void Add(Request request);
-        void Update(Request request);
+        void Add(RequestDTO requestDTO);
+        void Update(RequestDTO requestDTO);
         void Delete(int id);
         void Save();
     }
