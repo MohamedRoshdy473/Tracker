@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,38 +15,62 @@ namespace TrackingSystemAPI.Repositories.RequestSubCategoryRepositories
         {
             _context = context;
         }
-        public void Add(RequestSubCategory requestSubCategory)
+        public void Add(RequestSubCategoryDTO requestSubCategoryDTO)
         {
-            throw new NotImplementedException();
+            var requestSubCategory = new RequestSubCategory();
+            //requestSubCategory.Id = requestSubCategoryDTO.Id;
+            requestSubCategory.RequestCategoryId = requestSubCategoryDTO.RequestCategoryId;
+            requestSubCategory.SubCategoryName = requestSubCategoryDTO.SubCategoryName;
+            _context.requestSubCategories.Add(requestSubCategory);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var requestSubCategory = Find(id);
+            _context.requestSubCategories.Remove(requestSubCategory);
         }
         public RequestSubCategory Find(int id)
         {
-            throw new NotImplementedException();
+           return _context.requestSubCategories.Find(id);
         }
 
         public IEnumerable<RequestSubCategoryDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.requestSubCategories.Select(sub => new RequestSubCategoryDTO
+            {
+                Id = sub.Id,
+                SubCategoryName = sub.SubCategoryName,
+                RequestCategoryId = sub.RequestCategoryId,
+                RequestCategoryName = sub.RequestCategory.CategoryName
+            }).ToList();
         }
 
         public RequestSubCategoryDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var sub = _context.requestSubCategories.Include(sub => sub.RequestCategory).Where(s => s.Id == id).FirstOrDefault();
+            var requestSubCategory = new RequestSubCategoryDTO
+            {
+                Id = sub.Id,
+                SubCategoryName = sub.SubCategoryName,
+                RequestCategoryId = sub.RequestCategoryId,
+                RequestCategoryName = sub.RequestCategory.CategoryName
+            };
+            return requestSubCategory;
+
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(RequestSubCategory requestSubCategory)
+        public void Update(RequestSubCategoryDTO requestSubCategoryDTO)
         {
-            throw new NotImplementedException();
+            var requestSubCategory = new RequestSubCategory();
+            requestSubCategory.Id = requestSubCategoryDTO.Id;
+            requestSubCategory.RequestCategoryId = requestSubCategoryDTO.RequestCategoryId;
+            requestSubCategory.SubCategoryName = requestSubCategoryDTO.SubCategoryName;
+            _context.Entry(requestSubCategory).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
