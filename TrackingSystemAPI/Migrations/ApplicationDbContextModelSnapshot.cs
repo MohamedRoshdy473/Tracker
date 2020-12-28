@@ -177,6 +177,27 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("ProjectDocumentDTO");
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.DTO.RequestSubCategoryDTO", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("RequestCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestCategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubCategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestSubCategoryDTO");
+                });
+
             modelBuilder.Entity("TrackingSystemAPI.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
