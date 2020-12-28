@@ -44,6 +44,7 @@ namespace TrackingSystemAPI.Models
         public DbSet<ProjectType> projectTypes { get; set; }
         public DbSet<TrackingSystemAPI.DTO.ProjectDocumentDTO> ProjectDocumentDTO { get; set; }
         public DbSet<TrackingSystemAPI.DTO.RequestSubCategoryDTO> RequestSubCategoryDTO { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.RequestCategoryDTO> RequestCategoryDTO { get; set; }
 
 
 
