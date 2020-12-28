@@ -975,7 +975,6 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorAsse
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorAssemblyInfo.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.Manifest.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.xml
-D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.TagHelpers.input.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.TagHelpers.output.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorCoreGenerate.cache
@@ -997,4 +996,8 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.Co
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
+<<<<<<< HEAD
+=======
+D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+>>>>>>> f74d9f70ef2bebea3798d0482ba19eec8ed0c718
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache

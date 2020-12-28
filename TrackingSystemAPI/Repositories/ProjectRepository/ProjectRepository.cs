@@ -147,5 +147,15 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<ProjectDTO> GetProjectsByClientId(int ClientId)
+        {
+            var pro = _context.projects.Where(p => p.ClientId == ClientId).Select(project => new ProjectDTO
+            {
+                ProjectName = project.ProjectName,
+                ProjectCode = project.ProjectCode
+            }).ToList();
+            return pro;
+        }
     }
 }

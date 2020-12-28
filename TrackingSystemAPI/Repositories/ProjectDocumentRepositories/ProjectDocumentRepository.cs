@@ -69,7 +69,20 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
             };
             return projectDocumentDTO;
         }
-
+        public IEnumerable<ProjectDocumentDTO> GetProjectDocumentsByProjectId(int ProjectId)
+        {
+            var projectDocument = _context.projectDocuments.Where(d => d.ProjectId == ProjectId).Select(projectDocument =>
+                new ProjectDocumentDTO()
+                {
+                    Id = projectDocument.Id,
+                    Description = projectDocument.Description,
+                    DocumentName = projectDocument.DocumentName,
+                    DocumentFile = projectDocument.DocumentFile,
+                    ProjectId = projectDocument.ProjectId,
+                    ProjectName = projectDocument.Project.ProjectName
+                }).ToList();
+            return projectDocument;
+        }
         public void Save()
         {
             _context.SaveChanges();

@@ -76,7 +76,20 @@ namespace TrackingSystemAPI.Repositories.MileStoneRepositories
 
             return mileStoneDTO;
         }
-
+        public IEnumerable<MileStoneDTO> GetMileStonesByProjectId(int ProjectId)
+        {
+            var mileStone = _context.mileStones.Where(m => m.ProjectId == ProjectId).Select(mile => new MileStoneDTO
+            {
+                Id = mile.Id,
+                Title = mile.Title,
+                Description = mile.Description,
+                EndDate = mile.EndDate,
+                StartDate = mile.StartDate,
+                ProjectName = mile.Project.ProjectName,
+                ProjectId = mile.ProjectId,
+            }).ToList();
+            return mileStone;
+        }
         public void Save()
         {
             _context.SaveChanges();
@@ -110,5 +123,7 @@ namespace TrackingSystemAPI.Repositories.MileStoneRepositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+
     }
 }
