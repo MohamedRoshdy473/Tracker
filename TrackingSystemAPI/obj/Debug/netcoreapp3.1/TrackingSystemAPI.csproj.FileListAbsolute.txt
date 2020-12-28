@@ -997,4 +997,4 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocument
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Edit.cshtml.g.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\Razor\Views\ProjectDocuments\Index.cshtml.g.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
-D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
+D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json

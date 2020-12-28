@@ -8,6 +8,7 @@ namespace TrackingSystemAPI.DTO
     public class ProjectTeamDTO
     {
         public int ID { get; set; }
+        public string teamName { get; set; }
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public int ProjectId { get; set; }
