@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,36 +17,37 @@ namespace TrackingSystemAPI.Repositories.RequestStatusRepositories
         }
         public void Add(RequestStatus requestStatus)
         {
-            throw new NotImplementedException();
+            _context.requestStatuses.Add(requestStatus);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            RequestStatus requestStatus = Find(id);
+            _context.requestStatuses.Remove(requestStatus);
         }
         public RequestStatus Find(int id)
         {
-            throw new NotImplementedException();
+           return _context.requestStatuses.Find(id);
         }
 
         public IEnumerable<RequestStatus> GetAll()
         {
-            throw new NotImplementedException();
+           return _context.requestStatuses.ToList();
         }
 
         public RequestStatus GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.requestStatuses.Where(s => s.Id == id).FirstOrDefault();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(RequestStatus requestStatus)
         {
-            throw new NotImplementedException();
+            _context.Entry(requestStatus).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
