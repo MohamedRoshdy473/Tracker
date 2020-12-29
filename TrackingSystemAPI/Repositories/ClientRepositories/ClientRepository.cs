@@ -18,7 +18,7 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
         public void Add(ClientDTO clientDTO)
         {
             var client = new Client();
-            client.Id = clientDTO.Id;
+            //client.Id = clientDTO.Id;
             client.Address = clientDTO.Address;
             client.ClientCode = clientDTO.ClientCode;
             client.ClientName = clientDTO.ClientName;
