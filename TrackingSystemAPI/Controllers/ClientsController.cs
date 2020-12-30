@@ -96,10 +96,5 @@ namespace TrackingSystemAPI.Controllers
 
             return Ok();
         }
-
-        //private bool ClientDTOExists(int id)
-        //{
-        //    return _context.ClientDTO.Any(e => e.Id == id);
-        //}
     }
 }
