@@ -15,31 +15,32 @@ namespace TrackingSystemAPI.Repositories.RequestPeriorityRepositories
         }
         public void Add(RequestPeriority requestPeriority)
         {
-            throw new NotImplementedException();
+            _context.requestPeriorities.Add(requestPeriority);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            RequestPeriority requestPeriority = Find(id);
+            _context.requestPeriorities.Remove(requestPeriority);
         }
         public RequestPeriority Find(int id)
         {
-            throw new NotImplementedException();
+           return _context.requestPeriorities.Find(id);
         }
 
         public IEnumerable<RequestPeriority> GetAll()
         {
-            throw new NotImplementedException();
+           return _context.requestPeriorities.ToList();
         }
 
         public RequestPeriority GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.requestPeriorities.Where(rp => rp.Id == id).FirstOrDefault();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(RequestPeriority requestPeriority)

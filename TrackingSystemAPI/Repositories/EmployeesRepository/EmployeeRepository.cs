@@ -22,8 +22,9 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
                 Id = e.Id,
                 EmployeeName = e.EmployeeName,
                 DepartmentName = e.Department.Name,
+                Position = e.Position,
                 Address = e.Address,
-                Code = e.EmployeeCode,
+                EmployeeCode = e.EmployeeCode,
                // DateOfBirth = e.DateOfBirth,
                 Email = e.Email,
                 gender = e.gender,
@@ -45,11 +46,10 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
                 DepartmentName = e.Department.Name,
                 DepartmentId = e.DepartmentId,
                 Address = e.Address,
-                Code = e.EmployeeCode,
-               // DateOfBirth = e.DateOfBirth,
+                Position=e.Position,
+                EmployeeCode = e.EmployeeCode,
                 Email = e.Email,
                 gender = e.gender,
-               //HiringDateHiringDate = e.HiringDateHiringDate,
                 MaritalStatus = e.MaritalStatus,
                 Phone = e.Phone,
                 Mobile = e.Mobile,
@@ -62,22 +62,48 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
 
             return emp;
         }
-        public void Add(Employee employee)
+        public void Add(EmployeeDTO employeeDTO)
         {
-            throw new NotImplementedException();
+            var emp = new Employee();
+            emp.EmployeeName = employeeDTO.EmployeeName;
+            emp.Position = employeeDTO.Position;
+            emp.DepartmentId = employeeDTO.DepartmentId;
+            emp.EmployeeCode = employeeDTO.EmployeeCode;
+            emp.gender = employeeDTO.gender;
+            emp.Address = employeeDTO.Address;
+            emp.MaritalStatus = employeeDTO.MaritalStatus;
+            emp.Phone = employeeDTO.Phone;
+            emp.Mobile = employeeDTO.Mobile;
+            emp.Email = employeeDTO.Email;
+            emp.Photo = employeeDTO.Photo;
+            _context.Employees.Add(emp);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Employee employee = Find(id);
+            _context.Employees.Remove(employee);
         }
         public Employee Find(int id)
         {
-            throw new NotImplementedException();
+           return _context.Employees.Find(id);
         }
-        public void Update(Employee employee)
+        public void Update(EmployeeDTO employeeDTO)
         {
-            throw new NotImplementedException();
+            var emp = new Employee();
+            emp.Id = employeeDTO.Id;
+            emp.EmployeeName = employeeDTO.EmployeeName;
+            emp.Position = employeeDTO.Position;
+            emp.DepartmentId = employeeDTO.DepartmentId;
+            emp.EmployeeCode = employeeDTO.EmployeeCode;
+            emp.gender = employeeDTO.gender;
+            emp.Address = employeeDTO.Address;
+            emp.MaritalStatus = employeeDTO.MaritalStatus;
+            emp.Phone = employeeDTO.Phone;
+            emp.Mobile = employeeDTO.Mobile;
+            emp.Email = employeeDTO.Email;
+            emp.Photo = employeeDTO.Photo;
+            _context.Entry(emp).State = EntityState.Modified;
         }
 
         public void Save()

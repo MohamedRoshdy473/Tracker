@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,38 +15,128 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             _context = context;
         }
-        public void Add(Request request)
+        public void Add(RequestDTO requestDTO)
         {
-            throw new NotImplementedException();
+            Request request = new Request();
+            request.RequestName = requestDTO.RequestName;
+            request.RequestCode = requestDTO.RequestCode;
+            request.Description = requestDTO.Description;
+            request.RequestDate = requestDTO.RequestDate;
+            request.RequestTime = requestDTO.RequestTime;
+            request.Photo = requestDTO.Photo;
+            request.RequestModeId = requestDTO.RequestModeId;
+            request.AssetId = requestDTO.AssetId;
+            request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
+            request.ProjectId = requestDTO.ProjectId;
+            request.ClientId = requestDTO.ClientId;
+            request.RequestStatusId = requestDTO.RequestStatusId;
+            request.RequestPeriorityId = requestDTO.RequestPeriorityId;
+            request.RequestTypeId = requestDTO.RequestTypeId;
+            _context.requests.Add(request);
         }
-
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Request request = Find(id);
+            _context.requests.Remove(request);
         }
         public Request Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.requests.Find(id);
         }
 
         public IEnumerable<RequestDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var request = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
+                                             .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
+                                             .Include(r => r.RequestType).Include(r=>r.RequestMode)
+                                             .Include(r=>r.Asset).Select(req => new RequestDTO
+                                             {
+                                                 Id = req.Id,
+                                                 RequestName = req.RequestName,
+                                                 RequestCode = req.RequestCode,
+                                                 Description = req.Description,
+                                                 RequestDate = req.RequestDate,
+                                                 RequestTime = req.RequestTime,
+                                                 Photo = req.Photo,
+                                                 RequestModeId = req.RequestModeId,
+                                                 RequestMode =req.RequestMode.Mode,
+                                                 AssetId = req.AssetId,
+                                                 AssetCode=req.Asset.AssetCode,
+                                                 ClientId = req.ClientId,
+                                                 ClientName = req.Client.ClientName,
+                                                 RequestSubCategoryId = req.RequestSubCategoryId,
+                                                 RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
+                                                 ProjectId = req.ProjectId,
+                                                 ProjectName = req.Project.ProjectName,
+                                                 RequestStatusId = req.RequestStatusId,
+                                                 RequestStatus = req.RequestStatus.status,
+                                                 RequestPeriorityId = req.RequestPeriorityId,
+                                                 RequestPeriority = req.RequestPeriority.periorty,
+                                                 RequestTypeId = req.RequestTypeId,
+                                                 RequestTypeName = req.RequestType.RequestTypeName
+                                             }).ToList();
+            return request;
         }
 
         public RequestDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var req = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
+                                       .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
+                                       .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                       .Include(r => r.Asset).Where(r => r.Id == id).FirstOrDefault();
+            var requestDTO = new RequestDTO
+            {
+                Id = req.Id,
+                RequestName = req.RequestName,
+                RequestCode = req.RequestCode,
+                Description = req.Description,
+                RequestDate = req.RequestDate,
+                RequestTime = req.RequestTime,
+                Photo = req.Photo,
+                RequestModeId = req.RequestModeId,
+                RequestMode = req.RequestMode.Mode,
+                AssetId = req.AssetId,
+                AssetCode = req.Asset.AssetCode,
+                ClientId = req.ClientId,
+                ClientName = req.Client.ClientName,
+                RequestSubCategoryId = req.RequestSubCategoryId,
+                RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
+                ProjectId = req.ProjectId,
+                ProjectName = req.Project.ProjectName,
+                RequestStatusId = req.RequestStatusId,
+                RequestStatus = req.RequestStatus.status,
+                RequestPeriorityId = req.RequestPeriorityId,
+                RequestPeriority = req.RequestPeriority.periorty,
+                RequestTypeId = req.RequestTypeId,
+                RequestTypeName = req.RequestType.RequestTypeName
+            };
+            return requestDTO;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(Request request)
+        public void Update(RequestDTO requestDTO)
         {
-            throw new NotImplementedException();
+            Request request = new Request();
+            request.Id = requestDTO.Id;
+            request.RequestName = requestDTO.RequestName;
+            request.RequestCode = requestDTO.RequestCode;
+            request.Description = requestDTO.Description;
+            request.RequestDate = requestDTO.RequestDate;
+            request.RequestTime = requestDTO.RequestTime;
+            request.Photo = requestDTO.Photo;
+            request.RequestModeId = requestDTO.RequestModeId;
+            request.AssetId = requestDTO.AssetId;
+            request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
+            request.ProjectId = requestDTO.ProjectId;
+            request.ClientId = requestDTO.ClientId;
+            request.RequestStatusId = requestDTO.RequestStatusId;
+            request.RequestPeriorityId = requestDTO.RequestPeriorityId;
+            request.RequestTypeId = requestDTO.RequestTypeId;
+            _context.Entry(request).State = EntityState.Modified;
         }
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
