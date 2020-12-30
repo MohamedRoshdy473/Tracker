@@ -33,7 +33,6 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.RequestTypeId = requestDTO.RequestTypeId;
             _context.requests.Add(request);
         }
-
         public void Delete(int id)
         {
             Request request = Find(id);
@@ -48,7 +47,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             var request = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
                                              .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                             .Include(r => r.RequestType).Select(req => new RequestDTO
+                                             .Include(r => r.RequestType).Include(r=>r.RequestMode)
+                                             .Include(r=>r.Asset).Select(req => new RequestDTO
                                              {
                                                  Id = req.Id,
                                                  RequestName = req.RequestName,
@@ -78,8 +78,9 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         public RequestDTO GetById(int id)
         {
             var req = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
-                                     .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                     .Include(r => r.RequestType).Where(r => r.Id == id).FirstOrDefault();
+                                       .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
+                                       .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                       .Include(r => r.Asset).Where(r => r.Id == id).FirstOrDefault();
             var requestDTO = new RequestDTO
             {
                 Id = req.Id,
