@@ -16,6 +16,8 @@ namespace TrackingSystemAPI.DTO
         public TimeSpan RequestTime { get; set; }
         public int RequestSubCategoryId { get; set; }
         public string  RequestSubCategoryName { get; set; }
+        public int ClientId { get; set; }
+        public string ClientName { get; set; }
         public int ProjectId { get; set; }
         public string  ProjectName { get; set; }
         public int RequestModeId { get; set; }

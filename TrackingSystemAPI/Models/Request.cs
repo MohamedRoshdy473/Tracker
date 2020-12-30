@@ -29,6 +29,9 @@ namespace TrackingSystemAPI.Models
         public int ProjectId { get; set; }
         [ForeignKey("ProjectId")]
         public virtual Project Project { get; set; }
+        public int ClientId { get; set; }
+        [ForeignKey("ClientId")]
+        public virtual Client Client { get; set; }
         public int RequestStatusId { get; set; }
         [ForeignKey("RequestStatusId")]
         public virtual RequestStatus RequestStatus { get; set; }

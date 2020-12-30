@@ -28,6 +28,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
             request.ProjectId = requestDTO.ProjectId;
+            request.ClientId = requestDTO.ClientId;
             request.RequestStatusId = requestDTO.RequestStatusId;
             request.RequestPeriorityId = requestDTO.RequestPeriorityId;
             request.RequestTypeId = requestDTO.RequestTypeId;
@@ -61,6 +62,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  RequestMode =req.RequestMode.Mode,
                                                  AssetId = req.AssetId,
                                                  AssetCode=req.Asset.AssetCode,
+                                                 ClientId = req.ClientId,
+                                                 ClientName = req.Client.ClientName,
                                                  RequestSubCategoryId = req.RequestSubCategoryId,
                                                  RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
                                                  ProjectId = req.ProjectId,
@@ -94,6 +97,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                 RequestMode = req.RequestMode.Mode,
                 AssetId = req.AssetId,
                 AssetCode = req.Asset.AssetCode,
+                ClientId = req.ClientId,
+                ClientName = req.Client.ClientName,
                 RequestSubCategoryId = req.RequestSubCategoryId,
                 RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
                 ProjectId = req.ProjectId,
@@ -127,6 +132,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
             request.ProjectId = requestDTO.ProjectId;
+            request.ClientId = requestDTO.ClientId;
             request.RequestStatusId = requestDTO.RequestStatusId;
             request.RequestPeriorityId = requestDTO.RequestPeriorityId;
             request.RequestTypeId = requestDTO.RequestTypeId;
