@@ -17,6 +17,9 @@ namespace TrackingSystemAPI.Models
         public string Description { get; set; }
         public DateTime RequestDate { get; set; }
         public TimeSpan RequestTime { get; set; }
+        public int AssetId { get; set; }
+        [ForeignKey("AssetId")]
+        public virtual Asset Asset { get; set; }
         public int RequestModeId { get; set; }
         [ForeignKey("RequestModeId")]
         public virtual RequestMode RequestMode { get; set; }

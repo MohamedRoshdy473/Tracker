@@ -43,8 +43,11 @@ namespace TrackingSystemAPI.Models
         public DbSet<Stackeholders>stackeholders  { get; set; }
         public DbSet<ProjectType> projectTypes { get; set; }
         public DbSet<RequestMode> requestModes { get; set; }
+        public DbSet<Asset> assets { get; set; }
 
         
+
+
 
 
 
