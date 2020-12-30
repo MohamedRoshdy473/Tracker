@@ -68,7 +68,7 @@ namespace TrackingSystemAPI.Controllers
                 string message = ex.Message;
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Project

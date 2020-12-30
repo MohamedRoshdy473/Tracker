@@ -124,6 +124,20 @@ namespace TrackingSystemAPI.Repositories.MileStoneRepositories
             GC.SuppressFinalize(this);
         }
 
-
+        public void UpdateByProjectId(int ProjectId, List<MileStoneDTO> mileStoneDTOs)
+        {
+            foreach (var item in mileStoneDTOs)
+            {
+                var milestone = new MileStone();
+                milestone.Id = item.Id;
+                milestone.Title = item.Title;
+                milestone.Description = item.Description;
+                milestone.EndDate = item.EndDate;
+                milestone.StartDate = item.StartDate;
+                item.ProjectId = ProjectId;
+                milestone.ProjectId = item.ProjectId;
+                _context.Entry(milestone).State = EntityState.Modified;
+            }
+        }
     }
 }

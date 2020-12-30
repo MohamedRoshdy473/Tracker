@@ -71,6 +71,26 @@ namespace TrackingSystemAPI.Controllers
 
             return NoContent();
         }
+        //update by id
+        [HttpPut("{id}")]
+        [Route("updatestakehodersByProjectId/{id}")]
+        public IActionResult PutStackeholdersDTOByProjectId(int id, List<StackeholdersDTO> stackeholdersDTO)
+        {
+           
+
+            _stackeholdersRepository.UpdateByProjectId(id,stackeholdersDTO);
+
+            try
+            {
+                _stackeholdersRepository.Save();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                string message = ex.Message;
+            }
+
+            return Ok();
+        }
 
         // POST: api/Stackeholders
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

@@ -10,7 +10,7 @@ namespace TrackingSystemAPI.DTO
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string ProjectCode { get; set; }
-        public int ProjectTypeId { get; set; }
+        public int? ProjectTypeId { get; set; }
         public string ProjectTypeName { get; set; }
         public decimal Cost { get; set; }
         public int ProjectPeriod { get; set; }
