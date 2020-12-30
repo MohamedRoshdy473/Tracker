@@ -72,6 +72,29 @@ namespace TrackingSystemAPI.Controllers
 
             return NoContent();
         }
+
+        //update by id
+        [HttpPut("{id}")]
+        [Route("PutDocumentsDTOByProjectId/{id}")]
+        public IActionResult PutDocumentsDTOByProjectId(int id, List<ProjectDocumentDTO>projectDocumentDTOs )
+        {
+
+
+            _projectDocumentRepository.UpdateByProjectId(id, projectDocumentDTOs);
+
+            try
+            {
+                _projectDocumentRepository.Save();
+
+
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                string message = ex.Message;
+            }
+
+            return Ok();
+        }
         [HttpPost, DisableRequestSizeLimit]
         [Route("uploadfile")]
         public IActionResult Upload()

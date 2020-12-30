@@ -12,6 +12,7 @@ namespace TrackingSystemAPI.Repositories.StackeholdersRepositories
         IEnumerable<StackeholdersDTO> GetAll();
         StackeholdersDTO GetById(int id);
         IEnumerable<StackeholdersDTO> GetStackeholdersByProjectId(int ProjectId);
+        void UpdateByProjectId(int ProjectId, List<StackeholdersDTO> stackeholdersDTO);
         Stackeholders Find(int id);
         void Add(List<StackeholdersDTO> stackeholdersDTO);
         void Update(StackeholdersDTO stackeholdersDTO);
