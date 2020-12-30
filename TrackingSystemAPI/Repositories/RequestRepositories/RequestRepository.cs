@@ -21,6 +21,11 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.RequestName = requestDTO.RequestName;
             request.RequestCode = requestDTO.RequestCode;
             request.Description = requestDTO.Description;
+            request.RequestDate = requestDTO.RequestDate;
+            request.RequestTime = requestDTO.RequestTime;
+            request.Photo = requestDTO.Photo;
+            request.RequestModeId = requestDTO.RequestModeId;
+            request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
             request.ProjectId = requestDTO.ProjectId;
             request.RequestStatusId = requestDTO.RequestStatusId;
@@ -49,6 +54,13 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  RequestName = req.RequestName,
                                                  RequestCode = req.RequestCode,
                                                  Description = req.Description,
+                                                 RequestDate = req.RequestDate,
+                                                 RequestTime = req.RequestTime,
+                                                 Photo = req.Photo,
+                                                 RequestModeId = req.RequestModeId,
+                                                 RequestMode =req.RequestMode.Mode,
+                                                 AssetId = req.AssetId,
+                                                 AssetCode=req.Asset.AssetCode,
                                                  RequestSubCategoryId = req.RequestSubCategoryId,
                                                  RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
                                                  ProjectId = req.ProjectId,
@@ -63,17 +75,24 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             return request;
         }
 
-    public RequestDTO GetById(int id)
-    {
+        public RequestDTO GetById(int id)
+        {
             var req = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
                                      .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
                                      .Include(r => r.RequestType).Where(r => r.Id == id).FirstOrDefault();
             var requestDTO = new RequestDTO
             {
-                Id=req.Id,
+                Id = req.Id,
                 RequestName = req.RequestName,
                 RequestCode = req.RequestCode,
                 Description = req.Description,
+                RequestDate = req.RequestDate,
+                RequestTime = req.RequestTime,
+                Photo = req.Photo,
+                RequestModeId = req.RequestModeId,
+                RequestMode = req.RequestMode.Mode,
+                AssetId = req.AssetId,
+                AssetCode = req.Asset.AssetCode,
                 RequestSubCategoryId = req.RequestSubCategoryId,
                 RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
                 ProjectId = req.ProjectId,
@@ -86,43 +105,48 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                 RequestTypeName = req.RequestType.RequestTypeName
             };
             return requestDTO;
-    }
-
-    public void Save()
-    {
-            _context.SaveChanges();
-    }
-
-    public void Update(RequestDTO requestDTO)
-    {
-        Request request = new Request();
-        request.Id = requestDTO.Id;
-        request.RequestName = requestDTO.RequestName;
-        request.RequestCode = requestDTO.RequestCode;
-        request.Description = requestDTO.Description;
-        request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
-        request.ProjectId = requestDTO.ProjectId;
-        request.RequestStatusId = requestDTO.RequestStatusId;
-        request.RequestPeriorityId = requestDTO.RequestPeriorityId;
-        request.RequestTypeId = requestDTO.RequestTypeId;
-        _context.Entry(request).State = EntityState.Modified;
-    }
-    private bool disposed = false;
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!this.disposed)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
         }
-        this.disposed = true;
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Update(RequestDTO requestDTO)
+        {
+            Request request = new Request();
+            request.Id = requestDTO.Id;
+            request.RequestName = requestDTO.RequestName;
+            request.RequestCode = requestDTO.RequestCode;
+            request.Description = requestDTO.Description;
+            request.RequestDate = requestDTO.RequestDate;
+            request.RequestTime = requestDTO.RequestTime;
+            request.Photo = requestDTO.Photo;
+            request.RequestModeId = requestDTO.RequestModeId;
+            request.AssetId = requestDTO.AssetId;
+            request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
+            request.ProjectId = requestDTO.ProjectId;
+            request.RequestStatusId = requestDTO.RequestStatusId;
+            request.RequestPeriorityId = requestDTO.RequestPeriorityId;
+            request.RequestTypeId = requestDTO.RequestTypeId;
+            _context.Entry(request).State = EntityState.Modified;
+        }
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-}
 }
