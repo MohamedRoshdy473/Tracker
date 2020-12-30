@@ -17,7 +17,6 @@ namespace TrackingSystemAPI.ViewModels
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string MaritalStatus { get; set; }
-        public string GraduatioYear { get; set; }
         public string Phone { get; set; }
         public string RelevantPhone { get; set; }
         public string Email { get; set; }

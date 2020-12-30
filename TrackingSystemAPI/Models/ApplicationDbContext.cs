@@ -42,10 +42,9 @@ namespace TrackingSystemAPI.Models
         public DbSet<RequestType> requestTypes { get; set; }
         public DbSet<Stackeholders>stackeholders  { get; set; }
         public DbSet<ProjectType> projectTypes { get; set; }
-        public DbSet<TrackingSystemAPI.DTO.ProjectDocumentDTO> ProjectDocumentDTO { get; set; }
-        public DbSet<TrackingSystemAPI.DTO.RequestSubCategoryDTO> RequestSubCategoryDTO { get; set; }
-        public DbSet<TrackingSystemAPI.DTO.RequestCategoryDTO> RequestCategoryDTO { get; set; }
-        public DbSet<TrackingSystemAPI.DTO.RequestDTO> RequestDTO { get; set; }
+        public DbSet<RequestMode> requestModes { get; set; }
+
+        
 
 
 

@@ -64,24 +64,24 @@ namespace TrackingSystemAPI.Controllers
             return usersWithRoles;
         }
 
-        //[HttpGet]
-        //[Route("GetUnregisteredUsers")]
-        //public async Task<IEnumerable<Employee>> GetUnregisteredUsers()
-        //{
-        //    //List<Employee> emps = new List<Employee>();
-        //    var users = userManager.Users.ToList();
-        //    var employees = _context.Employees.ToList();
-        //    var emps = _context.Employees.ToList();
-        //    foreach (var employee in employees)
-        //    {
-        //        foreach (var user in users)
-        //        {
-        //            if (employee.Email == user.Email)
-        //                emps.Remove(employee);
-        //        }
-        //    }
-        //    return emps;
-        //}
+        [HttpGet]
+        [Route("GetUnregisteredUsers")]
+        public IEnumerable<Employee> GetUnregisteredUsers()
+        {
+            //List<Employee> emps = new List<Employee>();
+            var users = userManager.Users.ToList();
+            var employees = _context.Employees.ToList();
+            var emps = _context.Employees.ToList();
+            foreach (var employee in employees)
+            {
+                foreach (var user in users)
+                {
+                    if (employee.Email == user.Email)
+                        emps.Remove(employee);
+                }
+            }
+            return emps;
+        }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
