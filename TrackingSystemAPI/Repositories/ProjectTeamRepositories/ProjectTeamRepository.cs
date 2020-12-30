@@ -15,7 +15,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         {
             _context = context;
         }
-     
+
 
         public void Add(List<ProjectTeamDTO> projectTeamDTO)
         {
@@ -46,7 +46,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             var projectTeam = _context.projectTeams.Select(Pteam => new ProjectTeamDTO
             {
                 EmployeeId = Pteam.EmployeeId,
-                teamName=Pteam.teamName,
+                teamName = Pteam.teamName,
                 EmployeeName = Pteam.Employee.EmployeeName,
                 ProjectId = Pteam.ProjectId,
                 ProjectName = Pteam.Project.ProjectName,
@@ -64,10 +64,10 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
                               .Include(p => p.Employee).Include(p => p.Department)
                               .Include(p => p.ProjectId).Include(p => p.ProjectPosition)
                               .FirstOrDefault(predicate => predicate.Id == id);
-            ProjectTeamDTO projectTeamDTO= new ProjectTeamDTO
+            ProjectTeamDTO projectTeamDTO = new ProjectTeamDTO
             {
                 EmployeeId = projectTeam.EmployeeId,
-                teamName=projectTeam.teamName,
+                teamName = projectTeam.teamName,
                 EmployeeName = projectTeam.Employee.EmployeeName,
                 ProjectId = projectTeam.ProjectId,
                 ProjectName = projectTeam.Project.ProjectName,
@@ -78,10 +78,11 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             };
             return projectTeamDTO;
         }
-       public IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectId(int ProjectId)
+        public IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectId(int ProjectId)
         {
             var projectTeam = _context.projectTeams.Where(p => p.ProjectId == ProjectId).Select(projectTeam => new ProjectTeamDTO
             {
+                ID=projectTeam.Id,
                 EmployeeId = projectTeam.EmployeeId,
                 teamName = projectTeam.teamName,
                 EmployeeName = projectTeam.Employee.EmployeeName,
@@ -127,6 +128,24 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void UpdateByProjectId(int ProjectId, List<ProjectTeamDTO> projectTeamDTOs)
+        {
+           
+            foreach (var item in projectTeamDTOs)
+            {
+
+                ProjectTeam projectTeam = new ProjectTeam();
+                projectTeam.Id = item.ID;
+                projectTeam.teamName = item.teamName;
+                projectTeam.EmployeeId = item.EmployeeId;
+                item.ProjectId = ProjectId;
+                projectTeam.ProjectId = item.ProjectId;
+                projectTeam.DepartmentId = item.DepartmentId;
+                projectTeam.ProjectPositionId = item.ProjectPositionId;
+                _context.Entry(projectTeam).State = EntityState.Modified;
+            }
         }
     }
 }

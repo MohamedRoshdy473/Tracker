@@ -76,7 +76,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public ProjectDTO GetById(int id)
         {
-            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).FirstOrDefault(e => e.Id == id);
+            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).Include(p=>p.ProjectType).FirstOrDefault(e => e.Id == id);
             var projectDTO = new ProjectDTO
             {
                 Id = project.Id,
@@ -96,7 +96,9 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 EmployeeId = project.EmployeeId,
                 EmployeeName = project.Employee.EmployeeName,
                 ClientId = project.ClientId,
-                ClientName = project.Client.ClientName
+                ClientName = project.Client.ClientName,
+                ClientMobile=project.Client.Phone
+                
             };
             if (project == null)
             {
@@ -117,7 +119,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             project.Id = projectDTO.Id;
             project.ProjectName = projectDTO.ProjectName;
             project.ProjectCode = projectDTO.ProjectCode;
-            project.ProjectTypeId = project.ProjectTypeId;
+            project.ProjectTypeId = projectDTO.ProjectTypeId;
             project.Cost = projectDTO.Cost;
             project.ProjectPeriod = projectDTO.ProjectPeriod;
             project.PlanndedStartDate = projectDTO.PlanndedStartDate;

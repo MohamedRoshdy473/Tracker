@@ -33,7 +33,9 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
 
         public void Delete(int id)
         {
+           
             ProjectDocument projectDocument = Find(id);
+            _context.projectDocuments.Remove(projectDocument);
         }
         public ProjectDocument Find(int id)
         {
@@ -112,6 +114,23 @@ namespace TrackingSystemAPI.Repositories.ProjectDocumentRepositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void UpdateByProjectId(int ProjectId, List<ProjectDocumentDTO> projectDocumentDTOs)
+        {
+
+            foreach (var item in projectDocumentDTOs)
+            {
+                ProjectDocument projectDocument = new ProjectDocument();
+                projectDocument.Id = item.Id;
+                item.ProjectId = ProjectId;
+                projectDocument.ProjectId = item.ProjectId;
+                projectDocument.Description = item.Description;
+                projectDocument.DocumentFile = item.DocumentFile;
+                projectDocument.DocumentFile = item.DocumentFile;
+                projectDocument.DocumentName = item.DocumentName;
+                _context.Entry(projectDocument).State = EntityState.Modified;
+            }
         }
     }
 }

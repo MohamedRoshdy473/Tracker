@@ -128,5 +128,25 @@ namespace TrackingSystemAPI.Repositories.StackeholdersRepositories
             }).ToList();
             return stackHolder;
         }
+
+        public void UpdateByProjectId(int ProjectId, List<StackeholdersDTO> stackeholdersDTO)
+        {
+            foreach (var item in stackeholdersDTO)
+            {
+                Stackeholders stackeholderObj = new Stackeholders();
+                stackeholderObj.Id = item.Id;
+                stackeholderObj.StackeholderName = item.StackeholderName;
+                stackeholderObj.Mobile = item.Mobile;
+                item.ProjectId = ProjectId;
+                stackeholderObj.ProjectId = item.ProjectId;
+                stackeholderObj.Rank = item.Rank;
+                stackeholderObj.Description = item.Description;
+               // _context.stackeholders.Add(stackeholderObj);
+                _context.Entry(stackeholderObj).State = EntityState.Modified;
+
+
+            }
+
+        }
     }
 }

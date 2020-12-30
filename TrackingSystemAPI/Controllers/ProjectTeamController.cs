@@ -72,6 +72,27 @@ namespace TrackingSystemAPI.Controllers
             return NoContent();
         }
 
+        //update by id
+        [HttpPut("{id}")]
+        [Route("updateteamsByProjectId/{id}")]
+        public IActionResult PutteamssDTOByProjectId(int id, List<ProjectTeamDTO> projectTeamDTOs)
+        {
+
+
+            _projectTeamRepository.UpdateByProjectId(id, projectTeamDTOs);
+
+            try
+            {
+                _projectTeamRepository.Save();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                string message = ex.Message;
+            }
+
+            return Ok();
+        }
+
         // POST: api/ProjectTeam
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
