@@ -91,7 +91,8 @@ namespace TrackingSystemAPI.Controllers
             _requestTypeRepository.Delete(id);
             _requestTypeRepository.Save();
 
-            return requestType;
+            return Ok();
+           
         }
     }
 }

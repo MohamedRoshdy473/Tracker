@@ -45,6 +45,7 @@ namespace TrackingSystemAPI.Models
         public DbSet<RequestMode> requestModes { get; set; }
         public DbSet<Asset> assets { get; set; }
         public DbSet<RequestDescription> requestDescriptions { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.RequestDescriptionDTO> RequestDescriptionDTO { get; set; }
 
         
 
