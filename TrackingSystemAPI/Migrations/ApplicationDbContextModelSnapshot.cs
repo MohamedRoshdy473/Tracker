@@ -435,7 +435,7 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("ProjectPeriod")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectTypeId")
+                    b.Property<int?>("ProjectTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -585,7 +585,7 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("RequestSubCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("RequestTime")
+                    b.Property<TimeSpan?>("RequestTime")
                         .HasColumnType("time");
 
                     b.Property<int>("RequestTypeId")
@@ -841,9 +841,7 @@ namespace TrackingSystemAPI.Migrations
 
                     b.HasOne("TrackingSystemAPI.Models.ProjectType", "ProjectType")
                         .WithMany()
-                        .HasForeignKey("ProjectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectTypeId");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.ProjectDocument", b =>

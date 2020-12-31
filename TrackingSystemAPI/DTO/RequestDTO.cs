@@ -13,7 +13,7 @@ namespace TrackingSystemAPI.DTO
         public string Photo { get; set; }
         public string Description { get; set; }
         public DateTime RequestDate { get; set; }
-        public TimeSpan RequestTime { get; set; }
+        public string RequestTime { get; set; }
         public int RequestSubCategoryId { get; set; }
         public string  RequestSubCategoryName { get; set; }
         public int ClientId { get; set; }

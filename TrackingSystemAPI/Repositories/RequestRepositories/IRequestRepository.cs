@@ -11,6 +11,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
     {
         IEnumerable<RequestDTO> GetAll();
         RequestDTO GetById(int id);
+        IEnumerable<RequestDTO> GetProjectTeamsByProjectId(int ProjectId);
+        IEnumerable<RequestDTO> GetAllRequestByClientId(int ClientId);
         Request Find(int id);
         void Add(RequestDTO requestDTO);
         void Update(RequestDTO requestDTO);

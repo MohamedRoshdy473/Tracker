@@ -12,6 +12,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
         IEnumerable<ProjectDTO> GetAll();
         ProjectDTO GetById(int id);
         IEnumerable<ProjectDTO> GetProjectsByClientId(int ClientId);
+        IEnumerable<ClientDTO> GetClientByProjectId(int ProjectId);
         Project Find(int id);
         int Add(ProjectDTO projectDTO);
         void Update(ProjectDTO projectDTO);

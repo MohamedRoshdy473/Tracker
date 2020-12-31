@@ -159,5 +159,14 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             }).ToList();
             return pro;
         }
+        public IEnumerable<ClientDTO> GetClientByProjectId(int ProjectId)
+        {
+            var clientDTO = _context.projects.Where(c => c.Id == ProjectId).Select(client => new ClientDTO
+            {
+                ClientName = client.Client.ClientName,
+                Id = client.ClientId
+            }).ToList();
+            return clientDTO;
+        }
     }
 }
