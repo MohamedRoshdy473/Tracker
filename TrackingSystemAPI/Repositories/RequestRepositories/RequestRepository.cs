@@ -161,5 +161,39 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<RequestDTO> GetAllRequestByClientId(int ClientId)
+        {
+            var requests=_context.requests.Where(r=>r.ClientId==ClientId).Include(r => r.Project).Include(r => r.RequestPeriority)
+                                             .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
+                                             .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                             .Include(r => r.Asset).Select(req => new RequestDTO
+                                             {
+                                                 Id = req.Id,
+                                                 RequestName = req.RequestName,
+                                                 RequestCode = req.RequestCode,
+                                                 Description = req.Description,
+                                                 RequestDate = req.RequestDate,
+                                                 RequestTime = req.RequestTime.ToString(),
+                                                 Photo = req.Photo,
+                                                 RequestModeId = req.RequestModeId,
+                                                 RequestMode = req.RequestMode.Mode,
+                                                 AssetId = req.AssetId,
+                                                 AssetCode = req.Asset.AssetCode,
+                                                 ClientId = req.ClientId,
+                                                 ClientName = req.Client.ClientName,
+                                                 RequestSubCategoryId = req.RequestSubCategoryId,
+                                                 RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
+                                                 ProjectId = req.ProjectId,
+                                                 ProjectName = req.Project.ProjectName,
+                                                 RequestStatusId = req.RequestStatusId,
+                                                 RequestStatus = req.RequestStatus.status,
+                                                 RequestPeriorityId = req.RequestPeriorityId,
+                                                 RequestPeriority = req.RequestPeriority.periorty,
+                                                 RequestTypeId = req.RequestTypeId,
+                                                 RequestTypeName = req.RequestType.RequestTypeName
+                                             }).ToList();
+            return requests;
+        }
     }
 }
