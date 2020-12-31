@@ -29,6 +29,12 @@ namespace TrackingSystemAPI.Controllers
             return _requestRepository.GetAll();
         }
 
+        [HttpGet]
+        [Route("GetAllRequestByClientId/{ClientId}")]
+        public IEnumerable<RequestDTO> GetAllRequestByClientId(int ClientId)
+        {
+            return _requestRepository.GetAllRequestByClientId(ClientId);
+        }
         // GET: api/Request/5
         [HttpGet("{id}")]
         public ActionResult<RequestDTO> GetRequestDTO(int id)

@@ -10,8 +10,8 @@ using TrackingSystemAPI.Models;
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201231105705_db")]
-    partial class db
+    [Migration("20201231130300_db4")]
+    partial class db4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -634,6 +634,31 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("requestCategories");
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.Models.RequestDescription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("requestDescriptions");
+                });
+
             modelBuilder.Entity("TrackingSystemAPI.Models.RequestMode", b =>
                 {
                     b.Property<int>("Id")
@@ -940,6 +965,19 @@ namespace TrackingSystemAPI.Migrations
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TrackingSystemAPI.Models.RequestDescription", b =>
+                {
+                    b.HasOne("TrackingSystemAPI.Models.Request", "Request")
+                        .WithMany()
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.RequestSubCategory", b =>
