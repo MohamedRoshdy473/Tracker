@@ -17,12 +17,13 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         }
         public void Add(RequestDTO requestDTO)
         {
+            var dtStartTime = DateTime.Parse(requestDTO.RequestTime).ToString("HH:mm:ss");
             Request request = new Request();
             request.RequestName = requestDTO.RequestName;
             request.RequestCode = requestDTO.RequestCode;
             request.Description = requestDTO.Description;
             request.RequestDate = requestDTO.RequestDate;
-            request.RequestTime = requestDTO.RequestTime;
+            request.RequestTime = TimeSpan.Parse(dtStartTime);
             request.Photo = requestDTO.Photo;
             request.RequestModeId = requestDTO.RequestModeId;
             request.AssetId = requestDTO.AssetId;
@@ -56,7 +57,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  RequestCode = req.RequestCode,
                                                  Description = req.Description,
                                                  RequestDate = req.RequestDate,
-                                                 RequestTime = req.RequestTime,
+                                                 RequestTime = req.RequestTime.ToString(),
                                                  Photo = req.Photo,
                                                  RequestModeId = req.RequestModeId,
                                                  RequestMode =req.RequestMode.Mode,
@@ -91,7 +92,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                 RequestCode = req.RequestCode,
                 Description = req.Description,
                 RequestDate = req.RequestDate,
-                RequestTime = req.RequestTime,
+                RequestTime = req.RequestTime.ToString(),
                 Photo = req.Photo,
                 RequestModeId = req.RequestModeId,
                 RequestMode = req.RequestMode.Mode,
@@ -126,7 +127,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.RequestCode = requestDTO.RequestCode;
             request.Description = requestDTO.Description;
             request.RequestDate = requestDTO.RequestDate;
-            request.RequestTime = requestDTO.RequestTime;
+            request.RequestTime = TimeSpan.Parse(requestDTO.RequestTime);
             request.Photo = requestDTO.Photo;
             request.RequestModeId = requestDTO.RequestModeId;
             request.AssetId = requestDTO.AssetId;
@@ -154,6 +155,11 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public IEnumerable<RequestDTO> GetProjectTeamsByProjectId(int ProjectId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

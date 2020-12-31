@@ -29,6 +29,8 @@ using TrackingSystemAPI.Repositories.RequestSubCategoryRepositories;
 using TrackingSystemAPI.Repositories.RequestTypeRepositories;
 using TrackingSystemAPI.Repositories.StackeholdersRepositories;
 using Microsoft.AspNetCore.Http.Features;
+using TrackingSystemAPI.Repositories.AssetRepositories;
+using TrackingSystemAPI.Repositories.RequestModeRepositories;
 
 namespace TrackingSystemAPI
 {
@@ -75,6 +77,9 @@ namespace TrackingSystemAPI
             services.AddScoped<IRequestSubCategoryRepository, RequestSubCategoryRepository>();
             services.AddScoped<IRequestTypeRepository, RequestTypeRepository>();
             services.AddScoped<IStackeholdersRepository, StackeholdersRepository>();
+            services.AddScoped<IAssetRepository, AssetRepository>();
+            services.AddScoped<IRequestModeRepository, RequestModeRepository>();
+
 
             // Adding Authentication  
             services.AddAuthentication(options =>

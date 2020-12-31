@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrackingSystemAPI.Models;
 
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201231085947_db16")]
+    partial class db16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -585,8 +587,8 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("RequestSubCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan?>("RequestTime")
-                        .HasColumnType("time");
+                    b.Property<string>("RequestTime")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RequestTypeId")
                         .HasColumnType("int");
