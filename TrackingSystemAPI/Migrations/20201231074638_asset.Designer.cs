@@ -10,13 +10,10 @@ using TrackingSystemAPI.Models;
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231092757_db17.Designer.cs
     [Migration("20201231092757_db17")]
-    partial class db17
-=======
-    [Migration("20201231074638_asset")]
+
+    //[Migration("20201231074638_asset")]
     partial class asset
->>>>>>> 9f874038d4b877f3851d88181df1f3e103498888:TrackingSystemAPI/Migrations/20201231074638_asset.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
