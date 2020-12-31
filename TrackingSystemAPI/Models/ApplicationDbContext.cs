@@ -44,8 +44,11 @@ namespace TrackingSystemAPI.Models
         public DbSet<ProjectType> projectTypes { get; set; }
         public DbSet<RequestMode> requestModes { get; set; }
         public DbSet<Asset> assets { get; set; }
+        public DbSet<RequestDescription> requestDescriptions { get; set; }
 
         
+
+
 
 
 

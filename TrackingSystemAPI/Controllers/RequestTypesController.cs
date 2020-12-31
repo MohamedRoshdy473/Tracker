@@ -14,18 +14,12 @@ namespace TrackingSystemAPI.Controllers
     [ApiController]
     public class RequestTypesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly IRequestTypeRepository _requestTypeRepository;
 
         public RequestTypesController(IRequestTypeRepository requestTypeRepository)
         {
             _requestTypeRepository = requestTypeRepository;
         }
-        //public RequestTypesController(ApplicationDbContext context)
-        //{
-        //    _context = context;
-        //}
-
         // GET: api/RequestTypes
         [HttpGet]
         public IEnumerable<RequestType> GetrequestTypes()
@@ -36,9 +30,9 @@ namespace TrackingSystemAPI.Controllers
 
         // GET: api/RequestTypes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RequestType>> GetRequestType(int id)
+        public ActionResult<RequestType> GetRequestType(int id)
         {
-            var requestType = await _context.requestTypes.FindAsync(id);
+            var requestType = _requestTypeRepository.GetById(id);
 
             if (requestType == null)
             {
@@ -59,22 +53,15 @@ namespace TrackingSystemAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(requestType).State = EntityState.Modified;
+            _requestTypeRepository.Update(requestType);
 
             try
             {
-                await _context.SaveChangesAsync();
+                _requestTypeRepository.Save();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
-                if (!RequestTypeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                string msg = ex.Message;
             }
 
             return NoContent();
@@ -84,33 +71,27 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<RequestType>> PostRequestType(RequestType requestType)
+        public ActionResult<RequestType> PostRequestType(RequestType requestType)
         {
-            _context.requestTypes.Add(requestType);
-            await _context.SaveChangesAsync();
-
+            _requestTypeRepository.Add(requestType);
+            _requestTypeRepository.Save();
             return CreatedAtAction("GetRequestType", new { id = requestType.Id }, requestType);
         }
 
         // DELETE: api/RequestTypes/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<RequestType>> DeleteRequestType(int id)
+        public ActionResult<RequestType> DeleteRequestType(int id)
         {
-            var requestType = await _context.requestTypes.FindAsync(id);
+            var requestType = _requestTypeRepository.Find(id);
             if (requestType == null)
             {
                 return NotFound();
             }
 
-            _context.requestTypes.Remove(requestType);
-            await _context.SaveChangesAsync();
+            _requestTypeRepository.Delete(id);
+            _requestTypeRepository.Save();
 
             return requestType;
-        }
-
-        private bool RequestTypeExists(int id)
-        {
-            return _context.requestTypes.Any(e => e.Id == id);
         }
     }
 }

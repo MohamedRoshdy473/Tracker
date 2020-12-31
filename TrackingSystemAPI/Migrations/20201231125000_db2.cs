@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrackingSystemAPI.Migrations
 {
-    public partial class db : Migration
+    public partial class db2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -188,11 +188,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -213,11 +209,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -237,11 +229,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -259,21 +247,13 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -293,11 +273,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -326,11 +302,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "departments",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -350,11 +322,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "departments",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
                         onDelete: ReferentialAction.Cascade);
-=======
-                        onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -399,7 +367,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.RequestCategoryId,
                         principalTable: "requestCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -430,13 +398,13 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.ClientId,
                         principalTable: "clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_projects_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_projects_organizations_OrganizationId",
                         column: x => x.OrganizationId,
@@ -471,7 +439,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.ProjectId,
                         principalTable: "projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -493,7 +461,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.ProjectId,
                         principalTable: "projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -566,21 +534,13 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.AssetId,
                         principalTable: "assets",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
-                        onDelete: ReferentialAction.Cascade);
-=======
                         onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                     table.ForeignKey(
                         name: "FK_requests_clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "clients",
                         principalColumn: "Id",
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.cs
-                        onDelete: ReferentialAction.Cascade);
-=======
                         onDelete: ReferentialAction.NoAction);
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.cs
                     table.ForeignKey(
                         name: "FK_requests_projects_ProjectId",
                         column: x => x.ProjectId,
@@ -593,12 +553,6 @@ namespace TrackingSystemAPI.Migrations
                         principalTable: "requestModes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
-                    table.ForeignKey(
-                        name: "FK_requests_requestModes_RequestModeId",
-                        column: x => x.RequestModeId,
-                        principalTable: "requestModes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_requests_requestPeriorities_RequestPeriorityId",
                         column: x => x.RequestPeriorityId,
@@ -645,7 +599,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.ProjectId,
                         principalTable: "projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
