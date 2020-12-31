@@ -10,8 +10,8 @@ using TrackingSystemAPI.Models;
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201230113659_insertcolumnclientidtorequest")]
-    partial class insertcolumnclientidtorequest
+    [Migration("20201231074638_asset")]
+    partial class asset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -437,7 +437,7 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("ProjectPeriod")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectTypeId")
+                    b.Property<int?>("ProjectTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -843,9 +843,7 @@ namespace TrackingSystemAPI.Migrations
 
                     b.HasOne("TrackingSystemAPI.Models.ProjectType", "ProjectType")
                         .WithMany()
-                        .HasForeignKey("ProjectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectTypeId");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.ProjectDocument", b =>

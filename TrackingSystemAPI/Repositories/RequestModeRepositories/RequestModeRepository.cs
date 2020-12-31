@@ -7,7 +7,7 @@ using TrackingSystemAPI.Models;
 
 namespace TrackingSystemAPI.Repositories.RequestModeRepositories
 {
-    public class RequestModeRepository
+    public class RequestModeRepository:IRequestModeRepository
     {
         private readonly ApplicationDbContext _context;
         public RequestModeRepository(ApplicationDbContext context)

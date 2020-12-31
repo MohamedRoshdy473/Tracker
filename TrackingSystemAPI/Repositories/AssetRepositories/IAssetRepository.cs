@@ -11,8 +11,8 @@ namespace TrackingSystemAPI.Repositories.AssetRepositories
         IEnumerable<Asset> GetAll();
         Asset GetById(int id);
         Asset Find(int id);
-        void Add(Asset Asset);
-        void Update(Asset Asset);
+        void Add(Asset asset);
+        void Update(Asset asset);
         void Delete(int id);
         void Save();
     }
