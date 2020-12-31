@@ -48,6 +48,12 @@ namespace TrackingSystemAPI.Controllers
         {
            return _projectRepository.GetProjectsByClientId(ClientId);
         }
+        [HttpGet]
+        [Route("GetClientByProjectId/{ProjectId}")]
+        public IEnumerable<ClientDTO> GetClientByProjectId(int ProjectId)
+        {
+            return _projectRepository.GetClientByProjectId(ProjectId);
+        }
         // PUT: api/Project/5
         [HttpPut("{id}")]
         public IActionResult PutProjectDTO(int id, ProjectDTO projectDTO)
