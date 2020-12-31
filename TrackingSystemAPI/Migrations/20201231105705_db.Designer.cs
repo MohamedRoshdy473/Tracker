@@ -10,8 +10,8 @@ using TrackingSystemAPI.Models;
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201227103246_db12")]
-    partial class db12
+    [Migration("20201231105705_db")]
+    partial class db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -152,33 +152,6 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TrackingSystemAPI.DTO.ProjectDocumentDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DocumentFile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DocumentName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectDocumentDTO");
-                });
-
             modelBuilder.Entity("TrackingSystemAPI.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -242,6 +215,24 @@ namespace TrackingSystemAPI.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("TrackingSystemAPI.Models.Asset", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssetCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("assets");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.Client", b =>
@@ -446,7 +437,7 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("ProjectPeriod")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectTypeId")
+                    b.Property<int?>("ProjectTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -522,6 +513,9 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("ProjectPositionId")
                         .HasColumnType("int");
 
+                    b.Property<string>("teamName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
@@ -557,6 +551,12 @@ namespace TrackingSystemAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AssetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -568,6 +568,12 @@ namespace TrackingSystemAPI.Migrations
 
                     b.Property<string>("RequestCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RequestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RequestModeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("RequestName")
                         .HasColumnType("nvarchar(max)");
@@ -581,12 +587,21 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("RequestSubCategoryId")
                         .HasColumnType("int");
 
+                    b.Property<TimeSpan?>("RequestTime")
+                        .HasColumnType("time");
+
                     b.Property<int>("RequestTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AssetId");
+
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("ProjectId");
+
+                    b.HasIndex("RequestModeId");
 
                     b.HasIndex("RequestPeriorityId");
 
@@ -617,6 +632,21 @@ namespace TrackingSystemAPI.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("requestCategories");
+                });
+
+            modelBuilder.Entity("TrackingSystemAPI.Models.RequestMode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Mode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("requestModes");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.RequestPeriority", b =>
@@ -813,9 +843,7 @@ namespace TrackingSystemAPI.Migrations
 
                     b.HasOne("TrackingSystemAPI.Models.ProjectType", "ProjectType")
                         .WithMany()
-                        .HasForeignKey("ProjectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectTypeId");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.ProjectDocument", b =>
@@ -856,9 +884,27 @@ namespace TrackingSystemAPI.Migrations
 
             modelBuilder.Entity("TrackingSystemAPI.Models.Request", b =>
                 {
+                    b.HasOne("TrackingSystemAPI.Models.Asset", "Asset")
+                        .WithMany()
+                        .HasForeignKey("AssetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TrackingSystemAPI.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.RequestMode", "RequestMode")
+                        .WithMany()
+                        .HasForeignKey("RequestModeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

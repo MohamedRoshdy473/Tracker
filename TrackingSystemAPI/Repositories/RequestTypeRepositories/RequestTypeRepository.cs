@@ -29,7 +29,8 @@ namespace TrackingSystemAPI.Repositories.RequestTypeRepositories
 
         public IEnumerable<RequestType> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.requestTypes.ToList();
+
         }
 
         public RequestType GetById(int id)

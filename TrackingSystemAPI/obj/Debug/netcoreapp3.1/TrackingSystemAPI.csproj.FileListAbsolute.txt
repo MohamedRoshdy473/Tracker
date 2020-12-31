@@ -803,7 +803,6 @@ E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.Views.dll
-E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.Views.pdb
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.json
