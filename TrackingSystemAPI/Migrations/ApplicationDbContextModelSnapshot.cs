@@ -585,7 +585,7 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("RequestSubCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("RequestTime")
+                    b.Property<TimeSpan?>("RequestTime")
                         .HasColumnType("time");
 
                     b.Property<int>("RequestTypeId")

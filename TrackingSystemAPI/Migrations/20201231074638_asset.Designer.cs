@@ -10,7 +10,9 @@ using TrackingSystemAPI.Models;
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201231074638_asset")]
+    [Migration("20201231092757_db17")]
+
+    //[Migration("20201231074638_asset")]
     partial class asset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -587,7 +589,7 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("RequestSubCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("RequestTime")
+                    b.Property<TimeSpan?>("RequestTime")
                         .HasColumnType("time");
 
                     b.Property<int>("RequestTypeId")
