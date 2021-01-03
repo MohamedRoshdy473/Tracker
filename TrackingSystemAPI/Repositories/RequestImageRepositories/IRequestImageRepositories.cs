@@ -12,7 +12,7 @@ namespace TrackingSystemAPI.Repositories.RequestImageRepositories
         IEnumerable<requestImages> GetAll();
         requestImages GetById(int id);
         requestImages Find(int id);
-        void Add(requestImages request);
+        void Add(List<RequestImageDTO> request);
         void Save();
     }
 }

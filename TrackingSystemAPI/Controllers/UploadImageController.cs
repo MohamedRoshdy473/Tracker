@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,48 +16,40 @@ namespace TrackingSystemAPI.Controllers
     [ApiController]
     public class UploadImageController : ControllerBase
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public UploadImageController(IHostingEnvironment hostingEnvironment)
+        [HttpPost, DisableRequestSizeLimit]
+        [Route("uploadimage")]
+        public IActionResult Upload()
         {
-            _hostingEnvironment = hostingEnvironment;
-        }
-        [HttpPost]
-        [Route("imageupload")]
-        public async Task<IActionResult> index(List<IFormFile> files)
-        {
-            if (files == null || files.Count == 0)
-                return Content("file not selected");
-            long size = files.Sum(f => f.Length);
-
-            var filePaths = new List<string>();
-            foreach (var formFile in files)
+            try
             {
-                if (formFile.Length > 0)
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("wwwroot", "requestImage");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if (file.Length > 0)
                 {
-                    // full path to file in temp location
-                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(folderName, fileName);
 
-                    filePaths.Add(filePath);
-
-                    var fileNameWithPath = string.Concat(filePath, "\\", formFile.FileName);
-
-                    using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        await formFile.CopyToAsync(stream);
+                        file.CopyTo(stream);
                     }
+
+                    return Ok(new { dbPath });
+                }
+                else
+                {
+                    return BadRequest();
                 }
             }
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
-            return Ok(new { count = files.Count, size, filePaths });
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"the error is {ex.Message}");
+            }
         }
-
-
-
-
-
-
 
 
 

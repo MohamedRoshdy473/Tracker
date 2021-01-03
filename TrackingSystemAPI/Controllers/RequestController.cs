@@ -78,12 +78,12 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public ActionResult<RequestDTO> PostRequestDTO(RequestDTO requestDTO)
+        public int PostRequestDTO(RequestDTO requestDTO)
         {
-            _requestRepository.Add(requestDTO);
-            _requestRepository.Save();
-
-            return CreatedAtAction("GetRequestDTO", new { id = requestDTO.Id }, requestDTO);
+            return _requestRepository.Add(requestDTO);
+            // _requestRepository.Save();
+  
+            //return CreatedAtAction("GetRequestDTO", new { id = requestDTO.Id }, requestDTO);
         }
 
         // DELETE: api/Request/5
