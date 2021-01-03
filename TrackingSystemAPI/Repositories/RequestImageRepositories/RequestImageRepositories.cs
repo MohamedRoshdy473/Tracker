@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrackingSystemAPI.DTO;
 using TrackingSystemAPI.Models;
 
 namespace TrackingSystemAPI.Repositories.RequestImageRepositories
@@ -16,9 +17,18 @@ namespace TrackingSystemAPI.Repositories.RequestImageRepositories
         }
        
 
-        public void Add(requestImages requestImages)
+        public void Add(List<RequestImageDTO> requestImageDTOs)
         {
-            _context.requestImages.Add(requestImages);
+
+            foreach (var item in requestImageDTOs)
+            {
+                requestImages requestImages = new requestImages();
+                requestImages.Id = item.Id;
+                requestImages.requestId = item.requestId;
+                requestImages.imageName = item.imageName;
+             
+                _context.Add(requestImages);
+            }
 
         }
         IEnumerable<requestImages> IRequestImageRepositories.GetAll()
