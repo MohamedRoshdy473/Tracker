@@ -174,7 +174,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  RequestCode = req.RequestCode,
                                                  Description = req.Description,
                                                  RequestDate = req.RequestDate,
-                                                 RequestTime = req.RequestTime.ToString(),
+                                                 RequestTime =( req.RequestTime.Value.Hours+":"+ req.RequestTime.Value.Minutes.ToString().PadLeft(2,'0')).ToString(),
                                                  Photo = req.Photo,
                                                  RequestModeId = req.RequestModeId,
                                                  RequestMode = req.RequestMode.Mode,

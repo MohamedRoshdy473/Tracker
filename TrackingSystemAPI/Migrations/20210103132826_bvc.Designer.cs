@@ -10,12 +10,8 @@ using TrackingSystemAPI.Models;
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<< HEAD:TrackingSystemAPI/Migrations/20201231111748_db.Designer.cs
-    [Migration("20201231111748_db")]
-=======
-    [Migration("20201231105705_db")]
->>>>>>> d4398c36017ef1009b235d713a89058a73e282ee:TrackingSystemAPI/Migrations/20201231105705_db.Designer.cs
-    partial class db
+    [Migration("20210103132826_bvc")]
+    partial class bvc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -392,6 +388,12 @@ namespace TrackingSystemAPI.Migrations
 
                     b.Property<string>("ResponsiblePerson")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("lat")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("lng")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
