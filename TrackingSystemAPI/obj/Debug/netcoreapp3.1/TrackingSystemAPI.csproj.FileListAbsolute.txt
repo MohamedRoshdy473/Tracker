@@ -804,6 +804,8 @@ E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.Views.dll
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
+D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libe_sqlite3.so
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfoInputs.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfo.cs
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.CoreCompileInputs.cache
@@ -948,8 +950,6 @@ D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\l
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-armel\native\libe_sqlite3.so
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-musl-x64\native\libe_sqlite3.so
-D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libe_sqlite3.so
-D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libe_sqlite3.so
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libe_sqlite3.dylib
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\e_sqlite3.dll
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll

@@ -88,18 +88,18 @@ namespace TrackingSystemAPI.Controllers
 
         // DELETE: api/RequestImages/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<RequestImageDTO>> DeleteRequestImageDTO(int id)
+        public async Task<ActionResult<requestImages>> DeleteRequestImageDTO(int id)
         {
-            var requestImageDTO = await _context.RequestImageDTO.FindAsync(id);
+            var requestImageDTO = await _context.requestImages.FindAsync(id);
             if (requestImageDTO == null)
             {
                 return NotFound();
             }
 
-            _context.RequestImageDTO.Remove(requestImageDTO);
+            _context.requestImages.Remove(requestImageDTO);
             await _context.SaveChangesAsync();
 
-            return requestImageDTO;
+            return Ok();
         }
 
 

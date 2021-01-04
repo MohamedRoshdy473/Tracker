@@ -46,7 +46,8 @@ namespace TrackingSystemAPI.Models
         public DbSet<Asset> assets { get; set; }
         public DbSet<RequestDescription> requestDescriptions { get; set; }
         public DbSet<requestImages> requestImages { get; set; }
-        public DbSet<TrackingSystemAPI.DTO.RequestImageDTO> RequestImageDTO { get; set; }
+        public DbSet<AssignedRequests> assignedRequests { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.AssignedRequestsDTO> AssignedRequestsDTO { get; set; }
 
 
 
