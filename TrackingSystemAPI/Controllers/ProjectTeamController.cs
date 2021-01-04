@@ -50,6 +50,7 @@ namespace TrackingSystemAPI.Controllers
         [HttpGet]
         [Route("GetProjectTeamsByProjectPositionId/{ProjectPositionId}")]
         public IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectPositionId(int ProjectPositionId)
+        
         {
             return _projectTeamRepository.GetProjectTeamsByProjectPositionId(ProjectPositionId);
         }

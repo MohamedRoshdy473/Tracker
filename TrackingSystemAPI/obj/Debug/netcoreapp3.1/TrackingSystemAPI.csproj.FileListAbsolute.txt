@@ -957,10 +957,8 @@ D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreap
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 <<<<<<< HEAD
-<<<<<<< HEAD
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.Manifest.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.xml
-=======
 =======
 >>>>>>> accb2850d810993f9058cdb39aab070d091a5a78
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
