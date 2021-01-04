@@ -17,10 +17,7 @@ namespace TrackingSystemAPI.Models
         public string Address { get; set; }
         public string ResponsiblePerson { get; set; }
         public string Location { get; set; }
-
         public float? lat { get; set; }
         public float? lng { get; set; }
-
-
     }
 }
