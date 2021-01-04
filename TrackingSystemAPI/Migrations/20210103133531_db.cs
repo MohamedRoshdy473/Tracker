@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrackingSystemAPI.Migrations
 {
-    public partial class db2 : Migration
+    public partial class db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -119,6 +119,20 @@ namespace TrackingSystemAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RequestImageDTO",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    imageName = table.Column<string>(nullable: true),
+                    requestId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RequestImageDTO", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "requestModes",
                 columns: table => new
                 {
@@ -168,6 +182,19 @@ namespace TrackingSystemAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_requestTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "teams",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_teams", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -470,11 +497,11 @@ namespace TrackingSystemAPI.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    teamName = table.Column<string>(nullable: true),
                     EmployeeId = table.Column<int>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false),
                     DepartmentId = table.Column<int>(nullable: false),
-                    ProjectPositionId = table.Column<int>(nullable: false)
+                    ProjectPositionId = table.Column<int>(nullable: false),
+                    TeamId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -484,7 +511,7 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "departments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_projectTeams_Employees_EmployeeId",
                         column: x => x.EmployeeId,
@@ -501,6 +528,12 @@ namespace TrackingSystemAPI.Migrations
                         name: "FK_projectTeams_projectPositions_ProjectPositionId",
                         column: x => x.ProjectPositionId,
                         principalTable: "projectPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_projectTeams_teams_TeamId",
+                        column: x => x.TeamId,
+                        principalTable: "teams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
@@ -534,13 +567,13 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.AssetId,
                         principalTable: "assets",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_requests_clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "clients",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_requests_projects_ProjectId",
                         column: x => x.ProjectId,
@@ -599,7 +632,54 @@ namespace TrackingSystemAPI.Migrations
                         column: x => x.ProjectId,
                         principalTable: "projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "requestDescriptions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(nullable: true),
+                    RequestId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_requestDescriptions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_requestDescriptions_requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_requestDescriptions_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "requestImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    imageName = table.Column<string>(nullable: true),
+                    requestId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_requestImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_requestImages_requests_requestId",
+                        column: x => x.requestId,
+                        principalTable: "requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -702,9 +782,29 @@ namespace TrackingSystemAPI.Migrations
                 column: "ProjectPositionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_projectTeams_TeamId",
+                table: "projectTeams",
+                column: "TeamId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_requestCategories_DepartmentId",
                 table: "requestCategories",
                 column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_requestDescriptions_RequestId",
+                table: "requestDescriptions",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_requestDescriptions_UserId",
+                table: "requestDescriptions",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_requestImages_requestId",
+                table: "requestImages",
+                column: "requestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_requests_AssetId",
@@ -784,7 +884,13 @@ namespace TrackingSystemAPI.Migrations
                 name: "projectTeams");
 
             migrationBuilder.DropTable(
-                name: "requests");
+                name: "requestDescriptions");
+
+            migrationBuilder.DropTable(
+                name: "RequestImageDTO");
+
+            migrationBuilder.DropTable(
+                name: "requestImages");
 
             migrationBuilder.DropTable(
                 name: "stackeholders");
@@ -793,13 +899,22 @@ namespace TrackingSystemAPI.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "projectPositions");
 
             migrationBuilder.DropTable(
+                name: "teams");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "requests");
+
+            migrationBuilder.DropTable(
                 name: "assets");
+
+            migrationBuilder.DropTable(
+                name: "projects");
 
             migrationBuilder.DropTable(
                 name: "requestModes");
@@ -817,12 +932,6 @@ namespace TrackingSystemAPI.Migrations
                 name: "requestTypes");
 
             migrationBuilder.DropTable(
-                name: "projects");
-
-            migrationBuilder.DropTable(
-                name: "requestCategories");
-
-            migrationBuilder.DropTable(
                 name: "clients");
 
             migrationBuilder.DropTable(
@@ -830,6 +939,9 @@ namespace TrackingSystemAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "projectTypes");
+
+            migrationBuilder.DropTable(
+                name: "requestCategories");
 
             migrationBuilder.DropTable(
                 name: "organizations");

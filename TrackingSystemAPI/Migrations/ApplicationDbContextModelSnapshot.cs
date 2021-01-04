@@ -529,8 +529,8 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("ProjectPositionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("teamName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -541,6 +541,8 @@ namespace TrackingSystemAPI.Migrations
                     b.HasIndex("ProjectId");
 
                     b.HasIndex("ProjectPositionId");
+
+                    b.HasIndex("TeamId");
 
                     b.ToTable("projectTeams");
                 });
@@ -784,6 +786,21 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("stackeholders");
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("teams");
+                });
+
             modelBuilder.Entity("TrackingSystemAPI.Models.requestImages", b =>
                 {
                     b.Property<int>("Id")
@@ -939,6 +956,12 @@ namespace TrackingSystemAPI.Migrations
                     b.HasOne("TrackingSystemAPI.Models.ProjectPosition", "ProjectPosition")
                         .WithMany()
                         .HasForeignKey("ProjectPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -23,10 +23,11 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             {
                 ProjectTeam projectTeam = new ProjectTeam();
                 projectTeam.EmployeeId = item.EmployeeId;
-                projectTeam.teamName = item.teamName;
+               // projectTeam.teamName = item.teamName;
                 projectTeam.ProjectId = item.ProjectId;
                 projectTeam.DepartmentId = item.DepartmentId;
                 projectTeam.ProjectPositionId = item.ProjectPositionId;
+                projectTeam.TeamId = item.TeamId;
                 _context.projectTeams.Add(projectTeam);
             }
         }
@@ -46,9 +47,10 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             var projectTeam = _context.projectTeams.Select(Pteam => new ProjectTeamDTO
             {
                 EmployeeId = Pteam.EmployeeId,
-                teamName = Pteam.teamName,
+               // teamName = Pteam.teamName,
                 EmployeeName = Pteam.Employee.EmployeeName,
                 ProjectId = Pteam.ProjectId,
+                TeamId=Pteam.TeamId,
                 ProjectName = Pteam.Project.ProjectName,
                 DepartmentId = Pteam.DepartmentId,
                 DepartmentName = Pteam.Department.Name,
@@ -67,9 +69,10 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             ProjectTeamDTO projectTeamDTO = new ProjectTeamDTO
             {
                 EmployeeId = projectTeam.EmployeeId,
-                teamName = projectTeam.teamName,
+              //  teamName = projectTeam.teamName,
                 EmployeeName = projectTeam.Employee.EmployeeName,
                 ProjectId = projectTeam.ProjectId,
+                TeamId=projectTeam.TeamId,
                 ProjectName = projectTeam.Project.ProjectName,
                 DepartmentId = projectTeam.DepartmentId,
                 DepartmentName = projectTeam.Department.Name,
@@ -84,7 +87,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             {
                 ID=projectTeam.Id,
                 EmployeeId = projectTeam.EmployeeId,
-                teamName = projectTeam.teamName,
+               // teamName = projectTeam.teamName,
+               TeamId=projectTeam.TeamId,
                 EmployeeName = projectTeam.Employee.EmployeeName,
                 ProjectId = projectTeam.ProjectId,
                 ProjectName = projectTeam.Project.ProjectName,
@@ -105,7 +109,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         {
             ProjectTeam projectTeam = new ProjectTeam();
             projectTeam.Id = projectTeamDTO.ID;
-            projectTeam.teamName = projectTeamDTO.teamName;
+            //  projectTeam.teamName = projectTeamDTO.teamName;
+            projectTeam.TeamId = projectTeamDTO.TeamId;
             projectTeam.EmployeeId = projectTeamDTO.EmployeeId;
             projectTeam.ProjectId = projectTeamDTO.ProjectId;
             projectTeam.DepartmentId = projectTeamDTO.DepartmentId;
@@ -138,7 +143,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
 
                 ProjectTeam projectTeam = new ProjectTeam();
                 projectTeam.Id = item.ID;
-                projectTeam.teamName = item.teamName;
+                //projectTeam.teamName = item.teamName;
+                projectTeam.TeamId = item.TeamId;
                 projectTeam.EmployeeId = item.EmployeeId;
                 item.ProjectId = ProjectId;
                 projectTeam.ProjectId = item.ProjectId;
