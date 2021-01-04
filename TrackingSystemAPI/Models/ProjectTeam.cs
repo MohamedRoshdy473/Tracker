@@ -10,7 +10,7 @@ namespace TrackingSystemAPI.Models
     {
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string teamName { get; set; }
+        //public string teamName { get; set; }
         public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }
@@ -23,5 +23,8 @@ namespace TrackingSystemAPI.Models
         public int ProjectPositionId { get; set; }
         [ForeignKey("ProjectPositionId")]
         public virtual ProjectPosition ProjectPosition { get; set; }
+        public int TeamId { get; set; }
+        [ForeignKey("TeamId")]
+        public virtual Team Team { get; set; }
     }
 }
