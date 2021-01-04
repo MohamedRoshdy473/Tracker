@@ -105,7 +105,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             {
                 ID = projectTeam.Id,
                 EmployeeId = projectTeam.EmployeeId,
-                teamName = projectTeam.teamName,
+                //teamName = projectTeam.teamName,
                 EmployeeName = projectTeam.Employee.EmployeeName,
                 ProjectId = projectTeam.ProjectId,
                 ProjectName = projectTeam.Project.ProjectName,
