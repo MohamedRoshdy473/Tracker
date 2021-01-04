@@ -15,16 +15,17 @@ namespace TrackingSystemAPI.Repositories.RequestTypeRepositories
         }
         public void Add(RequestType requestType)
         {
-            throw new NotImplementedException();
+            _context.requestTypes.Add(requestType);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            RequestType requestType = Find(id);
+            _context.requestTypes.Remove(requestType);
         }
         public RequestType Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.requestTypes.Find(id);
         }
 
         public IEnumerable<RequestType> GetAll()
@@ -35,12 +36,12 @@ namespace TrackingSystemAPI.Repositories.RequestTypeRepositories
 
         public RequestType GetById(int id)
         {
-            throw new NotImplementedException();
+           return _context.requestTypes.Where(r => r.Id == id).FirstOrDefault();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(RequestType requestType)

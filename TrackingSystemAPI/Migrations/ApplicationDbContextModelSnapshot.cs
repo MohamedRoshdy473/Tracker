@@ -233,6 +233,33 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("assets");
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.Models.AssignedRequests", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProjectPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectTeamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectPositionId");
+
+                    b.HasIndex("ProjectTeamId");
+
+                    b.HasIndex("RequestId");
+
+                    b.ToTable("assignedRequests");
+                });
+
             modelBuilder.Entity("TrackingSystemAPI.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -638,6 +665,31 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("requestCategories");
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.Models.RequestDescription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("requestDescriptions");
+                });
+
             modelBuilder.Entity("TrackingSystemAPI.Models.RequestMode", b =>
                 {
                     b.Property<int>("Id")
@@ -747,6 +799,26 @@ namespace TrackingSystemAPI.Migrations
                     b.ToTable("stackeholders");
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.Models.requestImages", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("imageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("requestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("requestId");
+
+                    b.ToTable("requestImages");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -794,6 +866,27 @@ namespace TrackingSystemAPI.Migrations
                     b.HasOne("TrackingSystemAPI.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TrackingSystemAPI.Models.AssignedRequests", b =>
+                {
+                    b.HasOne("TrackingSystemAPI.Models.ProjectPosition", "ProjectPosition")
+                        .WithMany()
+                        .HasForeignKey("ProjectPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.ProjectTeam", "ProjectTeam")
+                        .WithMany()
+                        .HasForeignKey("ProjectTeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.Request", "Request")
+                        .WithMany()
+                        .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -946,6 +1039,19 @@ namespace TrackingSystemAPI.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TrackingSystemAPI.Models.RequestDescription", b =>
+                {
+                    b.HasOne("TrackingSystemAPI.Models.Request", "Request")
+                        .WithMany()
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("TrackingSystemAPI.Models.RequestSubCategory", b =>
                 {
                     b.HasOne("TrackingSystemAPI.Models.RequestCategory", "RequestCategory")
@@ -960,6 +1066,15 @@ namespace TrackingSystemAPI.Migrations
                     b.HasOne("TrackingSystemAPI.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TrackingSystemAPI.Models.requestImages", b =>
+                {
+                    b.HasOne("TrackingSystemAPI.Models.Request", "Request")
+                        .WithMany()
+                        .HasForeignKey("requestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

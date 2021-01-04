@@ -31,6 +31,7 @@ using TrackingSystemAPI.Repositories.StackeholdersRepositories;
 using Microsoft.AspNetCore.Http.Features;
 using TrackingSystemAPI.Repositories.AssetRepositories;
 using TrackingSystemAPI.Repositories.RequestModeRepositories;
+using TrackingSystemAPI.Repositories.RequestImageRepositories;
 
 namespace TrackingSystemAPI
 {
@@ -79,6 +80,7 @@ namespace TrackingSystemAPI
             services.AddScoped<IStackeholdersRepository, StackeholdersRepository>();
             services.AddScoped<IAssetRepository, AssetRepository>();
             services.AddScoped<IRequestModeRepository, RequestModeRepository>();
+            services.AddScoped<IRequestImageRepositories, RequestImageRepositories>();
 
 
             // Adding Authentication  

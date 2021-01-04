@@ -15,10 +15,11 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             _context = context;
         }
-        public void Add(RequestDTO requestDTO)
+        public int Add(RequestDTO requestDTO)
         {
             var dtStartTime = DateTime.Parse(requestDTO.RequestTime).ToString("HH:mm:ss");
             Request request = new Request();
+
             request.RequestName = requestDTO.RequestName;
             request.RequestCode = requestDTO.RequestCode;
             request.Description = requestDTO.Description;
@@ -34,6 +35,9 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.RequestPeriorityId = requestDTO.RequestPeriorityId;
             request.RequestTypeId = requestDTO.RequestTypeId;
             _context.requests.Add(request);
+            _context.SaveChanges();
+            return request.Id;
+
         }
         public void Delete(int id)
         {
