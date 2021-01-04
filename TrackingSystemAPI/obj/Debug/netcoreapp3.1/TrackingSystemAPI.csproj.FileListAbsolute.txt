@@ -958,7 +958,16 @@ D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_s
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+<<<<<<< HEAD
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfoInputs.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfo.cs
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.CoreCompileInputs.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.Manifest.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.xml
+=======
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
+>>>>>>> bd78bf017c3408d0f7b49b17b52f5b4344761964
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.RazorTargetAssemblyInfo.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.CopyComplete
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\staticwebassets\TrackingSystemAPI.StaticWebAssets.Manifest.cache

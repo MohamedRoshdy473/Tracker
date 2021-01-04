@@ -414,6 +414,12 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<string>("ResponsiblePerson")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float?>("lat")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("lng")
+                        .HasColumnType("real");
+
                     b.HasKey("Id");
 
                     b.ToTable("organizations");
