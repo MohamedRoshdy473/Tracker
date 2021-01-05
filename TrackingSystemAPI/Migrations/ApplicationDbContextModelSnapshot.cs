@@ -264,10 +264,10 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<int>("ProjectPositionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectTeamId")
+                    b.Property<int>("RequestId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RequestId")
+                    b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -276,9 +276,9 @@ namespace TrackingSystemAPI.Migrations
 
                     b.HasIndex("ProjectPositionId");
 
-                    b.HasIndex("ProjectTeamId");
-
                     b.HasIndex("RequestId");
+
+                    b.HasIndex("TeamId");
 
                     b.ToTable("assignedRequests");
                 });
@@ -924,15 +924,15 @@ namespace TrackingSystemAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrackingSystemAPI.Models.ProjectTeam", "ProjectTeam")
-                        .WithMany()
-                        .HasForeignKey("ProjectTeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("TrackingSystemAPI.Models.Request", "Request")
                         .WithMany()
                         .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrackingSystemAPI.Models.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

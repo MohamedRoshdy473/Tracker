@@ -19,7 +19,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         public void Add(AssignedRequestsDTO assignedRequestsDTO)
         {
             AssignedRequests assignedRequests = new AssignedRequests();
-            assignedRequests.ProjectTeamId = assignedRequestsDTO.ProjectTeamId;
+            assignedRequests.TeamId = assignedRequestsDTO.TeamId;
             assignedRequests.EmployeeId = assignedRequestsDTO.EmployeeId;
             assignedRequests.ProjectPositionId = assignedRequestsDTO.ProjectPositionId;
             assignedRequests.RequestId = assignedRequestsDTO.RequestId;
@@ -38,16 +38,15 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
 
         public IEnumerable<AssignedRequestsDTO> GetAll()
         {
-            var AssignedRequests = _context.assignedRequests.Include(a => a.ProjectPosition).Include(a => a.ProjectTeam).Include(a => a.Request)
+            var AssignedRequests = _context.assignedRequests.Include(a => a.ProjectPosition).Include(a => a.Team).Include(a => a.Request)
                  .Select(assign => new AssignedRequestsDTO
                  {
                      Id = assign.Id,
-                     EmployeeId = assign.ProjectTeam.EmployeeId,
-                     EmployeeName = assign.ProjectTeam.Employee.EmployeeName,
-                     //ProjectId = assign.Request.ProjectId,
+                     EmployeeId = assign.EmployeeId,
+                     EmployeeName = assign.Employee.EmployeeName,
                      ProjectName = assign.Request.Project.ProjectName,
-                     ProjectTeamId = assign.ProjectTeamId,
-                     //ProjectTeamName = assign.ProjectTeam.teamName,
+                     TeamId = assign.TeamId,
+                     TeamName = assign.Team.Name,
                      ProjectPositionId = assign.ProjectPositionId,
                      ProjectPositionName = assign.ProjectPosition.PositionName,
                      RequestId = assign.RequestId,
@@ -59,17 +58,16 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         public AssignedRequestsDTO GetById(int id)
         {
             var assign = _context.assignedRequests.Include(a => a.ProjectPosition).Include(a=>a.Employee)
-                                .Include(a => a.ProjectTeam).Include(a => a.Request)
+                                .Include(a => a.Team).Include(a => a.Request)
                                 .Where(a => a.Id == id).FirstOrDefault();
             var assignedRequestsDTO = new AssignedRequestsDTO
             {
                 Id = assign.Id,
-                EmployeeId = assign.ProjectTeam.EmployeeId,
-                EmployeeName = assign.ProjectTeam.Employee.EmployeeName,
-                //ProjectId = assign.Request.ProjectId,
+                EmployeeId = assign.EmployeeId,
+                EmployeeName = assign.Employee.EmployeeName,
                 ProjectName = assign.Request.Project.ProjectName,
-                ProjectTeamId = assign.ProjectTeamId,
-              //  ProjectTeamName = assign.ProjectTeam.teamName,
+                TeamId = assign.TeamId,
+                TeamName = assign.Team.Name,
                 ProjectPositionId = assign.ProjectPositionId,
                 ProjectPositionName = assign.ProjectPosition.PositionName,
                 RequestId = assign.RequestId,
@@ -86,7 +84,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         public void Update(AssignedRequestsDTO assignedRequestsDTO)
         {
             AssignedRequests assignedRequests = new AssignedRequests();
-            assignedRequests.ProjectTeamId = assignedRequestsDTO.ProjectTeamId;
+            assignedRequests.TeamId = assignedRequestsDTO.TeamId;
             assignedRequests.RequestId = assignedRequestsDTO.RequestId;
             _context.Entry(assignedRequests).State = EntityState.Modified;
         }

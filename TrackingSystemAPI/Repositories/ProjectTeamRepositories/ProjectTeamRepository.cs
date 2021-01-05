@@ -170,5 +170,15 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
                 _context.Entry(projectTeam).State = EntityState.Modified;
             }
         }
+
+        public IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId)
+        {
+            var Employees = _context.projectTeams.Where(p => p.TeamId == TeamId).Select(projectTeam => new ProjectTeamDTO
+            {
+                EmployeeId = projectTeam.EmployeeId,
+                EmployeeName = projectTeam.Employee.EmployeeName,
+            }).ToList();
+            return Employees;
+        }
     }
 }

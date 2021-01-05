@@ -12,9 +12,9 @@ namespace TrackingSystemAPI.Models
         public int ProjectPositionId { get; set; }
         [ForeignKey("ProjectPositionId")]
         public virtual ProjectPosition ProjectPosition { get; set; }
-        public int ProjectTeamId { get; set; }
-        [ForeignKey("ProjectTeamId")]
-        public virtual ProjectTeam ProjectTeam { get; set; }
+        public int TeamId { get; set; }
+        [ForeignKey("TeamId")]
+        public virtual Team Team { get; set; }
         public int RequestId { get; set; }
         [ForeignKey("RequestId")]
         public virtual Request Request { get; set; }
