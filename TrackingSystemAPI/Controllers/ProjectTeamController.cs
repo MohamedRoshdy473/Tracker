@@ -136,9 +136,5 @@ namespace TrackingSystemAPI.Controllers
             return Ok();
         }
 
-        //private bool ProjectTeamDTOExists(int id)
-        //{
-        //    return _context.ProjectTeamDTO.Any(e => e.Id == id);
-        //}
     }
 }
