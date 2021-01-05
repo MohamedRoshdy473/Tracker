@@ -56,11 +56,11 @@ namespace TrackingSystemAPI.Controllers
         }
 
         [HttpGet]
-        [Route("GetEmployeessByTeamId/{TeamId}")]
-        public IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId)
+        [Route("GetEmployeessByTeamId/{TeamId}/{PositionId}")]
+        public IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId, int PositionId)
 
         {
-            return _projectTeamRepository.GetEmployeessByTeamId(TeamId);
+            return _projectTeamRepository.GetEmployeessByTeamId(TeamId,PositionId);
         }
         // PUT: api/ProjectTeam/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

@@ -171,12 +171,15 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             }
         }
 
-        public IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId)
+        public IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId,int PositionId)
         {
-            var Employees = _context.projectTeams.Where(p => p.TeamId == TeamId).Select(projectTeam => new ProjectTeamDTO
+            var Employees = _context.projectTeams.Where(p => p.TeamId == TeamId && p.ProjectPositionId==PositionId).Select(projectTeam => new ProjectTeamDTO
             {
                 EmployeeId = projectTeam.EmployeeId,
                 EmployeeName = projectTeam.Employee.EmployeeName,
+                ProjectPositionId=projectTeam.ProjectPositionId,
+                ProjectPositionName=projectTeam.ProjectPosition.PositionName
+                
             }).ToList();
             return Employees;
         }
