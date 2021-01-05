@@ -83,6 +83,23 @@ namespace TrackingSystemAPI.Controllers
             return emps;
         }
 
+        [HttpGet]
+        [Route("GetUnregisteredUsersClient")]
+        public IEnumerable<Client> GetUnregisteredUsersClient()
+        {
+            var users = userManager.Users.ToList();
+            var clients = _context.clients.ToList();
+            var allclients = _context.clients.ToList();
+            foreach (var client in clients)
+            {
+                foreach (var user in users)
+                {
+                    if (client.Email == user.Email)
+                        allclients.Remove(client);
+                }
+            }
+            return allclients;
+        }
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
         public string Get(int id)
