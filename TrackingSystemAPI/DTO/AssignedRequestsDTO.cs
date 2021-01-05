@@ -16,7 +16,7 @@ namespace TrackingSystemAPI.DTO
         public string EmployeeName { get; set; }
         public int RequestId { get; set; }
         public string RequestName  { get; set; }
-        public int ProjectId { get; set; }
+        //public int ProjectId { get; set; }
         public string ProjectName { get; set; }
     }
 }

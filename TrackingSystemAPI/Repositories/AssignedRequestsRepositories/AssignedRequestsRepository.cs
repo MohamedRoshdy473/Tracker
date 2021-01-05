@@ -20,6 +20,8 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         {
             AssignedRequests assignedRequests = new AssignedRequests();
             assignedRequests.ProjectTeamId = assignedRequestsDTO.ProjectTeamId;
+            assignedRequests.EmployeeId = assignedRequestsDTO.EmployeeId;
+            assignedRequests.ProjectPositionId = assignedRequestsDTO.ProjectPositionId;
             assignedRequests.RequestId = assignedRequestsDTO.RequestId;
             _context.assignedRequests.Add(assignedRequests);
         }
@@ -42,7 +44,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                      Id = assign.Id,
                      EmployeeId = assign.ProjectTeam.EmployeeId,
                      EmployeeName = assign.ProjectTeam.Employee.EmployeeName,
-                     ProjectId = assign.Request.ProjectId,
+                     //ProjectId = assign.Request.ProjectId,
                      ProjectName = assign.Request.Project.ProjectName,
                      ProjectTeamId = assign.ProjectTeamId,
                      //ProjectTeamName = assign.ProjectTeam.teamName,
@@ -64,7 +66,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                 Id = assign.Id,
                 EmployeeId = assign.ProjectTeam.EmployeeId,
                 EmployeeName = assign.ProjectTeam.Employee.EmployeeName,
-                ProjectId = assign.Request.ProjectId,
+                //ProjectId = assign.Request.ProjectId,
                 ProjectName = assign.Request.Project.ProjectName,
                 ProjectTeamId = assign.ProjectTeamId,
               //  ProjectTeamName = assign.ProjectTeam.teamName,
