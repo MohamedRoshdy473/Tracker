@@ -84,6 +84,7 @@ namespace TrackingSystemAPI.Controllers
 
                 var name = user.UserName;
                 var Useremail = user.Email;
+                var LoginedUserId = user.Id;
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
@@ -91,7 +92,9 @@ namespace TrackingSystemAPI.Controllers
                     UserName = name,
                     roles= userRoles,
                     expiration = token.ValidTo,
-                    id= usrId
+                    id= usrId,
+                    LoginedUserId=user.Id
+                    
                 }) ;
             }
             return Unauthorized();

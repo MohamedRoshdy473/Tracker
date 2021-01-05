@@ -50,8 +50,17 @@ namespace TrackingSystemAPI.Controllers
         [HttpGet]
         [Route("GetProjectTeamsByProjectPositionId/{ProjectPositionId}")]
         public IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectPositionId(int ProjectPositionId)
+
         {
             return _projectTeamRepository.GetProjectTeamsByProjectPositionId(ProjectPositionId);
+        }
+
+        [HttpGet]
+        [Route("GetEmployeessByTeamId/{TeamId}")]
+        public IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId)
+
+        {
+            return _projectTeamRepository.GetEmployeessByTeamId(TeamId);
         }
         // PUT: api/ProjectTeam/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -108,7 +117,7 @@ namespace TrackingSystemAPI.Controllers
             _projectTeamRepository.Add(projectTeamDTO);
             _projectTeamRepository.Save();
 
-           // return CreatedAtAction("GetProjectTeamDTO", new { id = projectTeamDTO.Count() }, projectTeamDTO);
+            // return CreatedAtAction("GetProjectTeamDTO", new { id = projectTeamDTO.Count() }, projectTeamDTO);
         }
 
         // DELETE: api/ProjectTeam/5

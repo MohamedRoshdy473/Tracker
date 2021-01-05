@@ -37,8 +37,8 @@ namespace TrackingSystemAPI.Repositories.OrganizationRepositories
 
         public Organization GetById(int id)
         {
-            Organization organization = _context.organizations.Where(o => o.Id == id).FirstOrDefault();
-            return organization;
+            return _context.organizations.Find(id);// _context.organizations.Where(o => o.Id == id).FirstOrDefault();
+             
         }
 
         public void Save()

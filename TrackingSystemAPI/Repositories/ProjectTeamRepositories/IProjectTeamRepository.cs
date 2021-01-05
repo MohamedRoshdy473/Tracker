@@ -13,6 +13,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         ProjectTeamDTO GetById(int id);
         IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectId(int ProjectId);
         IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectPositionId(int ProjectPositionId);
+        IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId);
+
         void UpdateByProjectId(int ProjectId, List<ProjectTeamDTO> projectTeamDTOs);
 
         ProjectTeam Find(int id);
