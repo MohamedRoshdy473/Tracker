@@ -39,6 +39,7 @@ namespace TrackingSystemAPI.Controllers
         public async Task<IActionResult> Login( LoginModel model)
         {
             var user = await userManager.FindByEmailAsync(model.Email);
+          //  var clientId = userManager.FindByEmailAsync(model.Email);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
             {
                 var userRoles = await userManager.GetRolesAsync(user);
@@ -73,13 +74,19 @@ namespace TrackingSystemAPI.Controllers
                 //var usrId = user.Id;
                 var x = user.Email;
                 int usrId=0;
+                int clientId = 0;
                var lstEmployees = _context.Employees.Where(a => a.Email == user.Email).ToList();
                 if(lstEmployees.Count > 0)
                 {
                     Employee employeeObj = lstEmployees[0];
                      usrId = employeeObj.Id;
                 }
-
+                var lstClients = _context.clients.Where(a => a.Email == user.Email).ToList();
+                if (lstClients.Count > 0)
+                {
+                    Client clintObj = lstClients[0];
+                    clientId = clintObj.Id;
+                }
 
 
                 var name = user.UserName;
@@ -93,8 +100,8 @@ namespace TrackingSystemAPI.Controllers
                     roles= userRoles,
                     expiration = token.ValidTo,
                     id= usrId,
-                    LoginedUserId=user.Id
-                    
+                    LoginedUserId=user.Id,
+                    clientId
                 }) ;
             }
             return Unauthorized();
