@@ -58,7 +58,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
 
         public AssignedRequestsDTO GetById(int id)
         {
-            var assign = _context.assignedRequests.Include(a => a.ProjectPosition)
+            var assign = _context.assignedRequests.Include(a => a.ProjectPosition).Include(a=>a.Employee)
                                 .Include(a => a.ProjectTeam).Include(a => a.Request)
                                 .Where(a => a.Id == id).FirstOrDefault();
             var assignedRequestsDTO = new AssignedRequestsDTO

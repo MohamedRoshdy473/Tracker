@@ -64,7 +64,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         {
             var projectTeam = _context.projectTeams
                               .Include(p => p.Employee).Include(p => p.Department)
-                              .Include(p => p.ProjectId).Include(p => p.ProjectPosition)
+                              .Include(p => p.Project).Include(p => p.ProjectPosition)
+                              .Include(p=>p.Team)
                               .FirstOrDefault(predicate => predicate.Id == id);
             ProjectTeamDTO projectTeamDTO = new ProjectTeamDTO
             {
