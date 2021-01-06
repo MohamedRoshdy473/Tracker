@@ -19,9 +19,20 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             var dtStartTime = DateTime.Parse(requestDTO.RequestTime).ToString("HH:mm:ss");
             Request request = new Request();
-
+            string Req ="Req";
+            string requestCode = "";
+            var lstIds =_context.requests.ToList();
+            if (lstIds.Count > 0)
+            {
+                var code = lstIds.LastOrDefault().Id;
+                requestCode = Req + code;
+            }
+            else
+            {
+                requestCode = Req + 1;
+            }
             request.RequestName = requestDTO.RequestName;
-            request.RequestCode = requestDTO.RequestCode;
+            request.RequestCode = requestCode;
             request.Description = requestDTO.Description;
             request.RequestDate = requestDTO.RequestDate;
             request.RequestTime = TimeSpan.Parse(dtStartTime);
