@@ -15,6 +15,7 @@ namespace TrackingSystemAPI.Models
         public decimal Cost { get; set; }
         public int ProjectPeriod { get; set; }
         public DateTime PlanndedStartDate { get; set; }
+        public bool? IsDeleted { get; set; }
         public DateTime ActualStartDate { get; set; }
         public DateTime PlanndedEndDate { get; set; }
         public DateTime ActualEndDate { get; set; }

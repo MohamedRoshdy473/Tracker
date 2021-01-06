@@ -23,6 +23,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             project.ProjectTypeId = projectDTO.ProjectTypeId;
             project.Cost = projectDTO.Cost;
             project.ProjectPeriod = projectDTO.ProjectPeriod;
+            project.IsDeleted = false;
             project.PlanndedStartDate = projectDTO.PlanndedStartDate;
             project.ActualStartDate = projectDTO.ActualStartDate;
             project.PlanndedEndDate = projectDTO.PlanndedEndDate;
@@ -36,10 +37,25 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             return project.Id;
         }
 
-        public void Delete(int id)
+        public void SoftDelete(ProjectDTO projectDTO)
         {
-            Project project = Find(id);
-            _context.projects.Remove(project);
+            var project = new Project();
+            project.Id = projectDTO.Id;
+            project.ProjectName = projectDTO.ProjectName;
+            project.ProjectCode = projectDTO.ProjectCode;
+            project.ProjectTypeId = projectDTO.ProjectTypeId;
+            project.Cost = projectDTO.Cost;
+            project.IsDeleted = true;
+            project.ProjectPeriod = projectDTO.ProjectPeriod;
+            project.PlanndedStartDate = projectDTO.PlanndedStartDate;
+            project.ActualStartDate = projectDTO.ActualStartDate;
+            project.PlanndedEndDate = projectDTO.PlanndedEndDate;
+            project.ActualEndDate = projectDTO.ActualEndDate;
+            project.Description = projectDTO.Description;
+            project.OrganizationId = projectDTO.OrganizationId;
+            project.EmployeeId = projectDTO.EmployeeId;
+            project.ClientId = projectDTO.ClientId;
+            _context.Entry(project).State = EntityState.Modified;
         }
 
         public Project Find(int id)
@@ -49,7 +65,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public IEnumerable<ProjectDTO> GetAll()
         {
-            var proj = _context.projects.Select(e => new ProjectDTO
+            var proj = _context.projects.Where(e=>e.IsDeleted==false).Select(e => new ProjectDTO
             {
                 Id = e.Id,
                 ProjectName = e.ProjectName,
@@ -57,6 +73,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 Cost = e.Cost,
                 ProjectTypeId = e.ProjectTypeId,
                 ProjectTypeName=e.ProjectType.TypeName,
+               // IsDeleted=e.IsDeleted,
                 ProjectPeriod = e.ProjectPeriod,
                 PlanndedStartDate = e.PlanndedStartDate,
                 PlanndedEndDate = e.PlanndedEndDate,
@@ -76,7 +93,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public ProjectDTO GetById(int id)
         {
-            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).Include(p=>p.ProjectType).FirstOrDefault(e => e.Id == id);
+            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).Include(p=>p.ProjectType).FirstOrDefault(e => e.Id == id&& e.IsDeleted==false);
             var projectDTO = new ProjectDTO
             {
                 Id = project.Id,
@@ -87,6 +104,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 Cost = project.Cost,
                 ProjectPeriod = project.ProjectPeriod,
                 PlanndedStartDate = project.PlanndedStartDate,
+                IsDeleted=project.IsDeleted,
                 ActualStartDate = project.ActualStartDate,
                 PlanndedEndDate = project.PlanndedEndDate,
                 ActualEndDate = project.ActualEndDate,
@@ -121,6 +139,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             project.ProjectCode = projectDTO.ProjectCode;
             project.ProjectTypeId = projectDTO.ProjectTypeId;
             project.Cost = projectDTO.Cost;
+            project.IsDeleted = projectDTO.IsDeleted;
             project.ProjectPeriod = projectDTO.ProjectPeriod;
             project.PlanndedStartDate = projectDTO.PlanndedStartDate;
             project.ActualStartDate = projectDTO.ActualStartDate;
@@ -152,7 +171,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public IEnumerable<ProjectDTO> GetProjectsByClientId(int ClientId)
         {
-            var pro = _context.projects.Where(p => p.ClientId == ClientId).Select(project => new ProjectDTO
+            var pro = _context.projects.Where(p => p.ClientId == ClientId && p.IsDeleted==false).Select(project => new ProjectDTO
             {
                 ProjectName = project.ProjectName,
                 ProjectCode = project.ProjectCode
@@ -161,7 +180,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
         }
         public IEnumerable<ClientDTO> GetClientByProjectId(int ProjectId)
         {
-            var clientDTO = _context.projects.Where(c => c.Id == ProjectId).Select(client => new ClientDTO
+            var clientDTO = _context.projects.Where(c => c.Id == ProjectId && c.IsDeleted==false).Select(client => new ClientDTO
             {
                 ClientName = client.Client.ClientName,
                 Id = client.ClientId
