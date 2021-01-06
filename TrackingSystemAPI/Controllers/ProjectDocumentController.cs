@@ -102,7 +102,7 @@ namespace TrackingSystemAPI.Controllers
             try
             {
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine("wwwroot", "documents");
+                var folderName = Path.Combine("wwwroot", "documentFiles");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
                 if (file.Length > 0)
