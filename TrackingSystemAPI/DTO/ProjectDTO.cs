@@ -14,6 +14,8 @@ namespace TrackingSystemAPI.DTO
         public string ProjectTypeName { get; set; }
         public decimal Cost { get; set; }
         public int ProjectPeriod { get; set; }
+        public bool? IsDeleted { get; set; }
+
         public DateTime PlanndedStartDate { get; set; }
         public DateTime ActualStartDate { get; set; }
         public DateTime PlanndedEndDate { get; set; }

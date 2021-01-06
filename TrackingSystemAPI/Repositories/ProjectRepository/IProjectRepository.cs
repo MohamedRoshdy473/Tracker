@@ -16,7 +16,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
         Project Find(int id);
         int Add(ProjectDTO projectDTO);
         void Update(ProjectDTO projectDTO);
-        void Delete(int id);
+        void SoftDelete(ProjectDTO projectDTO);
         void Save();
 
     }

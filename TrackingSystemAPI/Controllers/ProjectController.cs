@@ -86,16 +86,26 @@ namespace TrackingSystemAPI.Controllers
            // return CreatedAtAction("GetProjectDTO", new { id = projectDTO.Id }, projectDTO);
         }
         // DELETE: api/Project/5
-        [HttpDelete("{id}")]
-        public ActionResult<Project> DeleteProjectDTO(int id)
+       /// [HttpPut]
+        [HttpPut]
+        [Route("SoftDelete/{id}")]
+        public ActionResult<Project> DeleteProjectDTO(int id, ProjectDTO projectDTO)
         {
-            var projectDTO = _projectRepository.Find(id);
-            if (projectDTO == null)
+            //var project = _projectRepository.GetById(id);
+            if (id != projectDTO.Id)
             {
-                return NotFound();
+                return BadRequest();
             }
-            _projectRepository.Delete(id);
-            _projectRepository.Save();
+            _projectRepository.SoftDelete(projectDTO);
+            try
+            {
+                _projectRepository.Save();
+                // await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                string message = ex.Message;
+            }
 
             return Ok();
         }
