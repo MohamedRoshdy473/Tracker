@@ -25,7 +25,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             if (lstIds.Count > 0)
             {
                 var code = lstIds.LastOrDefault().Id;
-                requestCode = Req + code;
+                requestCode = Req + code +1;
             }
             else
             {
