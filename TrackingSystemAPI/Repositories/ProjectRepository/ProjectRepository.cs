@@ -93,7 +93,7 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
 
         public ProjectDTO GetById(int id)
         {
-            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).Include(p=>p.ProjectType).FirstOrDefault(e => e.Id == id&& e.IsDeleted==false);
+            var project = _context.projects.Include(p => p.Organization).Include(p => p.Employee).Include(p => p.Client).Include(p=>p.ProjectType).FirstOrDefault(e => e.Id == id);
             var projectDTO = new ProjectDTO
             {
                 Id = project.Id,
