@@ -65,6 +65,19 @@ namespace TrackingSystemAPI.Repositories.RequestDescriptionRepositories
             };
             return requestDescription;
         }
+        public IEnumerable<RequestDescriptionDTO> GetAllDescriptionsByRequestId(int RequestId)
+        {
+            var DescriptionsByRequest = _context.requestDescriptions.Where(r => r.RequestId == RequestId).Select(desc => new RequestDescriptionDTO
+            {
+                Id = desc.Id,
+                RequestId = desc.RequestId,
+                RequestName = desc.Request.RequestName,
+                Description = desc.Description,
+                UserId = desc.UserId,
+                UserName = desc.User.UserName
+            }).ToList();
+            return DescriptionsByRequest;
+        }
 
         public void Save()
         {
