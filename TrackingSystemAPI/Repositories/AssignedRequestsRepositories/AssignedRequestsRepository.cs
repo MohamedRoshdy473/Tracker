@@ -116,7 +116,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                                              .Include(r => r.Request.RequestType).Include(r => r.Request.RequestMode)
                       .Select(req => new RequestDTO
                       {
-                          Id = req.Id,
+                          Id = req.RequestId,
                           RequestName = req.Request.RequestName,
                           RequestCode = req.Request.RequestCode,
                           Description = req.Request.Description,
