@@ -19,18 +19,20 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             var dtStartTime = DateTime.Parse(requestDTO.RequestTime).ToString("HH:mm:ss");
             Request request = new Request();
-            string Req ="Req";
+            string Req = "Req";
             string requestCode = "";
-            var lstIds =_context.requests.ToList();
+            var lstIds = _context.requests.ToList();
             if (lstIds.Count > 0)
             {
                 var code = lstIds.LastOrDefault().Id;
-                requestCode = Req + code +1;
+                requestCode = Req + code + 1;
             }
             else
             {
                 requestCode = Req + 1;
             }
+            request.IsAssigned = false;
+            request.IsSolved = false;
             request.RequestName = requestDTO.RequestName;
             request.RequestCode = requestCode;
             request.Description = requestDTO.Description;
@@ -64,10 +66,12 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             var request = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
                                              .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                             .Include(r => r.RequestType).Include(r=>r.RequestMode)
-                                             .Include(r=>r.Asset).Select(req => new RequestDTO
+                                             .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                             .Include(r => r.Asset).Select(req => new RequestDTO
                                              {
                                                  Id = req.Id,
+                                                 IsSolved = req.IsSolved,
+                                                 IsAssigned = req.IsAssigned,
                                                  RequestName = req.RequestName,
                                                  RequestCode = req.RequestCode,
                                                  Description = req.Description,
@@ -75,9 +79,9 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  RequestTime = (req.RequestTime).ToString(),
                                                  Photo = req.Photo,
                                                  RequestModeId = req.RequestModeId,
-                                                 RequestMode =req.RequestMode.Mode,
+                                                 RequestMode = req.RequestMode.Mode,
                                                  AssetId = req.AssetId,
-                                                 AssetCode=req.Asset.AssetCode,
+                                                 AssetCode = req.Asset.AssetCode,
                                                  ClientId = req.ClientId,
                                                  ClientName = req.Client.ClientName,
                                                  RequestSubCategoryId = req.RequestSubCategoryId,
@@ -103,6 +107,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             var requestDTO = new RequestDTO
             {
                 Id = req.Id,
+                IsSolved = req.IsSolved,
+                IsAssigned = req.IsAssigned,
                 RequestName = req.RequestName,
                 RequestCode = req.RequestCode,
                 Description = req.Description,
@@ -138,6 +144,8 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         {
             Request request = new Request();
             request.Id = requestDTO.Id;
+            request.IsSolved = requestDTO.IsSolved;
+            request.IsAssigned = requestDTO.IsAssigned;
             request.RequestName = requestDTO.RequestName;
             request.RequestCode = requestDTO.RequestCode;
             request.Description = requestDTO.Description;
@@ -179,17 +187,19 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
 
         public IEnumerable<RequestDTO> GetAllRequestByClientId(int ClientId)
         {
-            var requests=_context.requests.Where(r=>r.ClientId==ClientId).Include(r => r.Project).Include(r => r.RequestPeriority)
+            var requests = _context.requests.Where(r => r.ClientId == ClientId).Include(r => r.Project).Include(r => r.RequestPeriority)
                                              .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
                                              .Include(r => r.RequestType).Include(r => r.RequestMode)
                                              .Include(r => r.Asset).Select(req => new RequestDTO
                                              {
                                                  Id = req.Id,
+                                                 IsSolved = req.IsSolved,
+                                                 IsAssigned = req.IsAssigned,
                                                  RequestName = req.RequestName,
                                                  RequestCode = req.RequestCode,
                                                  Description = req.Description,
                                                  RequestDate = req.RequestDate,
-                                                 RequestTime =( req.RequestTime.Value.Hours+":"+ req.RequestTime.Value.Minutes.ToString().PadLeft(2,'0')).ToString(),
+                                                 RequestTime = (req.RequestTime.Value.Hours + ":" + req.RequestTime.Value.Minutes.ToString().PadLeft(2, '0')).ToString(),
                                                  Photo = req.Photo,
                                                  RequestModeId = req.RequestModeId,
                                                  RequestMode = req.RequestMode.Mode,
@@ -210,5 +220,5 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                              }).ToList();
             return requests;
         }
-    }
+}
 }
