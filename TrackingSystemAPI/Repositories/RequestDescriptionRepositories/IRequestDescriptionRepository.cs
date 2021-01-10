@@ -11,6 +11,7 @@ namespace TrackingSystemAPI.Repositories.RequestDescriptionRepositories
     {
         IEnumerable<RequestDescriptionDTO> GetAll();
         RequestDescriptionDTO GetById(int id);
+        IEnumerable<RequestDescriptionDTO> GetAllDescriptionsByRequestId(int RequestId);
         RequestDescription Find(int id);
         void Add(RequestDescriptionDTO requestDescriptionDTO);
         void Update(RequestDescriptionDTO requestDescriptionDTO);
