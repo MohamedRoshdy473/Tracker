@@ -102,7 +102,14 @@ namespace TrackingSystemAPI.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("GetRequestImageByRequestId/{requestID}")]
+        public IEnumerable<RequestImageDTO> GetRequestImageByRequestId(int requestID)
+        {
+            return _requestImageRepositories.GetRequestImageByRequestId(requestID);
+        }
 
-       
     }
+
+  
 }

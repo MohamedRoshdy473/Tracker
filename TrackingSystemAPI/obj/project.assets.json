@@ -9655,25 +9655,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ekram\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\tasneem\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+      "projectUniqueName": "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
       "projectName": "TrackingSystemAPI",
-      "projectPath": "D:\\tasneem\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
-      "packagesPath": "C:\\Users\\Ekram\\.nuget\\packages\\",
-      "outputPath": "D:\\tasneem\\Tracker\\TrackingSystemAPI\\obj\\",
+      "projectPath": "D:\\Tracker\\TrackingSystemAPI\\TrackingSystemAPI.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "D:\\Tracker\\TrackingSystemAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Ekram\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9684,7 +9679,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -9696,7 +9690,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNet.Identity.Core": {
             "target": "Package",
@@ -9755,7 +9748,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   },

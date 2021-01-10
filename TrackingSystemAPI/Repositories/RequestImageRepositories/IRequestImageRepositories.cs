@@ -11,6 +11,8 @@ namespace TrackingSystemAPI.Repositories.RequestImageRepositories
     {
         IEnumerable<requestImages> GetAll();
         requestImages GetById(int id);
+        IEnumerable<RequestImageDTO> GetRequestImageByRequestId(int requestID);
+
         requestImages Find(int id);
         void Add(List<RequestImageDTO> request);
         void Save();

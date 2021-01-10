@@ -72,5 +72,17 @@ namespace TrackingSystemAPI.Repositories.RequestImageRepositories
             return _context.requestImages.Find(id);
 
         }
+
+        public IEnumerable<RequestImageDTO> GetRequestImageByRequestId(int requestID)
+        {
+            var requestImage = _context.requestImages.Where(d => d.requestId == requestID).Select(requestImage =>
+                new RequestImageDTO()
+                {
+                   Id=requestImage.Id,
+                   imageName=requestImage.imageName,
+                   requestId=requestImage.requestId
+                }).ToList();
+            return requestImage;
+        }
     }
 }
