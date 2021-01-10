@@ -53,7 +53,14 @@ namespace TrackingSystemAPI.Controllers
 
             return assignedRequestsDTO;
         }
-  
+        [HttpGet]
+        [Route("GetAllRequestByEmployeeIdAndTeamId/{EmployeeId}/{TeamId}")]
+        public IEnumerable<RequestDTO> GetAllRequestByEmployeeIdAndTeamId(int EmployeeId, int TeamId)
+        {
+            var assignedRequestsDTO = _assignedRequestsRepository.GetAllRequestByEmployeeIdAndTeamId(EmployeeId, TeamId);
+
+            return assignedRequestsDTO;
+        }
 
         // PUT: api/AssignedRequests/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

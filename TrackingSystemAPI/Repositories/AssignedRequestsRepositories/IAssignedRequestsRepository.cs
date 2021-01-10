@@ -12,6 +12,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         IEnumerable<AssignedRequestsDTO> GetAll();
         AssignedRequestsDTO GetById(int id);
         IEnumerable<RequestDTO> GetAllRequestByEmployeeId(int EmployeeId);
+        IEnumerable<RequestDTO> GetAllRequestByEmployeeIdAndTeamId(int EmployeeId, int TeamId);
         AssignedRequests Find(int id);
         void Add(AssignedRequestsDTO assignedRequestsDTO);
         void Update(AssignedRequestsDTO assignedRequestsDTO);
