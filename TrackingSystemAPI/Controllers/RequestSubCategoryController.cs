@@ -82,7 +82,7 @@ namespace TrackingSystemAPI.Controllers
 
         // DELETE: api/RequestSubCategory/5
         [HttpDelete("{id}")]
-        public ActionResult<RequestSubCategoryDTO> DeleteRequestSubCategoryDTO(int id)
+        public ActionResult<RequestSubCategory> DeleteRequestSubCategoryDTO(int id)
         {
             var requestSubCategoryDTO = _requestSubCategoryRepository.Find(id);
             if (requestSubCategoryDTO == null)
@@ -90,7 +90,7 @@ namespace TrackingSystemAPI.Controllers
                 return NotFound();
             }
 
-            _requestSubCategoryRepository.Find(id);
+            _requestSubCategoryRepository.Delete(id);
             _requestSubCategoryRepository.Save();
 
             return Ok();

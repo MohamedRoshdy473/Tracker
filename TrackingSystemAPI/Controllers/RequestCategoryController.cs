@@ -82,7 +82,7 @@ namespace TrackingSystemAPI.Controllers
 
         // DELETE: api/RequestCategory/5
         [HttpDelete("{id}")]
-        public ActionResult<RequestCategoryDTO> DeleteRequestCategoryDTO(int id)
+        public ActionResult<RequestCategory> DeleteRequestCategoryDTO(int id)
         {
             var requestCategoryDTO = _requestCategoryRepository.Find(id);
             if (requestCategoryDTO == null)
