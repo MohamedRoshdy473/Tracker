@@ -1,6 +1,7 @@
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libe_sqlite3.dylib
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.exe
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.deps.json
 D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.runtimeconfig.json
@@ -319,4 +320,7 @@ D:\tasneem\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.c
 D:\tasneem\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 D:\tasneem\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 D:\tasneem\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
+<<<<<<< HEAD
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
+=======
+>>>>>>> dd1e1a02de8a2f6c2f91e1dcb48476102b65ae60
