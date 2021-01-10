@@ -106,5 +106,41 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<RequestDTO> GetAllRequestByEmployeeId(int EmployeeId)
+        {
+            var requests = _context.assignedRequests.Where(r => r.EmployeeId == EmployeeId).Include(r => r.Employee).Include(r => r.ProjectPosition)
+                      .Include(r => r.Request).Include(r => r.Team)
+                      .Include(r => r.Request.Project).Include(r => r.Request.RequestPeriority)
+                                             .Include(r => r.Request.RequestStatus).Include(r => r.Request.RequestSubCategory)
+                                             .Include(r => r.Request.RequestType).Include(r => r.Request.RequestMode)
+                      .Select(req => new RequestDTO
+                      {
+                          Id = req.Id,
+                          RequestName = req.Request.RequestName,
+                          RequestCode = req.Request.RequestCode,
+                          Description = req.Request.Description,
+                          RequestDate = req.Request.RequestDate,
+                          RequestTime = (req.Request.RequestTime.Value.Hours + ":" + req.Request.RequestTime.Value.Minutes.ToString().PadLeft(2, '0')).ToString(),
+                          Photo = req.Request.Photo,
+                          RequestModeId = req.Request.RequestModeId,
+                          RequestMode = req.Request.RequestMode.Mode,
+                          AssetId = req.Request.AssetId,
+                          AssetCode = req.Request.Asset.AssetCode,
+                          ClientId = req.Request.ClientId,
+                          ClientName = req.Request.Client.ClientName,
+                          RequestSubCategoryId = req.Request.RequestSubCategoryId,
+                          RequestSubCategoryName = req.Request.RequestSubCategory.SubCategoryName,
+                          ProjectId = req.Request.ProjectId,
+                          ProjectName = req.Request.Project.ProjectName,
+                          RequestStatusId = req.Request.RequestStatusId,
+                          RequestStatus = req.Request.RequestStatus.status,
+                          RequestPeriorityId = req.Request.RequestPeriorityId,
+                          RequestPeriority = req.Request.RequestPeriority.periorty,
+                          RequestTypeId = req.Request.RequestTypeId,
+                          RequestTypeName = req.Request.RequestType.RequestTypeName
+                      }).ToList();
+            return requests;
+        }
     }
 }
