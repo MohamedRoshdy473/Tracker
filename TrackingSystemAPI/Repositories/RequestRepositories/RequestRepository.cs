@@ -216,13 +216,15 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             return requests;
         }
 
-        public List<RequestDTO> GetAllRequestByProjectTeamId(List<int> ProjectTeamId)
+        public List<RequestDTO> GetAllRequestByProjectTeamId(ProjectTeamVM model)
         {
             List<RequestDTO> requestDTO =new List<RequestDTO>();
-            foreach (var item in ProjectTeamId)
+            var Ids = model.ProjectTeamIds.Split(",");
+            string[] lstIds = Ids;
+            foreach (var item in lstIds)
             {
-
-                var request = _context.requests.Where(r => r.ProjectTeamId == item)
+                int id = int.Parse(item);
+                var request = _context.requests.Where(r => r.ProjectTeamId == id)
                                             .Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
                                             .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
                                             .Include(r => r.RequestMode)
@@ -252,10 +254,12 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                 RequestStatus = req.RequestStatus.status,
                                                 RequestPeriorityId = req.RequestPeriorityId,
                                                 RequestPeriority = req.RequestPeriority.periorty,
-                                            });
+                                            }).ToList();
 
-              requestDTO.Add((RequestDTO)request);
-
+                foreach (var item2 in request)
+                {
+                    requestDTO.Add(item2);
+                }            
             }
             return requestDTO;
         }
