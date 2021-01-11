@@ -216,40 +216,48 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             return requests;
         }
 
-        public IEnumerable<RequestDTO> GetAllRequestByProjectTeamId(int ProjectTeamId)
+        public List<RequestDTO> GetAllRequestByProjectTeamId(List<int> ProjectTeamId)
         {
-            var request = _context.requests.Where(r=>r.ProjectTeamId==ProjectTeamId)
-                                              .Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
-                                              .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                              .Include(r => r.RequestMode)
-                                              .Include(r => r.Asset).Select(req => new RequestDTO
-                                              {
-                                                  Id = req.Id,
-                                                  IsSolved = req.IsSolved,
-                                                  IsAssigned = req.IsAssigned,
-                                                  RequestName = req.RequestName,
-                                                  RequestCode = req.RequestCode,
-                                                  Description = req.Description,
-                                                  RequestDate = req.RequestDate,
-                                                  RequestTime = (req.RequestTime).ToString(),
-                                                  Photo = req.Photo,
-                                                  RequestModeId = req.RequestModeId,
-                                                  RequestMode = req.RequestMode.Mode,
-                                                  AssetId = req.AssetId,
-                                                  AssetCode = req.Asset.AssetCode,
-                                                  ClientId = req.ClientId,
-                                                  ClientName = req.Client.ClientName,
-                                                  RequestSubCategoryId = req.RequestSubCategoryId,
-                                                  RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
-                                                  ProjectTeamId = req.ProjectTeamId,
-                                                  ProjectName = req.ProjectTeam.Project.ProjectName,
-                                                  TeamName = req.ProjectTeam.Team.Name,
-                                                  RequestStatusId = req.RequestStatusId,
-                                                  RequestStatus = req.RequestStatus.status,
-                                                  RequestPeriorityId = req.RequestPeriorityId,
-                                                  RequestPeriority = req.RequestPeriority.periorty,
-                                              }).ToList();
-            return request;
+            List<RequestDTO> requestDTO =new List<RequestDTO>();
+            foreach (var item in ProjectTeamId)
+            {
+
+                var request = _context.requests.Where(r => r.ProjectTeamId == item)
+                                            .Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
+                                            .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
+                                            .Include(r => r.RequestMode)
+                                            .Include(r => r.Asset).Select(req => new RequestDTO
+                                            {
+                                                Id = req.Id,
+                                                IsSolved = req.IsSolved,
+                                                IsAssigned = req.IsAssigned,
+                                                RequestName = req.RequestName,
+                                                RequestCode = req.RequestCode,
+                                                Description = req.Description,
+                                                RequestDate = req.RequestDate,
+                                                RequestTime = (req.RequestTime).ToString(),
+                                                Photo = req.Photo,
+                                                RequestModeId = req.RequestModeId,
+                                                RequestMode = req.RequestMode.Mode,
+                                                AssetId = req.AssetId,
+                                                AssetCode = req.Asset.AssetCode,
+                                                ClientId = req.ClientId,
+                                                ClientName = req.Client.ClientName,
+                                                RequestSubCategoryId = req.RequestSubCategoryId,
+                                                RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
+                                                ProjectTeamId = req.ProjectTeamId,
+                                                ProjectName = req.ProjectTeam.Project.ProjectName,
+                                                TeamName = req.ProjectTeam.Team.Name,
+                                                RequestStatusId = req.RequestStatusId,
+                                                RequestStatus = req.RequestStatus.status,
+                                                RequestPeriorityId = req.RequestPeriorityId,
+                                                RequestPeriority = req.RequestPeriority.periorty,
+                                            });
+
+              requestDTO.Add((RequestDTO)request);
+
+            }
+            return requestDTO;
         }
     }
 }
