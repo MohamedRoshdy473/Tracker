@@ -88,8 +88,8 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             {
                 ID=projectTeam.Id,
                 EmployeeId = projectTeam.EmployeeId,
-               // teamName = projectTeam.teamName,
-               TeamId=projectTeam.TeamId,
+                teamName = projectTeam.Team.Name,
+                TeamId=projectTeam.TeamId,
                 EmployeeName = projectTeam.Employee.EmployeeName,
                 ProjectId = projectTeam.ProjectId,
                 ProjectName = projectTeam.Project.ProjectName,
@@ -113,6 +113,20 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
                 DepartmentId = projectTeam.DepartmentId,
                 TeamId=projectTeam.TeamId,
                 DepartmentName = projectTeam.Department.Name,
+            }).ToList();
+            return projectTeam;
+        }
+       public IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
+        {
+            var projectTeam = _context.projectTeams.Where(p => p.ProjectId == ProjectId&& p.TeamId==TeamId&&p.ProjectPositionId==ProjectPositionId).Select(projectTeam => new ProjectTeamDTO
+            {
+                ID = projectTeam.Id,
+                teamName = projectTeam.Team.Name,
+                TeamId = projectTeam.TeamId,
+                ProjectId = projectTeam.ProjectId,
+                ProjectName = projectTeam.Project.ProjectName,
+                ProjectPositionId = projectTeam.ProjectPositionId,
+                ProjectPositionName = projectTeam.ProjectPosition.PositionName,
             }).ToList();
             return projectTeam;
         }

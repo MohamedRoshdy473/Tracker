@@ -42,11 +42,10 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.RequestModeId = requestDTO.RequestModeId;
             request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
-            request.ProjectId = requestDTO.ProjectId;
+            request.ProjectTeamId = requestDTO.ProjectTeamId;
             request.ClientId = requestDTO.ClientId;
             request.RequestStatusId = requestDTO.RequestStatusId;
             request.RequestPeriorityId = requestDTO.RequestPeriorityId;
-            request.RequestTypeId = requestDTO.RequestTypeId;
             _context.requests.Add(request);
             _context.SaveChanges();
             return request.Id;
@@ -64,9 +63,9 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
 
         public IEnumerable<RequestDTO> GetAll()
         {
-            var request = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
+            var request = _context.requests.Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
                                              .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                             .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                             .Include(r => r.RequestMode)
                                              .Include(r => r.Asset).Select(req => new RequestDTO
                                              {
                                                  Id = req.Id,
@@ -86,23 +85,20 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  ClientName = req.Client.ClientName,
                                                  RequestSubCategoryId = req.RequestSubCategoryId,
                                                  RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
-                                                 ProjectId = req.ProjectId,
-                                                 ProjectName = req.Project.ProjectName,
+                                                 ProjectTeamId = req.ProjectTeamId,
                                                  RequestStatusId = req.RequestStatusId,
                                                  RequestStatus = req.RequestStatus.status,
                                                  RequestPeriorityId = req.RequestPeriorityId,
                                                  RequestPeriority = req.RequestPeriority.periorty,
-                                                 RequestTypeId = req.RequestTypeId,
-                                                 RequestTypeName = req.RequestType.RequestTypeName
                                              }).ToList();
             return request;
         }
 
         public RequestDTO GetById(int id)
         {
-            var req = _context.requests.Include(r => r.Project).Include(r => r.RequestPeriority)
+            var req = _context.requests.Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
                                        .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                       .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                       .Include(r => r.RequestMode)
                                        .Include(r => r.Asset).Where(r => r.Id == id).FirstOrDefault();
             var requestDTO = new RequestDTO
             {
@@ -123,14 +119,11 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                 ClientName = req.Client.ClientName,
                 RequestSubCategoryId = req.RequestSubCategoryId,
                 RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
-                ProjectId = req.ProjectId,
-                ProjectName = req.Project.ProjectName,
+                ProjectTeamId = req.ProjectTeamId,
                 RequestStatusId = req.RequestStatusId,
                 RequestStatus = req.RequestStatus.status,
                 RequestPeriorityId = req.RequestPeriorityId,
                 RequestPeriority = req.RequestPeriority.periorty,
-                RequestTypeId = req.RequestTypeId,
-                RequestTypeName = req.RequestType.RequestTypeName
             };
             return requestDTO;
         }
@@ -155,11 +148,10 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.RequestModeId = requestDTO.RequestModeId;
             request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
-            request.ProjectId = requestDTO.ProjectId;
+            request.ProjectTeamId = requestDTO.ProjectTeamId;
             request.ClientId = requestDTO.ClientId;
             request.RequestStatusId = requestDTO.RequestStatusId;
             request.RequestPeriorityId = requestDTO.RequestPeriorityId;
-            request.RequestTypeId = requestDTO.RequestTypeId;
             _context.Entry(request).State = EntityState.Modified;
         }
         private bool disposed = false;
@@ -187,9 +179,9 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
 
         public IEnumerable<RequestDTO> GetAllRequestByClientId(int ClientId)
         {
-            var requests = _context.requests.Where(r => r.ClientId == ClientId).Include(r => r.Project).Include(r => r.RequestPeriority)
+            var requests = _context.requests.Where(r => r.ClientId == ClientId).Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
                                              .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                             .Include(r => r.RequestType).Include(r => r.RequestMode)
+                                             .Include(r => r.RequestMode)
                                              .Include(r => r.Asset).Select(req => new RequestDTO
                                              {
                                                  Id = req.Id,
@@ -209,16 +201,13 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  ClientName = req.Client.ClientName,
                                                  RequestSubCategoryId = req.RequestSubCategoryId,
                                                  RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
-                                                 ProjectId = req.ProjectId,
-                                                 ProjectName = req.Project.ProjectName,
+                                                 ProjectTeamId = req.ProjectTeamId,
                                                  RequestStatusId = req.RequestStatusId,
                                                  RequestStatus = req.RequestStatus.status,
                                                  RequestPeriorityId = req.RequestPeriorityId,
-                                                 RequestPeriority = req.RequestPeriority.periorty,
-                                                 RequestTypeId = req.RequestTypeId,
-                                                 RequestTypeName = req.RequestType.RequestTypeName
+                                                 RequestPeriority = req.RequestPeriority.periorty
                                              }).ToList();
             return requests;
         }
-}
+    }
 }

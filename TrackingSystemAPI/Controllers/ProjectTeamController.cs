@@ -62,6 +62,14 @@ namespace TrackingSystemAPI.Controllers
         {
             return _projectTeamRepository.GetEmployeessByTeamId(TeamId,PositionId);
         }
+        [HttpGet]
+        
+        [Route("GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId/{ProjectId}/{TeamId}/{ProjectPositionId}")]
+        public IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
+        {
+            return _projectTeamRepository.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(ProjectId, TeamId, 1);
+        }
+
         // PUT: api/ProjectTeam/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

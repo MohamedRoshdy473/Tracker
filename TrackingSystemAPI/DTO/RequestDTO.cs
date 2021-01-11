@@ -20,8 +20,9 @@ namespace TrackingSystemAPI.DTO
         public string  RequestSubCategoryName { get; set; }
         public int ClientId { get; set; }
         public string ClientName { get; set; }
-        public int ProjectId { get; set; }
+        public int ProjectTeamId { get; set; }
         public string  ProjectName { get; set; }
+        public string TeamName { get; set; }
         public int RequestModeId { get; set; }
         public string RequestMode { get; set; }
         public int AssetId { get; set; }
@@ -30,8 +31,6 @@ namespace TrackingSystemAPI.DTO
         public string RequestStatus { get; set; }
         public int RequestPeriorityId { get; set; }
         public string RequestPeriority { get; set; }
-        public int RequestTypeId { get; set; }
-        public string RequestTypeName { get; set; }
 
     }
 }
