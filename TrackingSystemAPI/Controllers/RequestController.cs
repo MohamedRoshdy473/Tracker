@@ -35,6 +35,13 @@ namespace TrackingSystemAPI.Controllers
         {
             return _requestRepository.GetAllRequestByClientId(ClientId);
         }
+        [HttpGet]
+        [Route("GetAllRequestByProjectTeamId/{ProjectTeamId}")]
+        public IEnumerable<RequestDTO> GetAllRequestByProjectTeamId(int ProjectTeamId)
+        {
+            return _requestRepository.GetAllRequestByProjectTeamId(ProjectTeamId);
+        }
+
         // GET: api/Request/5
         [HttpGet("{id}")]
         public ActionResult<RequestDTO> GetRequestDTO(int id)

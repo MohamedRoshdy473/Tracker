@@ -130,7 +130,16 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             }).FirstOrDefault();
             return projectTeam;
         }
+        public IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectPositionIdAndEmployeeId(int ProjectPositionId, int EmployeeId)
+        {
+            var projectteam = _context.projectTeams.Where(p => p.ProjectPositionId == ProjectPositionId && p.EmployeeId == EmployeeId)
+                .Include(p => p.ProjectPosition).Include(p => p.Employee).Select(team => new ProjectTeamDTO
+                {
+                    ID = team.Id
+                }).ToList();
 
+            return projectteam;
+        }
         public void Save()
         {
             _context.SaveChanges();
