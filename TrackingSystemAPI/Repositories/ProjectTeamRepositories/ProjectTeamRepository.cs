@@ -116,7 +116,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             }).ToList();
             return projectTeam;
         }
-       public IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
+       public ProjectTeamDTO GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
         {
             var projectTeam = _context.projectTeams.Where(p => p.ProjectId == ProjectId&& p.TeamId==TeamId&&p.ProjectPositionId==ProjectPositionId).Select(projectTeam => new ProjectTeamDTO
             {
@@ -127,7 +127,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
                 ProjectName = projectTeam.Project.ProjectName,
                 ProjectPositionId = projectTeam.ProjectPositionId,
                 ProjectPositionName = projectTeam.ProjectPosition.PositionName,
-            }).ToList();
+            }).FirstOrDefault();
             return projectTeam;
         }
 

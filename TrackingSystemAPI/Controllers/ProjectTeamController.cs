@@ -65,7 +65,7 @@ namespace TrackingSystemAPI.Controllers
         [HttpGet]
         
         [Route("GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId/{ProjectId}/{TeamId}/{ProjectPositionId}")]
-        public IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
+        public ProjectTeamDTO GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
         {
             return _projectTeamRepository.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(ProjectId, TeamId, 1);
         }
