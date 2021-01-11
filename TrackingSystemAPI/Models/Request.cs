@@ -28,9 +28,9 @@ namespace TrackingSystemAPI.Models
         public int RequestSubCategoryId { get; set; }
         [ForeignKey("RequestSubCategoryId")]
         public virtual RequestSubCategory RequestSubCategory { get; set; }
-        public int ProjectId { get; set; }
-        [ForeignKey("ProjectId")]
-        public virtual Project Project { get; set; }
+        //public int ProjectId { get; set; }
+        //[ForeignKey("ProjectId")]
+        //public virtual Project Project { get; set; }
         public int ClientId { get; set; }
         [ForeignKey("ClientId")]
         public virtual Client Client { get; set; }
@@ -40,9 +40,9 @@ namespace TrackingSystemAPI.Models
         public int RequestPeriorityId { get; set; }
         [ForeignKey("RequestPeriorityId")]
         public virtual RequestPeriority RequestPeriority { get; set; }
-        public int RequestTypeId { get; set; }
-        [ForeignKey("RequestTypeId")]
-        public virtual RequestType RequestType { get; set; }
+        public int ProjectTeamId { get; set; }
+        [ForeignKey("ProjectTeamId")]
+        public virtual ProjectTeam ProjectTeam { get; set; }
 
 
     }

@@ -38,13 +38,14 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
 
         public IEnumerable<AssignedRequestsDTO> GetAll()
         {
-            var AssignedRequests = _context.assignedRequests.Include(a => a.ProjectPosition).Include(a => a.Team).Include(a => a.Request)
+            var AssignedRequests = _context.assignedRequests.Include(a => a.ProjectPosition)
+                .Include(a => a.Team).Include(a => a.Request)
                  .Select(assign => new AssignedRequestsDTO
                  {
                      Id = assign.Id,
                      EmployeeId = assign.EmployeeId,
                      EmployeeName = assign.Employee.EmployeeName,
-                     ProjectName = assign.Request.Project.ProjectName,
+                     ProjectName = assign.Request.ProjectTeam.Project.ProjectName,
                      TeamId = assign.TeamId,
                      TeamName = assign.Team.Name,
                      ProjectPositionId = assign.ProjectPositionId,
@@ -65,7 +66,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                 Id = assign.Id,
                 EmployeeId = assign.EmployeeId,
                 EmployeeName = assign.Employee.EmployeeName,
-                ProjectName = assign.Request.Project.ProjectName,
+                ProjectName = assign.Request.ProjectTeam.Project.ProjectName,
                 TeamId = assign.TeamId,
                 TeamName = assign.Team.Name,
                 ProjectPositionId = assign.ProjectPositionId,
@@ -111,9 +112,9 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         {
             var requests = _context.assignedRequests.Where(r => r.EmployeeId == EmployeeId).Include(r => r.Employee).Include(r => r.ProjectPosition)
                       .Include(r => r.Request).Include(r => r.Team)
-                      .Include(r => r.Request.Project).Include(r => r.Request.RequestPeriority)
+                      .Include(r => r.Request.ProjectTeam).Include(r => r.Request.RequestPeriority)
                                              .Include(r => r.Request.RequestStatus).Include(r => r.Request.RequestSubCategory)
-                                             .Include(r => r.Request.RequestType).Include(r => r.Request.RequestMode)
+                                             .Include(r => r.Request.RequestMode)
                       .Select(req => new RequestDTO
                       {
                           Id = req.RequestId,
@@ -131,14 +132,12 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                           ClientName = req.Request.Client.ClientName,
                           RequestSubCategoryId = req.Request.RequestSubCategoryId,
                           RequestSubCategoryName = req.Request.RequestSubCategory.SubCategoryName,
-                          ProjectId = req.Request.ProjectId,
-                          ProjectName = req.Request.Project.ProjectName,
+                          ProjectTeamId = req.Request.ProjectTeamId,
+                          ProjectName = req.Request.ProjectTeam.Project.ProjectName,
                           RequestStatusId = req.Request.RequestStatusId,
                           RequestStatus = req.Request.RequestStatus.status,
                           RequestPeriorityId = req.Request.RequestPeriorityId,
                           RequestPeriority = req.Request.RequestPeriority.periorty,
-                          RequestTypeId = req.Request.RequestTypeId,
-                          RequestTypeName = req.Request.RequestType.RequestTypeName
                       }).ToList();
             return requests;
         }
@@ -147,9 +146,9 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         {
             var requests = _context.assignedRequests.Where(r => r.EmployeeId == EmployeeId && r.TeamId== TeamId).Include(r => r.Employee).Include(r => r.ProjectPosition)
                        .Include(r => r.Request).Include(r => r.Team)
-                       .Include(r => r.Request.Project).Include(r => r.Request.RequestPeriority)
+                       .Include(r => r.Request.ProjectTeam).Include(r => r.Request.RequestPeriority)
                                               .Include(r => r.Request.RequestStatus).Include(r => r.Request.RequestSubCategory)
-                                              .Include(r => r.Request.RequestType).Include(r => r.Request.RequestMode)
+                                              .Include(r => r.Request.RequestMode)
                        .Select(req => new RequestDTO
                        {
                            Id = req.RequestId,
@@ -167,14 +166,11 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                            ClientName = req.Request.Client.ClientName,
                            RequestSubCategoryId = req.Request.RequestSubCategoryId,
                            RequestSubCategoryName = req.Request.RequestSubCategory.SubCategoryName,
-                           ProjectId = req.Request.ProjectId,
-                           ProjectName = req.Request.Project.ProjectName,
+                           ProjectTeamId = req.Request.ProjectTeamId,
                            RequestStatusId = req.Request.RequestStatusId,
                            RequestStatus = req.Request.RequestStatus.status,
                            RequestPeriorityId = req.Request.RequestPeriorityId,
                            RequestPeriority = req.Request.RequestPeriority.periorty,
-                           RequestTypeId = req.Request.RequestTypeId,
-                           RequestTypeName = req.Request.RequestType.RequestTypeName
                        }).ToList();
             return requests;
         }
