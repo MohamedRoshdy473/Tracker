@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TrackingSystemAPI.DTO;
 using TrackingSystemAPI.Models;
 using TrackingSystemAPI.Repositories.ProjectTeamRepositories;
+using TrackingSystemAPI.ViewModels;
 
 namespace TrackingSystemAPI.Controllers
 {
@@ -74,6 +75,12 @@ namespace TrackingSystemAPI.Controllers
         public IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectPositionIdAndEmployeeId(int ProjectPositionId, int EmployeeId)
         {
             return _projectTeamRepository.GetProjectTeamByProjectPositionIdAndEmployeeId(ProjectPositionId, EmployeeId);
+        }
+        [HttpPost]
+        [Route("GetAllProjectTeamsByProjectIds")]
+        public List<ProjectTeamDTO> GetAllProjectTeamsByProjectIds(ProjectsVM model)
+        {
+            return _projectTeamRepository.GetAllProjectTeamsByProjectIds(model);
         }
 
         // PUT: api/ProjectTeam/5
