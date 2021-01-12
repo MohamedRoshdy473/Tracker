@@ -18,8 +18,9 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         ProjectTeamDTO GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId,int TeamId, int ProjectPositionId);
         IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectPositionIdAndEmployeeId(int ProjectPositionId, int EmployeeId);
         List<ProjectTeamDTO> GetAllProjectTeamsByProjectIds(ProjectsVM model);
+        ProjectTeamDTO GetTeamIdByEmployeeId(int EmployeeId);
+        ProjectTeamDTO GetTeamLeaderByTeamIdAndProjectPositionId(int TeamId, int ProjectPositionId);
         void UpdateByProjectId(int ProjectId, List<ProjectTeamDTO> projectTeamDTOs);
-
         ProjectTeam Find(int id);
         void Add(List<ProjectTeamDTO> projectTeamDTO);
         void Update(ProjectTeamDTO projectTeamDTO);

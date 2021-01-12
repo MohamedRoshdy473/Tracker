@@ -238,5 +238,28 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
 
             return projectTeamDTO;
         }
+
+        public ProjectTeamDTO GetTeamIdByEmployeeId(int EmployeeId)
+        {
+            var Team = _context.projectTeams.Where(p => p.EmployeeId == EmployeeId).Select(projectTeam => new ProjectTeamDTO
+            {
+                ID = projectTeam.Id,
+                TeamId=projectTeam.TeamId,
+                teamName=projectTeam.Team.Name
+
+            }).FirstOrDefault();
+            return Team;
+        }
+
+        public ProjectTeamDTO GetTeamLeaderByTeamIdAndProjectPositionId(int TeamId, int ProjectPositionId)
+        {
+            var TeamLeader = _context.projectTeams.Where(p => p.TeamId == TeamId&&p.ProjectPositionId==ProjectPositionId).Select(projectTeam => new ProjectTeamDTO
+            {
+                ID = projectTeam.Id,
+                EmployeeId=projectTeam.EmployeeId,
+                EmployeeName=projectTeam.Employee.EmployeeName
+            }).FirstOrDefault();
+            return TeamLeader;
+        }
     }
 }
