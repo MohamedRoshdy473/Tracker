@@ -68,7 +68,8 @@ namespace TrackingSystemAPI.Controllers
         [Route("GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId/{ProjectId}/{TeamId}/{ProjectPositionId}")]
         public ProjectTeamDTO GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId, int TeamId, int ProjectPositionId)
         {
-            return _projectTeamRepository.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(ProjectId, TeamId, 1);
+            //ProjectPositionId may be 1 as teamLeader or 3 as ProjectManager
+            return _projectTeamRepository.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(ProjectId, TeamId, ProjectPositionId);
         }
         [HttpGet]
         [Route("GetProjectTeamByProjectPositionIdAndEmployeeId/{ProjectPositionId}/{EmployeeId}")]
