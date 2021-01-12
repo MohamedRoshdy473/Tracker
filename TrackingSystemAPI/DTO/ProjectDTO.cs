@@ -27,6 +27,13 @@ namespace TrackingSystemAPI.DTO
         public string  EmployeeName { get; set; }
         public int ClientId { get; set; }
         public string  ClientName { get; set; }
+        public string ClientCode { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Gender { get; set; }
+        
+
         public string ClientMobile { get; set; }
         public List<StackeholdersDTO> stackeholdersDTOs { get; set; }
     }

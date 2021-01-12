@@ -219,5 +219,26 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
             }).ToList();
             return proj;
         }
+
+        public IEnumerable<ProjectDTO> GetClientsByEmployeeId(int EmployeeId)
+        {
+            var proj = _context.projects.Where(e => e.IsDeleted == false && e.EmployeeId == EmployeeId).
+                Include(p => p.Organization).
+                Include(p => p.Client).
+                Select(e => new ProjectDTO
+                { ClientCode=e.Client.ClientCode,
+                Address=e.Client.Address,
+                    Email=e.Client.Email,
+                    Phone=e.Client.Phone,
+                    Gender=e.Client.gender,
+                    OrganizationId = e.OrganizationId,
+                    OrganizationName = e.Organization.OrganizationName,
+                    EmployeeId = e.EmployeeId,
+                    EmployeeName = e.Employee.EmployeeName,
+                    ClientId = e.ClientId,
+                    ClientName = e.Client.ClientName,
+                }).ToList();
+            return proj;
+        }
     }
 }
