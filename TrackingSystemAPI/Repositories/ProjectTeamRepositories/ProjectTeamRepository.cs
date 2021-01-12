@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrackingSystemAPI.DTO;
 using TrackingSystemAPI.Models;
+using TrackingSystemAPI.ViewModels;
 
 namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
 {
@@ -205,6 +206,37 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
                 
             }).ToList();
             return Employees;
+        }
+
+        public List<ProjectTeamDTO> GetAllProjectTeamsByProjectIds(ProjectsVM model)
+        {
+            List<ProjectTeamDTO> projectTeamDTO = new List<ProjectTeamDTO>();
+            var Ids = model.ProjectIds.Split(",");
+            string[] lstIds = Ids;
+            foreach (var item in lstIds)
+            {
+                int projectId = int.Parse(item);
+                var projectTeam = _context.projectTeams.Where(p => p.ProjectId == projectId).Select(projectTeam => new ProjectTeamDTO
+                {
+                    ID = projectTeam.Id,
+                    EmployeeId = projectTeam.EmployeeId,
+                    teamName = projectTeam.Team.Name,
+                    TeamId = projectTeam.TeamId,
+                    EmployeeName = projectTeam.Employee.EmployeeName,
+                    ProjectId = projectTeam.ProjectId,
+                    ProjectName = projectTeam.Project.ProjectName,
+                    DepartmentId = projectTeam.DepartmentId,
+                    DepartmentName = projectTeam.Department.Name,
+                    ProjectPositionId = projectTeam.ProjectPositionId,
+                    ProjectPositionName = projectTeam.ProjectPosition.PositionName,
+                }).ToList();
+                foreach (var item2 in projectTeam)
+                {
+                projectTeamDTO.Add(item2);
+                }
+            }
+
+            return projectTeamDTO;
         }
     }
 }

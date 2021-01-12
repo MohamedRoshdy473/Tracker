@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrackingSystemAPI.DTO;
 using TrackingSystemAPI.Models;
+using TrackingSystemAPI.ViewModels;
 
 namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
 {
@@ -14,9 +15,9 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectId(int ProjectId);
         IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectPositionId(int ProjectPositionId);
         IEnumerable<ProjectTeamDTO> GetEmployeessByTeamId(int TeamId, int PositionId);
-       ProjectTeamDTO GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId,int TeamId, int ProjectPositionId);
+        ProjectTeamDTO GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(int ProjectId,int TeamId, int ProjectPositionId);
         IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectPositionIdAndEmployeeId(int ProjectPositionId, int EmployeeId);
-
+        List<ProjectTeamDTO> GetAllProjectTeamsByProjectIds(ProjectsVM model);
         void UpdateByProjectId(int ProjectId, List<ProjectTeamDTO> projectTeamDTOs);
 
         ProjectTeam Find(int id);
