@@ -109,5 +109,23 @@ namespace TrackingSystemAPI.Controllers
 
             return Ok();
         }
+        [HttpGet]
+        [Route("GetAllProjectsByEmployeeId/{EmployeeId}")]
+        public IEnumerable<ProjectDTO> GetAllProjectsByEmployeeId(int EmployeeId)
+        {
+            var projectDTO = _projectRepository.GetAllProjectsByEmployeeId(EmployeeId); //await _context.ProjectDTO.FindAsync(id);
+
+
+            return projectDTO;
+        }
+        [HttpGet]
+        [Route("GetClientsByEmployeeId/{EmployeeId}")]
+        public IEnumerable<ProjectDTO> GetClientsByEmployeeId(int EmployeeId)
+        {
+            var projectDTO = _projectRepository.GetClientsByEmployeeId(EmployeeId); //await _context.ProjectDTO.FindAsync(id);
+
+
+            return projectDTO;
+        }
     }
 }
