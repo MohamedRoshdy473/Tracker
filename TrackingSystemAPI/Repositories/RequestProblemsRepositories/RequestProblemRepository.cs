@@ -96,6 +96,8 @@ namespace TrackingSystemAPI.Repositories.RequestProblemsRepositories
                                              .Select(reqProblem => new RequestProblemsDTO
             {
                 Id = reqProblem.Id,
+                EmployeeId=reqProblem.EmployeeId,
+                EmployeeName=reqProblem.Employee.EmployeeName,
                 ProblemId = reqProblem.ProblemId,
                 ProblemName = reqProblem.Problems.ProblemName,
                 RequestId = reqProblem.RequestId,
@@ -123,6 +125,17 @@ namespace TrackingSystemAPI.Repositories.RequestProblemsRepositories
                 RequestPeriority = reqProblem.Request.RequestPeriority.periorty,
             }).ToList();
             return requestsByProblemId;
+        }
+
+        public RequestProblemsDTO GetProblemByEmployeeIdAndRequestId(int EmployeeId, int RequestId)
+        {
+            var problemName = _context.requestProblems.Where(r => r.EmployeeId == EmployeeId && r.RequestId == RequestId).Select(
+                problem => new RequestProblemsDTO
+                {
+                    ProblemId = problem.Id,
+                    ProblemName = problem.Problems.ProblemName
+                }).FirstOrDefault();
+            return problemName;
         }
     }
 }

@@ -106,8 +106,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
+        } 
         public IEnumerable<RequestDTO> GetAllRequestByEmployeeId(int EmployeeId)
         {
             var requests = _context.assignedRequests.Where(r => r.EmployeeId == EmployeeId).Include(r => r.Employee).Include(r => r.ProjectPosition)
