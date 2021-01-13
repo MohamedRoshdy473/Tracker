@@ -13,7 +13,6 @@ namespace TrackingSystemAPI.Models
         public int Id { get; set; }
         public string RequestName { get; set; }
         public string RequestCode { get; set; }
-        public string Photo { get; set; }
         public string Description { get; set; }
         public DateTime RequestDate { get; set; }
         public TimeSpan? RequestTime { get; set; }

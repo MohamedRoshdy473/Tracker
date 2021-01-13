@@ -38,7 +38,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.Description = requestDTO.Description;
             request.RequestDate = requestDTO.RequestDate;
             request.RequestTime = TimeSpan.Parse(dtStartTime);
-            request.Photo = requestDTO.Photo;
+            
             request.RequestModeId = requestDTO.RequestModeId;
             request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
@@ -75,8 +75,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  RequestCode = req.RequestCode,
                                                  Description = req.Description,
                                                  RequestDate = req.RequestDate,
-                                                 RequestTime = (req.RequestTime).ToString(),
-                                                 Photo = req.Photo,
+                                                 RequestTime = (req.RequestTime).ToString(),                                           
                                                  RequestModeId = req.RequestModeId,
                                                  RequestMode = req.RequestMode.Mode,
                                                  AssetId = req.AssetId,
@@ -112,7 +111,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                 Description = req.Description,
                 RequestDate = req.RequestDate,
                 RequestTime = req.RequestTime.ToString(),
-                Photo = req.Photo,
+               
                 RequestModeId = req.RequestModeId,
                 RequestMode = req.RequestMode.Mode,
                 AssetId = req.AssetId,
@@ -148,7 +147,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             request.Description = requestDTO.Description;
             request.RequestDate = requestDTO.RequestDate;
             request.RequestTime = TimeSpan.Parse(requestDTO.RequestTime);
-            request.Photo = requestDTO.Photo;
+           
             request.RequestModeId = requestDTO.RequestModeId;
             request.AssetId = requestDTO.AssetId;
             request.RequestSubCategoryId = requestDTO.RequestSubCategoryId;
@@ -196,7 +195,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                  Description = req.Description,
                                                  RequestDate = req.RequestDate,
                                                  RequestTime = (req.RequestTime.Value.Hours + ":" + req.RequestTime.Value.Minutes.ToString().PadLeft(2, '0')).ToString(),
-                                                 Photo = req.Photo,
+                                                
                                                  RequestModeId = req.RequestModeId,
                                                  RequestMode = req.RequestMode.Mode,
                                                  AssetId = req.AssetId,
@@ -238,7 +237,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                                                 Description = req.Description,
                                                 RequestDate = req.RequestDate,
                                                 RequestTime = (req.RequestTime).ToString(),
-                                                Photo = req.Photo,
+                                               
                                                 RequestModeId = req.RequestModeId,
                                                 RequestMode = req.RequestMode.Mode,
                                                 AssetId = req.AssetId,

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace TrackingSystemAPI.Models
 {
    
-    public class RequestType
+    public class Problems
     {
         public int Id { get; set; }
-        public string RequestTypeName { get; set; }
+        public string ProblemName { get; set; }
     }
 }

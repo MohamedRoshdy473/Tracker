@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace TrackingSystemAPI.DTO
 {
-    public class RequestDTO
+    public class RequestProblemsDTO
     {
         public int Id { get; set; }
+        public int ProblemId { get; set; }
+        public int RequestId { get; set; }
+        public string ProblemName { get; set; }
         public string RequestName { get; set; }
         public string RequestCode { get; set; }
         public string Description { get; set; }
@@ -16,11 +19,11 @@ namespace TrackingSystemAPI.DTO
         public bool? IsSolved { get; set; }
         public bool? IsAssigned { get; set; }
         public int RequestSubCategoryId { get; set; }
-        public string  RequestSubCategoryName { get; set; }
+        public string RequestSubCategoryName { get; set; }
         public int ClientId { get; set; }
         public string ClientName { get; set; }
         public int ProjectTeamId { get; set; }
-        public string  ProjectName { get; set; }
+        public string ProjectName { get; set; }
         public string TeamName { get; set; }
         public int RequestModeId { get; set; }
         public string RequestMode { get; set; }
@@ -30,6 +33,7 @@ namespace TrackingSystemAPI.DTO
         public string RequestStatus { get; set; }
         public int RequestPeriorityId { get; set; }
         public string RequestPeriority { get; set; }
+
 
     }
 }

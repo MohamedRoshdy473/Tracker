@@ -123,7 +123,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                           Description = req.Request.Description,
                           RequestDate = req.Request.RequestDate,
                           RequestTime = (req.Request.RequestTime.Value.Hours + ":" + req.Request.RequestTime.Value.Minutes.ToString().PadLeft(2, '0')).ToString(),
-                          Photo = req.Request.Photo,
+                         
                           RequestModeId = req.Request.RequestModeId,
                           RequestMode = req.Request.RequestMode.Mode,
                           AssetId = req.Request.AssetId,
@@ -157,7 +157,7 @@ namespace TrackingSystemAPI.Repositories.AssignedRequestsRepositories
                            Description = req.Request.Description,
                            RequestDate = req.Request.RequestDate,
                            RequestTime = (req.Request.RequestTime.Value.Hours + ":" + req.Request.RequestTime.Value.Minutes.ToString().PadLeft(2, '0')).ToString(),
-                           Photo = req.Request.Photo,
+                         
                            RequestModeId = req.Request.RequestModeId,
                            RequestMode = req.Request.RequestMode.Mode,
                            AssetId = req.Request.AssetId,
