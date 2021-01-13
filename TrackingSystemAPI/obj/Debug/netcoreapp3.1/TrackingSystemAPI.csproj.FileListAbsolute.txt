@@ -157,7 +157,6 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.Co
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
-D:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.json
@@ -320,3 +319,4 @@ E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css

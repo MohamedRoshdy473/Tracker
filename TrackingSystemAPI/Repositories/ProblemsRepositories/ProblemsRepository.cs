@@ -38,7 +38,8 @@ namespace TrackingSystemAPI.Repositories.ProblemsRepositories
 
         public Problems GetById(int id)
         {
-            return _context.problems.Where(p => p.Id == id).FirstOrDefault();
+            var problem=_context.problems.Where(p => p.Id == id).FirstOrDefault();
+            return problem;
         }
 
         public void Save()
