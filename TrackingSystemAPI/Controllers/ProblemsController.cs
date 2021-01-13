@@ -89,7 +89,7 @@ namespace TrackingSystemAPI.Controllers
             _problemsRepository.Delete(id);
             _problemsRepository.Save();
 
-            return problems;
+            return Ok();
         }
     }
 }
