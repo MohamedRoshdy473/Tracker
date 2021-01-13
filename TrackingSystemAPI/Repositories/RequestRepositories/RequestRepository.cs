@@ -97,37 +97,41 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
 
         public RequestDTO GetById(int id)
         {
-            var req = _context.requests.Include(r => r.ProjectTeam).Include(r => r.RequestPeriority)
-                                       .Include(r => r.RequestStatus).Include(r => r.RequestSubCategory)
-                                       .Include(r => r.RequestMode)
-                                       .Include(r => r.Asset).Where(r => r.Id == id).FirstOrDefault();
+            var request = _context.requests.Include(p => p.Client).Include(p => p.ProjectTeam).
+               Include(p => p.Asset).
+               Include(p => p.RequestMode).
+               Include(p => p.RequestPeriority).Include(p => p.RequestStatus).
+               Include(p => p.RequestSubCategory).
+               FirstOrDefault(e => e.Id == id);
             var requestDTO = new RequestDTO
             {
-                Id = req.Id,
-                IsSolved = req.IsSolved,
-                IsAssigned = req.IsAssigned,
-                RequestName = req.RequestName,
-                RequestCode = req.RequestCode,
-                Description = req.Description,
-                RequestDate = req.RequestDate,
-                RequestTime = req.RequestTime.ToString(),
-               
-                RequestModeId = req.RequestModeId,
-                RequestMode = req.RequestMode.Mode,
-                AssetId = req.AssetId,
-                AssetCode = req.Asset.AssetCode,
-                ClientId = req.ClientId,
-                ClientName = req.Client.ClientName,
-                RequestSubCategoryId = req.RequestSubCategoryId,
-                RequestSubCategoryName = req.RequestSubCategory.SubCategoryName,
-                ProjectTeamId = req.ProjectTeamId,
-                ProjectName = req.ProjectTeam.Project.ProjectName,
-                TeamName = req.ProjectTeam.Team.Name,
-                RequestStatusId = req.RequestStatusId,
-                RequestStatus = req.RequestStatus.status,
-                RequestPeriorityId = req.RequestPeriorityId,
-                RequestPeriority = req.RequestPeriority.periorty,
+                Id = request.Id,
+                RequestName = request.RequestName,
+                RequestStatus = request.RequestStatus.status,
+                AssetCode = request.Asset.AssetCode,
+                AssetId = request.AssetId,
+                ClientId = request.ClientId,
+                ClientName = request.Client.ClientName,
+                Description = request.Description,
+                IsAssigned = request.IsAssigned,
+                IsSolved = request.IsSolved,
+                ProjectTeamId = request.ProjectTeamId,
+                RequestCode = request.RequestCode,
+                RequestDate = request.RequestDate,
+                RequestMode = request.RequestMode.Mode,
+                RequestModeId = request.RequestModeId,
+                RequestPeriority = request.RequestPeriority.periorty,
+                RequestPeriorityId = request.RequestPeriorityId,
+                RequestStatusId = request.RequestStatusId,
+                RequestSubCategoryId = request.RequestSubCategoryId,
+                RequestSubCategoryName = request.RequestSubCategory.SubCategoryName,
+                RequestTime = request.RequestTime.ToString()
             };
+            if (request == null)
+            {
+                return null;
+            }
+
             return requestDTO;
         }
 
