@@ -44,10 +44,10 @@ namespace TrackingSystemAPI.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllRequestByRequestProblemId/{RequestProblemId}")]
-        public IEnumerable<RequestProblemsDTO> GetAllRequestByRequestProblemId(int RequestProblemId)
+        [Route("GetAllRequestByProblemId/{ProblemId}")]
+        public IEnumerable<RequestProblemsDTO> GetAllRequestByProblemId(int ProblemId)
         {
-            return _requestProblemRepository.GetAllRequestByRequestProblemId(RequestProblemId);
+            return _requestProblemRepository.GetAllRequestByProblemId(ProblemId);
         }
         // PUT: api/RequestProblems/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
