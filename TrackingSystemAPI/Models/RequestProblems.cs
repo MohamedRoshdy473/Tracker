@@ -17,5 +17,8 @@ namespace TrackingSystemAPI.Models
 
         [ForeignKey("RequestId")]
         public virtual Request Request { get; set; }
+        public int EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual Employee Employee { get; set; }
     }
 }
