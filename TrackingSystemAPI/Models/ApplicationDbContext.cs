@@ -39,7 +39,7 @@ namespace TrackingSystemAPI.Models
         public DbSet<RequestPeriority>requestPeriorities  { get; set; }
         public DbSet<RequestStatus>requestStatuses  { get; set; }
         public DbSet<RequestSubCategory> requestSubCategories  { get; set; }
-        public DbSet<RequestType> requestTypes { get; set; }
+        public DbSet<Problems> requestTypes { get; set; }
         public DbSet<Stackeholders>stackeholders  { get; set; }
         public DbSet<ProjectType> projectTypes { get; set; }
         public DbSet<RequestMode> requestModes { get; set; }
@@ -48,7 +48,9 @@ namespace TrackingSystemAPI.Models
         public DbSet<requestImages> requestImages { get; set; }
         public DbSet<Team> teams { get; set; }
         public DbSet<AssignedRequests> assignedRequests { get; set; }
-        public DbSet<TrackingSystemAPI.DTO.RequestImageDTO> RequestImageDTO { get; set; }
+        public DbSet<Problems>  problems{ get; set; }
+        public DbSet<RequestProblems> requestProblems { get; set; }
+        public DbSet<TrackingSystemAPI.DTO.RequestProblemsDTO> RequestProblemsDTO { get; set; }
 
 
 

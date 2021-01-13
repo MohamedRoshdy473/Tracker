@@ -35,6 +35,8 @@ using TrackingSystemAPI.Repositories.RequestImageRepositories;
 using TrackingSystemAPI.Repositories.TeamRepositories;
 using TrackingSystemAPI.Repositories.RequestDescriptionRepositories;
 using TrackingSystemAPI.Repositories.AssignedRequestsRepositories;
+using TrackingSystemAPI.Repositories.ProblemsRepositories;
+using TrackingSystemAPI.Repositories.RequestProblemsRepositories;
 
 namespace TrackingSystemAPI
 {
@@ -87,6 +89,10 @@ namespace TrackingSystemAPI
             services.AddScoped<ITeamRepository, TeamRepository>();
             services.AddScoped<IRequestDescriptionRepository, RequestDescriptionRepository>();
             services.AddScoped<IAssignedRequestsRepository, AssignedRequestsRepository>();
+            services.AddScoped<IProblemsRepository, ProblemsRepository>();
+            services.AddScoped<IRequestProblemRepository, RequestProblemRepository>();
+
+
 
 
             // Adding Authentication  

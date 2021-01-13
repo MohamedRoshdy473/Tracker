@@ -22,7 +22,7 @@ namespace TrackingSystemAPI.Controllers
         }
         // GET: api/RequestTypes
         [HttpGet]
-        public IEnumerable<RequestType> GetrequestTypes()
+        public IEnumerable<Problems> GetrequestTypes()
         {
             return _requestTypeRepository.GetAll();
 
@@ -30,7 +30,7 @@ namespace TrackingSystemAPI.Controllers
 
         // GET: api/RequestTypes/5
         [HttpGet("{id}")]
-        public ActionResult<RequestType> GetRequestType(int id)
+        public ActionResult<Problems> GetRequestType(int id)
         {
             var requestType = _requestTypeRepository.GetById(id);
 
@@ -46,7 +46,7 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRequestType(int id, RequestType requestType)
+        public async Task<IActionResult> PutRequestType(int id, Problems requestType)
         {
             if (id != requestType.Id)
             {
@@ -71,7 +71,7 @@ namespace TrackingSystemAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public ActionResult<RequestType> PostRequestType(RequestType requestType)
+        public ActionResult<Problems> PostRequestType(Problems requestType)
         {
             _requestTypeRepository.Add(requestType);
             _requestTypeRepository.Save();
@@ -80,7 +80,7 @@ namespace TrackingSystemAPI.Controllers
 
         // DELETE: api/RequestTypes/5
         [HttpDelete("{id}")]
-        public ActionResult<RequestType> DeleteRequestType(int id)
+        public ActionResult<Problems> DeleteRequestType(int id)
         {
             var requestType = _requestTypeRepository.Find(id);
             if (requestType == null)

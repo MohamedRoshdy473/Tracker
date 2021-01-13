@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrackingSystemAPI.Models;
 
 namespace TrackingSystemAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210113075908_addtableProblem")]
+    partial class addtableProblem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,93 +150,6 @@ namespace TrackingSystemAPI.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("TrackingSystemAPI.DTO.RequestProblemsDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AssetCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("AssetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ClientName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsAssigned")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("IsSolved")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProblemId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProblemName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProjectTeamId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RequestCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RequestDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RequestId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RequestMode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestModeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RequestName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RequestPeriority")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestPeriorityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RequestStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestStatusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RequestSubCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RequestSubCategoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RequestTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TeamName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestProblemsDTO");
                 });
 
             modelBuilder.Entity("TrackingSystemAPI.Models.ApplicationUser", b =>
