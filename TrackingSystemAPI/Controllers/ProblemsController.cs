@@ -32,14 +32,11 @@ namespace TrackingSystemAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Problems> GetProblems(int id)
         {
-            var problems = _problemsRepository.Find(id);
+            return _problemsRepository.GetById(id);
 
-            if (problems == null)
-            {
-                return NotFound();
-            }
+          
 
-            return Ok();
+           
         }
 
         // PUT: api/Problems/5

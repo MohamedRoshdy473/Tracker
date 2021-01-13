@@ -86,9 +86,9 @@ namespace TrackingSystemAPI.Repositories.RequestProblemsRepositories
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<RequestProblemsDTO> GetAllRequestByRequestProblemId(int RequestProblemId)
+        public IEnumerable<RequestProblemsDTO> GetAllRequestByProblemId(int ProblemId)
         {
-            var requestsByProblemId = _context.requestProblems.Where(r => r.Id == RequestProblemId)
+            var requestsByProblemId = _context.requestProblems.Where(r => r.ProblemId == ProblemId)
                 .Include(r => r.Request.ProjectTeam).Include(r => r.Request.RequestPeriority)
                                              .Include(r => r.Request.RequestStatus).Include(r => r.Request.RequestSubCategory)
                                              .Include(r => r.Request.RequestMode)
