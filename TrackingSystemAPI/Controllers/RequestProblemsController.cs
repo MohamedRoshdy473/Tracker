@@ -42,6 +42,12 @@ namespace TrackingSystemAPI.Controllers
 
             return requestProblemsDTO;
         }
+        [HttpGet]
+        [Route("GetProblemByEmployeeIdAndRequestId/{EmployeeId}/{RequestId}")]
+        public RequestProblemsDTO GetProblemByEmployeeIdAndRequestId(int EmployeeId, int RequestId)
+        {
+            return _requestProblemRepository.GetProblemByEmployeeIdAndRequestId(EmployeeId, RequestId);
+        }
 
         [HttpGet]
         [Route("GetAllRequestByProblemId/{ProblemId}")]

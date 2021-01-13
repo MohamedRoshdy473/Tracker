@@ -12,6 +12,7 @@ namespace TrackingSystemAPI.Repositories.RequestProblemsRepositories
         IEnumerable<RequestProblemsDTO> GetAll();
         RequestProblemsDTO GetById(int id);
         IEnumerable<RequestProblemsDTO> GetAllRequestByProblemId(int ProblemId);
+        RequestProblemsDTO GetProblemByEmployeeIdAndRequestId(int EmployeeId,int RequestId);
         RequestProblems Find(int id);
         void Add(RequestProblems requestProblems);
         void Update(RequestProblems requestProblems);

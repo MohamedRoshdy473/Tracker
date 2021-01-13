@@ -33,6 +33,8 @@ namespace TrackingSystemAPI.DTO
         public string RequestStatus { get; set; }
         public int RequestPeriorityId { get; set; }
         public string RequestPeriority { get; set; }
+        public int EmployeeId { get; set; }
+        public string EmployeeName { get; set; }
 
 
     }
