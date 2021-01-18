@@ -33,7 +33,6 @@ namespace TrackingSystemAPI.Controllers
             _configuration = configuration;
             _context = context;
         }
-
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login( LoginModel model)

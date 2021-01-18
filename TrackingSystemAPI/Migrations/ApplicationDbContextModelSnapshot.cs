@@ -383,6 +383,9 @@ namespace TrackingSystemAPI.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("gender")
                         .HasColumnType("nvarchar(max)");
 
