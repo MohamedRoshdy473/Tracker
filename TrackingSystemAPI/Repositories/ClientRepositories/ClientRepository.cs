@@ -26,6 +26,7 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
             client.gender = clientDTO.gender;
             client.OrganizationId = clientDTO.OrganizationId;
             client.Phone = clientDTO.Phone;
+            client.Photo = clientDTO.Photo;
             _context.clients.Add(client);
         }
 
@@ -53,6 +54,7 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
                 ClientCode=e.ClientCode,
                 Email=e.Email,
                 gender=e.gender,
+                Photo=e.Photo,
                 OrganizationName=e.Organization.OrganizationName
               
             }).ToList();
@@ -72,7 +74,9 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
                 ClientCode = client.ClientCode,
                 Email = client.Email,
                 gender = client.gender,
-                OrganizationName = client.Organization.OrganizationName
+                OrganizationName = client.Organization.OrganizationName,
+                Photo=client.Photo
+               
             };
             if (client == null)
             {
@@ -98,6 +102,7 @@ namespace TrackingSystemAPI.Repositories.ClientRepositories
             client.gender = clientDTO.gender;
             client.OrganizationId = clientDTO.OrganizationId;
             client.Phone = clientDTO.Phone;
+            client.Photo = clientDTO.Photo;
             _context.Entry(client).State = EntityState.Modified;
 
         }
