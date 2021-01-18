@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,77 @@ namespace TrackingSystemAPI.Controllers
 
             return clientDTO;
         }
+
+        [HttpPost]
+        [Route("api/dashboard/UploadImage")]
+        public ActionResult UploadFile(IFormFile file)
+        {
+            var ImagesTypes = new List<string>() { "image/jpg", "image/jpeg", "image/png" };
+            string path;
+            if (ImagesTypes.Contains(file.ContentType))
+            {
+                path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/", file.FileName);
+                using (Stream stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+            }
+            else
+            {
+                return BadRequest();
+            }
+            return StatusCode(StatusCodes.Status201Created);
+        }
+
+        [HttpGet]
+        [Route("getImage/{ImageName}")]
+        public IActionResult ImageGet(string ImageName)
+        {
+            if (ImageName == null)
+                return Content("filename not present");
+
+            var path = Path.Combine(
+                           Directory.GetCurrentDirectory(),
+                           "wwwroot/images", ImageName);
+            var memory = new MemoryStream();
+            var ext = System.IO.Path.GetExtension(path);
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            var contentType = "APPLICATION/octet-stream";
+            return File(memory, contentType, Path.GetFileName(path));
+        }
+        public IActionResult getFile(string FName)
+        {
+            if (FName == null)
+                return Content("filename not present");
+
+            var path = Path.Combine(
+                           Directory.GetCurrentDirectory(),
+                           "wwwroot/images/", FName);
+
+            var memory = new MemoryStream();
+            var ext = System.IO.Path.GetExtension(path);
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+            var contentType = "APPLICATION/pdf";
+            //return File(Path.GetFileName(path), contentType, FName);
+            return File(memory, contentType, Path.GetFileName(path));
+        }
+
+
+
+
+
+
+
+
 
         // PUT: api/Clients/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
