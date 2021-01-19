@@ -158,6 +158,7 @@ D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
 D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
+D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\appsettings.json
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\TrackingSystemAPI.exe
@@ -306,6 +307,7 @@ E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_s
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Tracker\TrackingSystemAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfoInputs.cache
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.AssemblyInfo.cs
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.CoreCompileInputs.cache
@@ -318,5 +320,3 @@ E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csproj.Co
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.dll
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.pdb
 E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.genruntimeconfig.cache
-E:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\TrackingSystemAPI.csprojAssemblyReference.cache
-D:\Tracker\TrackingSystemAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrackingSystemAPI.styles.css
