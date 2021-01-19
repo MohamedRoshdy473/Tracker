@@ -171,7 +171,7 @@ namespace TrackingSystemAPI.Controllers
         [Route("changPassword")]
         public async Task<IActionResult> ChangPassword(ChangePassword model)
         {
-            var mail = await userManager.FindByNameAsync(model.email);
+            var mail = await userManager.FindByNameAsync(model.userName);
             //user != null && await userManager.CheckPasswordAsync(user, model.Password)
             await userManager.ChangePasswordAsync(mail, model.Password, model.NewPassword);
             return Ok();

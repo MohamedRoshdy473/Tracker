@@ -10,12 +10,12 @@ namespace TrackingSystemAPI.ViewModels
     {
         [Required(ErrorMessage = "userName is required")]
         public string userName { get; set; }
-        [Required(ErrorMessage = "Email is required")]
-        public string email { get; set; }
+        //[Required(ErrorMessage = "Email is required")]
+        //public string email { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "NewPassword is required")]
+        [Required(ErrorMessage = "NewPassword is required and password must more than 8 letters and have number, letters and special character")]
         public string NewPassword { get; set; }
     }
 }
