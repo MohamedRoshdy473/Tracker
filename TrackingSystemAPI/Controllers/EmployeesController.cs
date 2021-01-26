@@ -37,6 +37,12 @@ namespace TrackingSystemAPI.Controllers
         {
             return _employeeRepository.GetById(id);
         }
+        [HttpGet]
+        [Route("GetEmployeeByDepartmentId/{departmentId}")]
+        public List<EmployeeDTO> GetEmployeeByDepartmentId(int departmentId)
+        {
+            return _employeeRepository.GetEmployeeByDepartmentId(departmentId);
+        }
         [HttpPost]
         public ActionResult<EmployeeDTO> PostEmployee(EmployeeDTO employeeDTO)
         {

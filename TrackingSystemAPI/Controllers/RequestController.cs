@@ -108,5 +108,11 @@ namespace TrackingSystemAPI.Controllers
 
             return Ok();
         }
+        [HttpGet]
+        [Route("GetAllRequestByRequestStatus/{requestStatusId}")]
+        public List<RequestDTO> GetAllRequestByRequestStatus(int requestStatusId)
+        {
+            return _requestRepository.GetAllRequestByRequestStatus(requestStatusId);
+        }
     }
 }

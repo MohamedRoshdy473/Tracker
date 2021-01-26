@@ -127,5 +127,32 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public List<EmployeeDTO> GetEmployeeByDepartmentId(int departmentId)
+        {
+            var e = _context.Employees.Where(e => e.DepartmentId == departmentId).Select(e => new EmployeeDTO
+            {
+
+                Id = e.Id,
+                EmployeeName = e.EmployeeName,
+                DepartmentName = e.Department.Name,
+                DepartmentId = e.DepartmentId,
+                Address = e.Address,
+                Position = e.Position,
+                EmployeeCode = e.EmployeeCode,
+                Email = e.Email,
+                gender = e.gender,
+                MaritalStatus = e.MaritalStatus,
+                Phone = e.Phone,
+                Mobile = e.Mobile,
+                Photo = e.Photo
+            }).ToList();
+            if (e == null)
+            {
+                return null;
+            }
+
+            return e;
+        }
     }
 }
