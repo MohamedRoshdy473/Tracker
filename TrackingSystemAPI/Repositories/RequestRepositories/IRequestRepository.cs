@@ -13,6 +13,7 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
         RequestDTO GetById(int id);
         IEnumerable<RequestDTO> GetProjectTeamsByProjectId(int ProjectId);
         IEnumerable<RequestDTO> GetAllRequestByClientId(int ClientId);
+        List<RequestDTO> GetAllRequestByRequestStatus(int requestStatusId );
         List<RequestDTO> GetAllRequestByProjectTeamId(ProjectTeamVM model);
         Request Find(int id);
         int Add(RequestDTO requestDTO);

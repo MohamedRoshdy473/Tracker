@@ -240,5 +240,25 @@ namespace TrackingSystemAPI.Repositories.ProjectRepository
                 }).ToList();
             return proj;
         }
+
+        public List<ProjectDTO> GetAllProjectsByProjectTypeId(int ProjectTypeId)
+        {
+            var project = _context.projects.Where(e => e.ProjectTypeId == ProjectTypeId && e.IsDeleted==false).Select(e => new ProjectDTO
+            {
+                ProjectTypeId = e.ProjectTypeId,
+                ActualEndDate = e.ActualEndDate,
+                ClientId = e.ClientId,
+                ProjectName = e.ProjectName,
+                EmployeeId = e.EmployeeId,
+                Id = e.Id,
+                IsDeleted = e.IsDeleted,
+                OrganizationId = e.OrganizationId,
+                OrganizationName = e.Organization.OrganizationName,
+                EmployeeName = e.Employee.EmployeeName,
+                PlanndedEndDate = e.PlanndedEndDate,
+                PlanndedStartDate = e.PlanndedStartDate
+            }).ToList();
+            return project;
+        }
     }
 }

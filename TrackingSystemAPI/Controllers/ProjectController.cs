@@ -127,5 +127,11 @@ namespace TrackingSystemAPI.Controllers
 
             return projectDTO;
         }
+        [HttpGet]
+        [Route("GetAllProjectsByProjectTypeId/{ProjectTypeId}")]
+        public List<ProjectDTO> GetAllProjectsByProjectTypeId(int ProjectTypeId)
+        {
+            return _projectRepository.GetAllProjectsByProjectTypeId(ProjectTypeId);
+        }
     }
 }

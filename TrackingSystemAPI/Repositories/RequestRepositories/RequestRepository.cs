@@ -266,5 +266,17 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
             }
             return requestDTO;
         }
+        
+        public List<RequestDTO> GetAllRequestByRequestStatus(int requestStatusId)
+        {
+            var request = _context.requests.Where(e => e.RequestStatusId == requestStatusId).Select(req => new RequestDTO
+            {
+                RequestStatusId = req.RequestStatusId,
+                Id = req.Id,
+                AssetId = req.AssetId,
+                RequestName = req.RequestName
+            }).ToList();
+            return request;
+        }
     }
 }

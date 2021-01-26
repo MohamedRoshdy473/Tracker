@@ -11,6 +11,7 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
     {
         IEnumerable<EmployeeDTO> GetAll();
         EmployeeDTO GetById(int id);
+        List<EmployeeDTO> GetEmployeeByDepartmentId(int departmentId);
         Employee Find(int id);
         void Add(EmployeeDTO employeeDTO);
         void Update(EmployeeDTO employeeDTO);
