@@ -10,8 +10,8 @@ namespace TrackingSystemAPI.ViewModels
     {
         [Required(ErrorMessage = "userName is required")]
         public string userName { get; set; }
-        [Required(ErrorMessage = "Email is required")]
-        public string email { get; set; }
+        //[Required(ErrorMessage = "Email is required")]
+        //public string email { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
