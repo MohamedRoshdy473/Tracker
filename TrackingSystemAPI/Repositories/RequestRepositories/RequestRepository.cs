@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -277,6 +278,85 @@ namespace TrackingSystemAPI.Repositories.RequestRepositories
                 RequestName = req.RequestName
             }).ToList();
             return request;
+        }
+
+        public RequestDTO GetAllRequestByRequestStatusAndProjectTeamId(int requestStatusId, int ProjectTeamId)
+        {
+            var request = _context.requests.Include(p => p.Client).Include(p => p.ProjectTeam).
+               Include(p => p.Asset).
+               Include(p => p.RequestMode).
+               Include(p => p.RequestPeriority).Include(p => p.RequestStatus).
+               Include(p => p.RequestSubCategory).
+               FirstOrDefault(e => e.RequestStatusId == requestStatusId&&e.ProjectTeamId==ProjectTeamId);
+            var requestDTO = new RequestDTO
+            {
+                Id = request.Id,
+                RequestName = request.RequestName,
+                RequestStatus = request.RequestStatus.status,
+                AssetCode = request.Asset.AssetCode,
+                AssetId = request.AssetId,
+                ClientId = request.ClientId,
+                ClientName = request.Client.ClientName,
+                Description = request.Description,
+                IsAssigned = request.IsAssigned,
+                IsSolved = request.IsSolved,
+                ProjectTeamId = request.ProjectTeamId,
+                RequestCode = request.RequestCode,
+                RequestDate = request.RequestDate,
+                RequestMode = request.RequestMode.Mode,
+                RequestModeId = request.RequestModeId,
+                RequestPeriority = request.RequestPeriority.periorty,
+                RequestPeriorityId = request.RequestPeriorityId,
+                RequestStatusId = request.RequestStatusId,
+                RequestSubCategoryId = request.RequestSubCategoryId,
+                RequestSubCategoryName = request.RequestSubCategory.SubCategoryName,
+                RequestTime = request.RequestTime.ToString()
+            };
+            if (request == null)
+            {
+                return null;
+            }
+
+            return requestDTO;
+        }
+
+        public int CountProjects(int projectId)
+        {
+         return   (from req in _context.requests
+             join projectteam in _context.projectTeams on req.ProjectTeamId equals projectteam.Id
+             join proj in _context.projects on projectteam.ProjectId equals proj.Id
+             where proj.Id == projectId
+                   select proj).ToList().Count;
+        }
+
+
+        public int CountClosedProjects(int projectId)
+        {
+            return (from req in _context.requests
+                    join projectteam in _context.projectTeams on req.ProjectTeamId equals projectteam.Id
+                    join proj in _context.projects on projectteam.ProjectId equals proj.Id
+                    where req.RequestStatusId == 2
+                    where proj.Id == projectId
+                    select proj).ToList().Count;
+        }
+
+        public int CountOpenProjects(int projectId)
+        {
+            return (from req in _context.requests
+                    join projectteam in _context.projectTeams on req.ProjectTeamId equals projectteam.Id
+                    join proj in _context.projects on projectteam.ProjectId equals proj.Id
+                    where req.RequestStatusId == 1
+                    where proj.Id == projectId
+                    select proj).ToList().Count;
+        }
+        public int CountInProgressProjects(int projectId)
+        {
+            return (from req in _context.requests
+                    join projectteam in _context.projectTeams on req.ProjectTeamId equals projectteam.Id
+                    join proj in _context.projects on projectteam.ProjectId equals proj.Id
+                    where req.RequestStatusId == 3
+                    where proj.Id == projectId
+                    select proj).ToList().Count;
         }
     }
 }

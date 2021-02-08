@@ -19,6 +19,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
         IEnumerable<ProjectTeamDTO> GetProjectTeamByProjectPositionIdAndEmployeeId(int ProjectPositionId, int EmployeeId);
         List<ProjectTeamDTO> GetAllProjectTeamsByProjectIds(ProjectsVM model);
         ProjectTeamDTO GetTeamIdByEmployeeId(int EmployeeId);
+        List<int> GetProjectIdByPosition(int positionId);
         ProjectTeamDTO GetTeamLeaderByTeamIdAndProjectPositionId(int TeamId, int ProjectPositionId);
         void UpdateByProjectId(int ProjectId, List<ProjectTeamDTO> projectTeamDTOs);
         ProjectTeam Find(int id);

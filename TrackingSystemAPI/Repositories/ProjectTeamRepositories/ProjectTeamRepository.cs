@@ -261,5 +261,10 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
             }).FirstOrDefault();
             return TeamLeader;
         }
+
+        public List<int> GetProjectIdByPosition(int positionId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

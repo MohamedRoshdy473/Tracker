@@ -114,5 +114,37 @@ namespace TrackingSystemAPI.Controllers
         {
             return _requestRepository.GetAllRequestByRequestStatus(requestStatusId);
         }
+        [HttpGet]
+        [Route("GetAllRequestByRequestStatusAndProjectTeamId/{requestStatusId}/{ProjectTeamId}")]
+        public ActionResult<RequestDTO> GetAllRequestByRequestStatusAndProjectTeamId(int requestStatusId, int ProjectTeamId)
+        {
+            return _requestRepository.GetAllRequestByRequestStatusAndProjectTeamId(requestStatusId, ProjectTeamId);
+        }
+
+
+
+        [Route("CountProjects/{ProjectId}")]
+        public int CountProjects(int ProjectId)
+        {
+            return _requestRepository.CountProjects(ProjectId);
+        }
+
+        [Route("CountInProgressProjects/{ProjectId}")]
+        public int CountInProgressProjects(int ProjectId)
+        {
+            return _requestRepository.CountInProgressProjects(ProjectId);
+        }
+
+        [Route("CountOpenProjects/{ProjectId}")]
+        public int CountOpenProjects(int ProjectId)
+        {
+            return _requestRepository.CountOpenProjects(ProjectId);
+        }
+
+        [Route("CountClosedProjects/{ProjectId}")]
+        public int CountClosedProjects(int ProjectId)
+        {
+            return _requestRepository.CountClosedProjects(ProjectId);
+        }
     }
 }
