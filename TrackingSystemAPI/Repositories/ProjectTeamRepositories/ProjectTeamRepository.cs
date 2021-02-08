@@ -98,7 +98,7 @@ namespace TrackingSystemAPI.Repositories.ProjectTeamRepositories
                 DepartmentName = projectTeam.Department.Name,
                 ProjectPositionId = projectTeam.ProjectPositionId,
                 ProjectPositionName = projectTeam.ProjectPosition.PositionName,
-            }).ToList();
+            }).Distinct().ToList();
             return projectTeam;
         }
        public IEnumerable<ProjectTeamDTO> GetProjectTeamsByProjectPositionId(int ProjectPositionId)

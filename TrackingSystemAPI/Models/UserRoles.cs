@@ -10,7 +10,7 @@ namespace TrackingSystemAPI.Models
         public const string SuperAdmin = "SuperAdmin"; //All Permission
         public const string Admin = "Admin"; //View Only
         public const string PMO = "PMO"; //Create Project CRUD
-        public const string PM = "PM"; //view Project and can manage more than Project
+        public const string PM = "PM"; //view Project and can manage more than Project, can not create or delete any project
         public const string TL = "TL"; //assign tickets to members
         public const string Employee = "Employee";
         public const string Client = "Client";
