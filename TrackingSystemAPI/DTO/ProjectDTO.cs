@@ -16,10 +16,10 @@ namespace TrackingSystemAPI.DTO
         public int ProjectPeriod { get; set; }
         public bool? IsDeleted { get; set; }
 
-        public DateTime PlanndedStartDate { get; set; }
-        public DateTime ActualStartDate { get; set; }
-        public DateTime PlanndedEndDate { get; set; }
-        public DateTime ActualEndDate { get; set; }
+        public DateTime? PlanndedStartDate { get; set; }
+        public DateTime? ActualStartDate { get; set; }
+        public DateTime? PlanndedEndDate { get; set; }
+        public DateTime? ActualEndDate { get; set; }
         public string Description { get; set; }
         public int OrganizationId { get; set; }
         public string OrganizationName { get; set; }

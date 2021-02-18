@@ -19,5 +19,7 @@ namespace TrackingSystemAPI.Models
         public string Location { get; set; }
         public float? lat { get; set; }
         public float? lng { get; set; }
+        public bool? IsDeleted { get; set; }
+
     }
 }

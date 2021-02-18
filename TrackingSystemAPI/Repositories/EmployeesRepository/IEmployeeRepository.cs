@@ -16,6 +16,7 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
         void Add(EmployeeDTO employeeDTO);
         void Update(EmployeeDTO employeeDTO);
         void Delete(int id);
+        void DeleteEmployeeAndProjectTeam(int EmployeeId);
         void Save();
     }
 }

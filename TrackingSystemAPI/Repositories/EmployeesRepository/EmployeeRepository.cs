@@ -154,5 +154,10 @@ namespace TrackingSystemAPI.Repositories.EmployeesRepository
 
             return e;
         }
+
+        public void DeleteEmployeeAndProjectTeam(int EmployeeId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

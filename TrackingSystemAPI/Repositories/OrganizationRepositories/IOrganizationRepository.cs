@@ -13,7 +13,7 @@ namespace TrackingSystemAPI.Repositories.OrganizationRepositories
         Organization Find(int id);
         void Add(Organization organization);
         void Update(Organization organization);
-        void Delete(int id);
+        public void Delete(Organization organization);
         void Save();
     }
 }

@@ -80,18 +80,24 @@ namespace TrackingSystemAPI.Controllers
         }
 
         // DELETE: api/Organizations/5
-        [HttpDelete("{id}")]
-        public ActionResult<Organization> DeleteOrganization(int id)
+        [HttpPut]
+        [Route("SoftDelete/{id}")]
+        public ActionResult<Organization> DeleteOrganization(int id, Organization organization)
         {
-            var organization = _organizationRepository.Find(id);
-            if (organization == null)
+            //var organization = _organizationRepository.Find(id);
+            if (id != organization.Id)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-            _organizationRepository.Delete(id);
-            _organizationRepository.Save();
-
+            _organizationRepository.Delete(organization);
+            try
+            {
+                _organizationRepository.Save();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                string message = ex.Message;
+            }
             return Ok();
         }
 
